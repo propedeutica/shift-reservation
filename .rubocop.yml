@@ -1,0 +1,131 @@
+AllCops:
+  # Include common Ruby source files.
+  Include:
+    - '**/*.gemspec'
+    - '**/*.podspec'
+    - '**/*.jbuilder'
+    - '**/*.rake'
+    - '**/*.opal'
+    - '**/config.ru'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/Capfile'
+    - '**/Guardfile'
+    - '**/Podfile'
+    - '**/Thorfile'
+    - '**/Vagrantfile'
+    - '**/Berksfile'
+    - '**/Cheffile'
+    - '**/Vagabondfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
+  Exclude:
+    - 'vendor/**/*'
+    - 'lib/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'config.ru'
+    - 'config/initializers/**/*'
+    - 'Gemfile'
+    - 'bin/**/*'
+    - 'config/environments/**/*'
+AbcSize:
+  Severity: refactor
+AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+BlockNesting:
+  Severity: refactor
+ClassLength:
+  Severity: refactor
+ClassCheck:
+  EnforcedStyle: kind_of?
+CollectionMethods:
+  PreferredMethods:
+    find: detect
+    find_all: select
+    map: collect
+    reduce: inject
+CyclomaticComplexity:
+  Severity: refactor
+FormatString:
+  EnforcedStyle: percent
+HashSyntax:
+  EnforcedStyle: ruby19
+LineLength:
+  Max: 120
+  Severity: refactor
+MethodLength:
+  Max: 25
+  Severity: refactor
+ParameterLists:
+  Severity: refactor
+PerceivedComplexity:
+  Severity: refactor
+RedundantReturn:
+  AllowMultipleReturnValues: true
+SignalException:
+  EnforcedStyle: only_raise
+SingleLineMethods:
+  AllowIfMethodIsEmpty: false
+TrivialAccessors:
+  AllowPredicates: true
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+#
+# Enabled/Disabled
+#
+ClassAndModuleChildren:
+  Enabled: false
+DefEndAlignment:
+  AutoCorrect: true
+Documentation:
+  Enabled: false
+Encoding:
+  Enabled: false
+EndAlignment:
+  AutoCorrect: true
+ExtraSpacing:
+  AutoCorrect: true
+FindEach:
+  Enabled: false
+GuardClause:
+  Enabled: false
+IfUnlessModifier:
+  Enabled: false
+NumericLiterals:
+  AutoCorrect: false
+ParallelAssignment:
+  Enabled: false
+PerlBackrefs:
+  Enabled: false
+Rails:
+  Enabled: true
+ReadWriteAttribute:
+  AutoCorrect: false
+RescueModifier:
+  AutoCorrect: false
+SingleLineBlockParams:
+  Enabled: false
+SpaceBeforeFirstArg:
+  Enabled: false
+SpaceInsideHashLiteralBraces:
+  Enabled: false
+SpecialGlobalVars:
+  AutoCorrect: false
+StringLiterals:
+  Enabled: false
+StringLiteralsInInterpolation:
+  Enabled: false
+TrailingCommaInLiteral:
+  Enabled: false
+TrailingCommaInArguments:
+  Enabled: false
+WhileUntilModifier:
+  Enabled: false
+WordArray:
+  AutoCorrect: false
+
+

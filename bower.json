@@ -1,0 +1,20 @@
+{
+  "name": "lastablas",
+  "authors": [
+    "Sergio Ocon <sergio.ocon@gmail.com>"
+  ],
+  "description": "Catequesis application for shift management",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/lastablas",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "patternfly-sass": "^3.8.0"
+  }
+}
