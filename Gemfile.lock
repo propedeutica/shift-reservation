@@ -272,7 +272,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.1.5)
   minitest
-  patternfly-sass (~> 3.8)
+  patternfly-sass (~> 3.8.0)
   pg
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)

@@ -12,8 +12,8 @@
 //
 
 //= require jquery
-//= require patternfly
 //= require bootstrap
+//= require patternfly
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-switch

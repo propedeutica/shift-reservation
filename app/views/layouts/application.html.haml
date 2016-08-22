@@ -5,14 +5,7 @@
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
     = yield
-
-  <!-- jQuery -->
-<script src="jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- PatternFly -->
-<script src="patternfly-sass/assets/javascripts/patternfly.min.js"></script>
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
