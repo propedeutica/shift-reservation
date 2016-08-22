@@ -32,9 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'minitest'
   gem 'byebug', platform: :mri
   gem 'rspec-rails',              '~> 3.5'
-  gem 'capybara',                 "~>2.7.0"
+  gem 'capybara',                 "~>2.8.0"
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'faker'
@@ -43,7 +44,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-  gem 'listen',                           '~> 3.0.5'
+  gem 'listen',                           '~> 3.1.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen',            '~> 2.0.0'
@@ -58,7 +59,7 @@ end
 
 # Use SCSS for stylesheets and patternfly
 # Install it wil bower, not as a gem, to install JS dependencies
-gem 'patternfly-sass', '~> 3.8.0'
+#gem 'patternfly-sass', '~> 3.8.0'
 #
 # Devise
 #
@@ -66,7 +67,8 @@ gem 'patternfly-sass', '~> 3.8.0'
 #
 # Haml
 #
-gem 'haml'
+gem 'hamlit'
+gem 'hamlit-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
