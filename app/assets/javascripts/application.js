@@ -12,11 +12,8 @@
 //
 
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-
-//
-// Require elements for patternfly to work
-//
-//= require bootstrap-sass/assets/javascripts/bootstrap-sprockets
-//= require patternfly/dist/js/patternfly
+//= require patternfly
+//= require bootstrap
+//= require bootstrap-datepicker
+//= require bootstrap-select
+//= require bootstrap-switch

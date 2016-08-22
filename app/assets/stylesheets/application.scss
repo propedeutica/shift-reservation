@@ -13,7 +13,7 @@
  */
 
  // "patternfly-sprockets" must be imported before "patternfly" and "patternfly/variables"
-$icon-font-path: "patternfly-sass/assets/fonts/patternfly/";
+
 $font-size-base: 12px;
-@import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
-@import "patternfly/dist/css/patternfly";
+@import "patternfly-sprockets";
+@import "patternfly";

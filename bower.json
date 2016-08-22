@@ -1,12 +1,12 @@
 {
-  "name": "lastablas",
+  "name": "shiftReservation",
   "authors": [
     "Sergio Ocon <sergio.ocon@gmail.com>"
   ],
-  "description": "Catequesis application for shift management",
+  "description": "Shift management application",
   "main": "",
   "license": "MIT",
-  "homepage": "https://github.com/lastablas",
+  "homepage": "https://github.com/propedeutica/shift-reservation",
   "ignore": [
     "**/.*",
     "node_modules",
