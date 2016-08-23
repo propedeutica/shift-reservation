@@ -69,6 +69,7 @@ gem 'patternfly-sass', '~> 3.8.0'
 #
 gem 'hamlit'
 gem 'hamlit-rails'
+gem 'redcarpet'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
