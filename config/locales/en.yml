@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  application:
+    name:         "Shift Reservation"
+    forward_url:  "http://www.openshift.com"
+  week:
+    monday:     "Monday"
+    tuesday:    "Tuesday"
+    wednesday:  "Wednesday"
+    thursday:   "Thursday"
+    friday:     "Friday"
+    saturday:   "Saturday"
+    sunday:     "Sunday"
+    no_day:     "Never"
