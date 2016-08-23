@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Information for the application
   get 'info',  to: 'information#info'
   get 'help',  to: 'information#help'
-  get 'about',  to: 'information#about'
+  get 'about', to: 'information#about'
   # Temporary root
   root to: "information#about"
 
