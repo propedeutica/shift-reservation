@@ -14,5 +14,6 @@ module ShiftReservation
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = "Madrid"
     config.beggining_of_week = :monday
+    config.week_days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
   end
 end

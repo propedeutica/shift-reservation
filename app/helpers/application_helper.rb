@@ -14,7 +14,7 @@ module ApplicationHelper
 
   def flash_class(messageType = "primary")
     case messageType
-    when "default", "primary", "alert" then "alert alert-info"
+    when "default", "primary" then "alert alert-info"
     when "notice", "success" then "alert alert-success"
     when "alert", "warning" then "alert alert-warning"
     else "alert alert-#{messageType}"
@@ -23,7 +23,7 @@ module ApplicationHelper
 
   def flash_icon(iconType = "primary")
     case iconType
-    when "default", "primary", "alert" then "pficon pficon-help"
+    when "default", "primary" then "pficon pficon-help"
     when "info" then "pficon pficon-info"
     when "notice", "success" then "pficon pficon-ok"
     when "warning" then "pficon pficon-warning-triangle-o"
@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def week_day_convert(day)
-    week_days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+    week_days = Rails.configuration.week_days
     week_days.rotate! week_days.index Rails.configuration.beginning_of_week if
                       week_days.index Rails.configuration.beginning_of_week
     week = []
