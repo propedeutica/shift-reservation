@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 %html
   %head
-    = render 'layouts/header'
+    = render 'layouts/head'
 
   %body
-    = render 'layouts/image'
-    = render 'layouts/top'
-    = render 'layouts/flash'
-    = yield
+    / = render 'layouts/image'
+    = render 'layouts/header'
+    .container-fluid
+      = render 'layouts/flash'
+      = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

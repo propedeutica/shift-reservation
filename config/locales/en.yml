@@ -23,7 +23,10 @@ en:
   hello: "Hello world"
   application:
     name:         "Shift Reservation"
-    forward_url:  "http://www.openshift.com"
+    forward_url:  "http://www.patternfly.org"
+    info:         "Information"
+    help:         "Help"
+    about:        "About"
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
