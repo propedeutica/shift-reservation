@@ -37,3 +37,13 @@ en:
     saturday:   "Saturday"
     sunday:     "Sunday"
     no_day:     "Never"
+  activerecord:
+    errors:
+      models:
+        shift:
+          bad_format: "should be formatted as hh:mm"
+          attributes:
+            sites_reserved:
+              sites_available_greater_than_or_equal_to_0: "reservations should be lower than maximum capacity"
+            end_time:
+              end_time_earlier_than_start_time: "should be later than init_time" 
