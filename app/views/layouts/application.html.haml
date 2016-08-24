@@ -10,3 +10,4 @@
       = render 'layouts/flash'
       = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'layouts/debug' if Rails.env.development?
