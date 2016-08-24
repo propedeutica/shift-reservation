@@ -28,6 +28,13 @@ en:
     help:         "Help"
     about:        "About"
     user:         "User"
+    room:         "Room"
+    models:
+      room:
+        room_index: "Room Index"
+      shift:
+        site:  "site"
+    
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
