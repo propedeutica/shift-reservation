@@ -74,6 +74,9 @@ TrivialAccessors:
   AllowPredicates: true
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: when_needed
+  Enabled: false
 #
 # Enabled/Disabled
 #
