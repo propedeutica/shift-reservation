@@ -7,7 +7,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 #
 # Shifts for Nuestra Senora del Rocio
 #
@@ -54,4 +53,3 @@ FactoryGirl.create(:shift, start_time: "17:15", end_time: "18:00", day_of_week: 
 FactoryGirl.create(:shift, start_time: "17:15", end_time: "18:00", day_of_week: 5, sites_reserved: 0, room: r)
 FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 1, sites_reserved: 0, room: r)
 FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 2, sites_reserved: 0, room: r)
-

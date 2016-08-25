@@ -21,11 +21,11 @@ class Shift < ApplicationRecord
   end
 
   def sites_assigned
-    0 # offsprings.count
+    sites_reserved # + offsprings.count
   end
 
   def sites_available
-    room.capacity - sites_reserved - sites_assigned
+    room.capacity - sites_assigned
   end
 
   def sites_available?

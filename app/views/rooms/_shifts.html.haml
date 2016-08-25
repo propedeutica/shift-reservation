@@ -1,0 +1,19 @@
+/ Rendering shifts in order
+.col-md-6
+  .row
+    - (1..4).each do |day|
+      .col-lg-3
+        %ul.list-group
+          %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
+          - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
+            %li.list-group-item-text
+              = "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }"
+.col-md-6
+  .row
+    - (5..7).each do |day|
+      .col-lg-3
+        %ul.list-group
+          %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
+          - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
+            %li.list-group-item-text
+              = "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }"

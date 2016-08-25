@@ -14,7 +14,7 @@
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
           %span.pficon.pficon-user
-          Brian Johnson
+          Usuario de Prueba
           %b.caret
         %ul.dropdown-menu
           %li
@@ -42,22 +42,21 @@
                 %a{:href => "#"} One more separated link
           %li.divider
           %li
-            %a{:href => "#"} One more separated link
+            %a{:href => "about"}= t "application.about"
     %ul.nav.navbar-nav.navbar-primary
       %li
-        %a{:href => "user", "data-toggle" => "tab"}= t "application.user"
+        =link_to "#{t('application.user')}", "#"
       %li
-        %a{:href => "rooms", "data-toggle" => "tab"}= t "application.room"
+        =link_to "#{t('application.room')}", rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
           Help
           %b.caret
-        %ul.dropdown-menu
-          %li
-            %a{:href => "help"}= t "application.help"
-            %a{:href => "info"}= t "application.info"
-            %a{:href => "about"}= t "application.about"
-
+          %ul.dropdown-menu
+            %li
+              %a{:href => "help"}= t "application.help"
+              %a{:href => "info"}= t "application.info"
+              %a{:href => "about"}= t "application.about"
     :javascript
       $(function() {
           // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
