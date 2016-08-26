@@ -7,7 +7,7 @@
           %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
           - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
             %li.list-group-item-text
-              = "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }"
+              = link_to "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }", shift_path(shift)
 .col-md-6
   .row
     - (5..7).each do |day|
@@ -16,4 +16,4 @@
           %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
           - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
             %li.list-group-item-text
-              = "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }"
+              = link_to "#{shift.start_time} , #{pluralize shift.sites_available, t("application.models.shift.site") }"

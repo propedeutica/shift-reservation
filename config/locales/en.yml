@@ -39,11 +39,18 @@ en:
         delete_room:  "delete room"
         update_room:  "update room"
       shift:
+        shift:           "shift"
         site:            "site"
         sites_available: "sites available"
         add_shift:       "add shift"
         delete_shift:    "delete shift"
         update_shift:    "update shift"
+        edit_shift:      "edit shift"
+        sites_reserved:  "sites reserved"
+        sites_assigned:  "sites assigned"
+        day_of_week:     "day of week"
+        start_time:      "start time"
+        end_time:        "end time"
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
