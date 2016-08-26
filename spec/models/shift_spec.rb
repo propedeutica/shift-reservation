@@ -86,8 +86,18 @@ RSpec.describe Shift, type: :model do
     expect(shift).not_to be_valid
     expect(shift.errors[:shift]).to include "should be later than init_time"
   end
-
-  pending "it returns the number of sites available"
-  pending "it returns whether there is sites avaiable"
+  context "Shift::" do
+    let!(:room)  { FactoryGirl.create(:room, capacity: 20) }
+    let!(:room2) { FactoryGirl.create(:room, capacity: 20) }
+    let!(:shift1) { FactoryGirl.create(:shift, room: room) }
+    let!(:shift2) { FactoryGirl.create(:shift, room: room) }
+    let!(:shift3) { FactoryGirl.create(:shift, room: room2, sites_reserved: 5) }
+    it "returns the total_capacity" do
+      expect(Shift.total_capacity).to eq(60)
+    end
+    it "returns the sites available" do
+      expect(Shift.total_sites_available).to eq(55)
+    end
+  end
   pending "relations are nullified when the shift is detroyed"
 end

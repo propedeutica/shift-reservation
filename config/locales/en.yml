@@ -34,6 +34,7 @@ en:
         room_index: "Room Index"
       shift:
         site:  "site"
+        sites_available: "sites available"
     
   week:
     monday:     "Monday"

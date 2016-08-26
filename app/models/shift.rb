@@ -31,4 +31,20 @@ class Shift < ApplicationRecord
   def sites_available?
     sites_available.positive?
   end
+
+  def self.total_capacity
+    tcapacity = 0
+    Shift.all.each do |x|
+      tcapacity += x.room.capacity
+    end
+    tcapacity
+  end
+
+  def self.total_sites_available
+    tsitesavailable = 0
+    Shift.all.each do |x|
+      tsitesavailable += x.sites_available
+    end
+    tsitesavailable
+  end
 end
