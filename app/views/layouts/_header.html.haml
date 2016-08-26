@@ -45,18 +45,22 @@
             %a{:href => "about"}= t "application.about"
     %ul.nav.navbar-nav.navbar-primary
       %li
-        =link_to "#{t('application.user')}", "#"
+        =link_to "#{t('application.user').titleize}", "#"
       %li
-        =link_to "#{t('application.room')}", rooms_path
+        =link_to "#{t('application.reports').titleize}", "#"
+      %li
+        =link_to "#{t('application.control_panel').titleize}", "#"
+      %li
+        =link_to "#{t('application.room').titleize}", rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          Help
+          =(t "application.help").titleize
           %b.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "help"}= t "application.help"
-              %a{:href => "info"}= t "application.info"
-              %a{:href => "about"}= t "application.about"
+              %a{:href => "help"}= (t "application.help").titleize
+              %a{:href => "info"}= (t "application.info").titleize
+              %a{:href => "about"}= (t "application.about").titleize
     :javascript
       $(function() {
           // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line

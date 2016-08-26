@@ -24,20 +24,26 @@ en:
   application:
     name:         "Shift Reservation"
     forward_url:  "http://www.patternfly.org"
-    info:         "Information"
-    help:         "Help"
-    about:        "About"
-    user:         "User"
-    room:         "Room"
+    info:         "information"
+    help:         "help"
+    about:        "about"
+    user:         "user"
+    room:         "room"
+    reports:      "reports"
+    control_panel:    "dashboard"
     models:
       room:
-        room_index: "room index"
-        add_room:   "add room"
+        room:         "room"
+        room_index:   "room index"
+        add_room:     "add room"
+        delete_room:  "delete room"
+        update_room:  "update room"
       shift:
         site:            "site"
         sites_available: "sites available"
         add_shift:       "add shift"
-    
+        delete_shift:    "delete shift"
+        update_shift:    "update shift"
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
