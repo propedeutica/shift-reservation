@@ -1,4 +1,6 @@
 - provide(:title,"#{ t('application.models.room.room_index') }")
-%h1=t('application.models.room.room_index')
+%h1=(t 'application.models.room.room_index').titleize
+=render "add_room"
 .row
   =render @rooms
+=render "add_room"

@@ -31,10 +31,12 @@ en:
     room:         "Room"
     models:
       room:
-        room_index: "Room Index"
+        room_index: "room index"
+        add_room:   "add room"
       shift:
-        site:  "site"
+        site:            "site"
         sites_available: "sites available"
+        add_shift:       "add shift"
     
   week:
     monday:     "Monday"
