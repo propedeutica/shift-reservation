@@ -98,6 +98,9 @@ RSpec.describe Shift, type: :model do
     it "returns the sites available" do
       expect(Shift.total_sites_available).to eq(55)
     end
+    it "shifts are destroyed when parent room is" do
+      expect { room.destroy }.to change(Shift, :count).by(-2)
+    end
   end
   pending "relations are nullified when the shift is detroyed"
 end
