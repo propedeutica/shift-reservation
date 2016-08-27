@@ -22,16 +22,18 @@
 en:
   hello: "Hello world"
   application:
-    name:         "Shift Reservation"
-    forward_url:  "http://www.patternfly.org"
-    info:         "information"
-    help:         "help"
-    about:        "about"
-    user:         "user"
-    room:         "room"
-    reports:      "reports"
+    name:             "Shift Reservation"
+    forward_url:      "http://www.patternfly.org"
+    info:             "information"
+    help:             "help"
+    about:            "about"
+    user:             "user"
+    room:             "room"
+    reports:          "reports"
     control_panel:    "dashboard"
+    error:             "error"
     models:
+      errors_prohibited_saving: "prohibited this %{model} from being saved" 
       room:
         room:         "room"
         room_index:   "room index"
@@ -51,6 +53,12 @@ en:
         day_of_week:     "day of week"
         start_time:      "start time"
         end_time:        "end time"
+        shift_not_added: "shift could not be added"
+        shift_added:     "shift added"
+        shift_deleted:   "shift has been deleted"
+        shift_delete_error: "there has been an error deleting the shift"
+        shift_updated:      "shift updated succesfully"
+        shift_not_updated:  "there was an error updating the shift"
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
@@ -62,6 +70,11 @@ en:
     no_day:     "Never"
   activerecord:
     errors:
+      template:
+        header:
+          one:   "1 error prohibited this %{model} from being saved"
+          other: "%{count} errors prohibited this %{model} from being saved"
+          body:  "There were problems with the following fields:"
       models:
         shift:
           bad_format: "should be formatted as hh:mm"

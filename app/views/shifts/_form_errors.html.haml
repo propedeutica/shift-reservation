@@ -1,0 +1,11 @@
+- if object.errors.any?
+  %h2
+    .alert.alert-info
+      =t "activerecord.errors.template.header", count:object.errors.count, model:object.class
+  %ul.list-group
+    - object.errors.full_messages.each do |msg|
+      %li.list-group.item
+        .alert.alert-danger
+          %span
+            .pficon.pficon-error-circle-o
+            %strong=msg

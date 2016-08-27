@@ -38,4 +38,4 @@
       = @shift.sites_reserved
   
 %p
-  = button_to t("application.models.shift.edit_shift").titleize, edit_shift_path(@shift), class: "btn btn-primary"
+  = link_to t("application.models.shift.edit_shift").titleize, edit_shift_path(@shift), class: "btn btn-primary"
