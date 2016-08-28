@@ -2,5 +2,6 @@
 %h1=(t 'application.models.room.room_index').titleize
 =render "add_room"
 .row
+  %h2=(t "application.models.room.there_are_no_rooms_yet").titleize if @rooms.empty?
   =render @rooms
 =render "add_room"

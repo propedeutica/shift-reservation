@@ -4,8 +4,7 @@
   = render 'form_errors', object: @shift
   .form
     = render 'shift_form', f:f
-    .container
-      .form-group
-        .actions
-          = f.submit t("application.models.shift.add_shift"), class:"btn btn-primary btn-lg"    
+    .form-group
+      .col-sm-offset-2.col-sm-10.actions
+        = f.submit t("application.models.shift.add_shift"), class:"btn btn-primary btn-lg"    
 

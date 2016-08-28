@@ -6,16 +6,13 @@
 .form-group
   .col-sm-6
     = f.label :start_time
-  .col-sm-12
-    = f.text_field :start_time, class: 'form-control'
+  = f.text_field :start_time, class: 'form-control'
 .form-group
   .col-sm-6
     = f.label :end_time
-  .col-sm-12
-    = f.text_field :end_time, class: 'form-control'
+  = f.text_field :end_time, class: 'form-control'
 .form-group
   .col-sm-6
     = f.label :sites_reserved
     =" (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})" 
-  .col-sm-12
-    = f.number_field :sites_reserved, class: 'form-control'
+  = f.number_field :sites_reserved, class: 'form-control'
