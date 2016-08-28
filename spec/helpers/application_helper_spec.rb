@@ -21,7 +21,4 @@ RSpec.describe ApplicationHelper, type: :helper do
   it "returns complex title when page_title is given" do
     expect(helper.full_title("Ayuda")).to eq("Ayuda | #{@app_name}")
   end
-  it "returns complex title when page_title with spaces is given" do
-    expect(helper.full_title("Datos de Contacto")).to eq("Datos de Contacto | #{@app_name}")
-  end
 end
