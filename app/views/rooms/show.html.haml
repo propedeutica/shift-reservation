@@ -1,0 +1,15 @@
+- provide(:title, "#{ t 'application.models.room.room'} #{@room.id}")
+%h1="#{ (t 'application.models.room.room').titleize } #{@room.id}"
+.form
+  .form-group
+    .control-label
+      =(t 'application.models.room.name').titleize
+    .form-control
+      = "#{@room.name}"
+  .form-group 
+    .control-label
+      =(t 'application.models.room.capacity').titleize
+    .form-control
+      = @room.capacity
+%p
+  = link_to t("application.models.room.edit_room").titleize, edit_room_path(@room), class: "btn btn-primary"
