@@ -42,25 +42,25 @@
                 %a{:href => "#"} One more separated link
           %li.divider
           %li
-            %a{:href => "about"}= t "application.about"
+            %a{:href => "about"}= t ".about"
     %ul.nav.navbar-nav.navbar-primary
       %li
-        =link_to "#{t('application.user').titleize}", "#"
+        =link_to "#{t('.user').titleize}", "#"
       %li
-        =link_to "#{t('application.reports').titleize}", "#"
+        =link_to "#{t('.reports').titleize}", "#"
       %li
-        =link_to "#{t('application.control_panel').titleize}", "#"
+        =link_to "#{t('.control_panel').titleize}", "#"
       %li
-        =link_to "#{t('application.room').titleize}", rooms_path
+        =link_to "#{t('.rooms').titleize}", rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          =(t "application.help").titleize
+          =(t ".help").titleize
           %b.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "help"}= (t "application.help").titleize
-              %a{:href => "info"}= (t "application.info").titleize
-              %a{:href => "about"}= (t "application.about").titleize
+              %a{:href => "help"}= (t ".help").titleize
+              %a{:href => "info"}= (t ".info").titleize
+              %a{:href => "about"}= (t ".about").titleize
     :javascript
       $(function() {
           // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line

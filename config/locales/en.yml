@@ -21,17 +21,22 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    header:
+      user:   "user"
+      rooms:  "rooms"
+      control_panel:    "dashboard"
+      reports:          "reports"
+      help:             "help"
+      about:            "about"
+      info:             "information"
   application:
     name:             "Shift Reservation"
-    forward_url:      "http://www.patternfly.org"
-    info:             "information"
-    help:             "help"
     about:            "about"
-    user:             "user"
-    room:             "room"
-    reports:          "reports"
-    control_panel:    "dashboard"
-    error:             "error"
+    forward_url:      "http://www.patternfly.org"
+    github_link:      "https://github.com/propedeutica/shift-reservation"
+    help:             "help"
+    info:             "information"
     models:
       errors_prohibited_saving: "prohibited this %{model} from being saved" 
       room:
@@ -91,4 +96,4 @@ en:
             sites_reserved:
               sites_available_greater_than_or_equal_to_0: "reservations should be lower than maximum capacity"
             end_time:
-              end_time_earlier_than_start_time: "should be later than init_time" 
+              end_time_earlier_than_start_time: "should be later than init_time"
