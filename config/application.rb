@@ -16,6 +16,6 @@ module ShiftReservation
     config.beggining_of_week = :monday
     config.week_days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
     config.include_weekends = true
-    config.locks.system_enabled = true
+    config.system_enabled = true
   end
 end
