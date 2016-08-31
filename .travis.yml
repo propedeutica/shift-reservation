@@ -5,6 +5,7 @@ sudo: false
 cache: bundler
 install: 
   - bundle install
+  - bower install
 addons:
   postgresql: '9.5'
 env:
