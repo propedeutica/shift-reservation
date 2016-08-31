@@ -4,10 +4,9 @@ rvm:
 sudo: false
 cache: bundler
 install: 
-  - echo "gem: --no-ri --no-rdoc --no-document" > ~/.gemrc
   - which bower || npm install -g bower
   - travis_retry gem install bundler -v ">= 1.11.1"
-  - bundle install
+  - bundle install --deployment
   - bower install --allow-root -F --config.analytics=false
 addons:
   postgresql: '9.5'
