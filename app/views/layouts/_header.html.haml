@@ -45,11 +45,11 @@
             %a{:href => "about"}= t ".about"
     %ul.nav.navbar-nav.navbar-primary
       %li
-        =link_to "#{t('.user').titleize}", "#"
+        =link_to "#{t('.users').titleize}", "#"
       %li
         =link_to "#{t('.reports').titleize}", reports_path
       %li
-        =link_to "#{t('.control_panel').titleize}", "#"
+        =link_to "#{t('.control_panel').titleize}", dashboard_path
       %li
         =link_to "#{t('.rooms').titleize}", rooms_path
       %li.dropdown

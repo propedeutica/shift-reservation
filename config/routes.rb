@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   get 'reports/index'
 
   # Information for the application
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     resources :shifts, shallow: true
   end
   get 'reports', to: "reports#index"
+  get 'dashboard', to:"dashboard#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

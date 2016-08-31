@@ -18,3 +18,4 @@
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-switch
+//= require matchHeight
