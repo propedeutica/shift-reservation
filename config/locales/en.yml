@@ -30,6 +30,12 @@ en:
       help:             "help"
       about:            "about"
       info:             "information"
+  reports:
+    index:
+      rooms:  "rooms"
+      shifts: "shifts"
+      total_sites_available: "sites available"
+      total_capacity: "capacity on all shifts"
   application:
     name:             "Shift Reservation"
     about:            "about"
@@ -37,6 +43,8 @@ en:
     github_link:      "https://github.com/propedeutica/shift-reservation"
     help:             "help"
     info:             "information"
+    reports:          "reports"
+    dashboard:        "dashboard"
     models:
       errors_prohibited_saving: "prohibited this %{model} from being saved" 
       room:

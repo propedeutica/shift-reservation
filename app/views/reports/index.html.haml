@@ -1,0 +1,45 @@
+- provide :title, "#{ t('application.reports') }"
+%container.cards-pf
+  .container-fluid.container-cards-pf
+    .row.row-cards-pf
+      .col-xs-6.col-sm-4.col-md-4
+        .card-pf.card-pf-accented.card-pf-aggregate-status
+          %h2.card-pf-title
+            %span.fa.fa-cube
+            %span.card-pf-aggregate-status-count
+              =  @number_of_rooms
+              = link_to (t '.rooms').titleize, rooms_path
+          .card-pf-body
+            %p.card-pf-aggregate-status-notifications
+              %span.card-pf-aggregate-status-notification
+                %a
+                  = link_to new_room_path do
+                    %span.pficon.pficon-add-circle-o
+      .col-xs-6.col-sm-4.col-md-4
+        .card-pf.card-pf-accented.card-pf-aggregate-status
+          %h2.card-pf-title
+            %span.fa.fa-calendar-plus-o
+            %span.card-pf-aggregate-status-count
+              =  @number_of_shifts
+              = link_to (t '.shifts').titleize, rooms_path
+          .card-pf-body
+            %p.card-pf-aggregate-status-notifications
+    .row.row-cards-pf
+      .col-xs-6.col-sm-4.col-md-4
+        .card-pf.card-pf-accented.card-pf-aggregate-status
+          %h2.card-pf-title
+            %span.fa.fa-battery-full
+            %span.card-pf-aggregate-status-count
+              =  @total_capacity
+              = (t '.total_capacity').titleize
+          .card-pf-body
+            %p.card-pf-aggregate-status-notifications
+      .col-xs-6.col-sm-4.col-md-4
+        .card-pf.card-pf-accented.card-pf-aggregate-status
+          %h2.card-pf-title
+            %span.fa.fa-battery-half
+            %span.card-pf-aggregate-status-count
+              =  @total_sites_available
+              = (t '.total_sites_available').titleize
+          .card-pf-body
+            %p.card-pf-aggregate-status-notifications

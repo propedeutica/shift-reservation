@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  get 'reports/index'
+
   # Information for the application
   get 'info',  to: 'information#info'
   get 'help',  to: 'information#help'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :shifts, shallow: true
   end
+  get 'reports', to: "reports#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
