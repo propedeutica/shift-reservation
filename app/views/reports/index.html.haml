@@ -55,9 +55,11 @@
 .container-fluid
   .com-xs-6.col-sm-4.col-md-4
     %h2= (t '.space_available').titleize
+    - percentage = 0
+    - percentage = (@total_sites_available.to_f/@total_capacity*100).to_int unless @total_capacity == 0
     .progress.progress-label-left
-      .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => @total_sites_available.to_f/@total_capacity*100, :role => "progressbar", :style => "width: #{(@total_sites_available.to_f/@total_capacity*100).to_int}%;"}
-        %span= (@total_sites_available.to_f/@total_capacity*100).to_int
+      .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => percentage, :role => "progressbar", :style => "width: #{percentage}%;"}
+        %span= percentage
 :javascript
   $(function() {
     // matchHeight the contents of each .card-pf and then the .card-pf itself
