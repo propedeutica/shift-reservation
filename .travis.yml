@@ -3,18 +3,17 @@ rvm:
 - '2.3.1'
 sudo: false
 cache: bundler
-install: 
-  - which bower || npm install -g bower
-  - travis_retry gem install bundler -v ">= 1.11.1"
-  - bundle install --deployment
-  - bower install --allow-root -F --config.analytics=false
+before_install: 
+- source ${TRAVIS_BUILD_DIR}/tools/ci/before_install.sh
+before_script:
+- source ${TRAVIS_BUILD_DIR}/tools/ci/before_script.sh
 addons:
   postgresql: '9.5'
 env:
   - TEST_SUITE=rspec
   - TEST_SUITE=rubocop
 script:
-- bundle exec $TEST_SUITE
+- bin/$TEST_SUITE
 notifications:
   webhooks:
     on_success: change
