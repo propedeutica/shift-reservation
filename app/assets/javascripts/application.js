@@ -14,8 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require patternfly
 //= require bootstrap-datepicker
 //= require bootstrap-select
 //= require bootstrap-switch
 //= require matchHeight
+//= require patternfly

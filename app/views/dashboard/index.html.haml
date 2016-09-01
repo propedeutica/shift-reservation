@@ -1,9 +1,13 @@
 - provide :title, "#{ t('application.dashboard') }"
 %h1=t('application.dashboard').titleize
 %h2 Here you should find switches and buttons to change app behaviour of the application
-%p  Lock the system
+%p
+  %input#switch-state{:checked => "checked", :type => "checkbox"}/
+
 %p  Delete all Rooms
 %p  Delete all Shifts
 %p  Delete all Users
 %p  Delete all Offspring
 %p  Feed the databse
+:javascript
+  $('#switch-modal').bootstrapSwitch();
