@@ -1,14 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Configuration, type: :model do
-  it "always has one configuration in the databse" do
-    expect(Configuration.count).to eq(1)
+  it "is unique" do
+    t = FactoryGirl.build(:configuration)
+    t.valid?
+    expect(t).not_to be_valid
   end
-  # it "is unique" do
-  #  t = FactoryGirl.build(:configuration)
-  #  t.valid?
-  #  expect(t).not_to be_valid
-  # end
   context "global_lock" do
     it "status can be read" do
       expect(Configuration.global_lock?).not_to be_nil
