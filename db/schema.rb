@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824083258) do
+ActiveRecord::Schema.define(version: 20160901135641) do
+
+  create_table "configurations", force: :cascade do |t|
+    t.integer  "singleton_guard", default: 0,     null: false
+    t.boolean  "global_lock",     default: false, null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["singleton_guard"], name: "index_configurations_on_singleton_guard", unique: true
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string   "name"
