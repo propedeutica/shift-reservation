@@ -38,6 +38,12 @@ en:
       total_capacity:        "capacity on all shifts"
       refresh:               "refresh"
       space_available:       "space available"
+  dashboard:
+    index:
+      enable:                "enable"
+      disable:               "disable"
+      global_lock_in_status: "global lock in status:"
+      status:                "status"
   application:
     name:                   "Shift Reservation"
     about:                  "about"

@@ -16,6 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular-patternfly-sass": "^3.10.0"
+    "patternfly-sass": "^3.10.0"
   }
 }
