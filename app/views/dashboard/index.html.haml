@@ -5,12 +5,12 @@
 %p
   =(t '.status').titleize
   \=
-  = @global_lock_in_status
+  %span.badge= @global_lock_in_status
 %p
-  =link_to (t ".enable").titleize, "#", {class: "btn btn-lg btn-primary"}
-  =link_to (t ".disable").titleize, "#", {class: "btn btn-lg btn-warning"}
+  =link_to (t ".enable").titleize, "myconfig/global_lock_enable", {class: "btn btn-lg btn-primary"}
+  =link_to (t ".disable").titleize, "myconfig/global_lock_disable", {class: "btn btn-lg btn-warning"}
 %p
-  %input{:checked => "checked", :name => "my-checkbox", :type => "checkbox"}/
+  %input{:checked => @global_lock_in_status, :name => "my-checkbox", :type => "checkbox"}/
 %p  Delete all Rooms
 %p  Delete all Shifts
 %p  Delete all Users

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'myconfig/global_lock_enable'
+
+  get 'myconfig/global_lock_disable'
+
   get 'dashboard/index'
 
   get 'reports/index'
