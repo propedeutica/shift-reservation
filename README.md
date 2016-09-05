@@ -11,7 +11,7 @@ It is also a technology example for the following:
 - RSPEC
 - Rubocop
 
-##TODO
+## TODO
 There is a [**TODO**](TODO.md) file describing what is still missing
 
 ## Configuration
@@ -45,3 +45,16 @@ Offsprings are related to parents and they are the subject that is assigned to a
 There are different rooms that can be assigned. Each one has different shifts that corresponds to a group of students and a teacher.
 
 An offspring can only be assigned to a shift in a single room. Trying to add another will result in the first one being deleted.
+
+## Getting started
+### Prerequisites
+- [**Git**] (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [**Ruby 2.2.2 or newer and Rails 5**] (http://guides.rubyonrails.org/getting_started.html#installing-rails)
+- [**Bower**] (https://bower.io/#install-bower)
+- [**Clone (or fork if you want contribute) this repository**] (https://github.com/propedeutica/shift-reservation)
+
+### Get the Rails environment up and running
+    $ bin/setup                  # Installs dependencies, config, prepares database, etc
+    $ bower install              # Installs bower components
+    $ rails s                    # Application starting in development
+- Using your prefer browser, go to [http://localhost:3000] (http://localhost:3000)
