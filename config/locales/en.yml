@@ -54,7 +54,7 @@ en:
     reports:                "reports"
     dashboard:              "dashboard"
     models:
-      errors_prohibited_saving: "prohibited this %{model} from being saved" 
+      errors_prohibited_saving: "prohibited this %{model} from being saved"
       room:
         room:                   "room"
         name:                   "name"
@@ -64,6 +64,7 @@ en:
         delete_room:            "delete room"
         update_room:            "update room"
         edit_room:              "edit room"
+        cancel_edit_room:       "cancel"
         room_added:             "room added"
         room_deleted:           "room deleted"
         room_not_added:         "room could not be added"
