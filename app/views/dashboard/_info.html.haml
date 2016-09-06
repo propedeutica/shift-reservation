@@ -1,10 +1,9 @@
-- provide :title, "#{ t('application.reports') }"
 .container-fluid
   .col-xs-10
     %h2
       =t('application.reports').titleize
   .col-xs-2
-    =link_to reports_path do
+    =link_to dashboard_path do
       %span.pficon.pficon-refresh
       =(t '.refresh').titleize
 .container-fluid
@@ -70,4 +69,3 @@
     // initialize tooltips
     $('[data-toggle="tooltip"]').tooltip();
   });
-  

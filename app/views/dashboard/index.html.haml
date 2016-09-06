@@ -1,20 +1,32 @@
 - provide :title, "#{ t('application.dashboard') }"
 %h1=t('application.dashboard').titleize
-%h2 Here you should find switches and buttons to change app behaviour of the application
+= render 'info'
 %h3=t('.global_lock_in_status').titleize
 %p
-  =(t '.status').titleize
-  \=
-  %span.badge= @global_lock_in_status
-%p
-  =link_to (t ".enable").titleize, "myconfig/global_lock_enable", {class: "btn btn-lg btn-primary"}
-  =link_to (t ".disable").titleize, "myconfig/global_lock_disable", {class: "btn btn-lg btn-warning"}
-%p
-  %input{:checked => @global_lock_in_status, :name => "my-checkbox", :type => "checkbox"}/
-%p  Delete all Rooms
-%p  Delete all Shifts
-%p  Delete all Users
-%p  Delete all Offspring
-%p  Feed the databse
-:javascript
-  $("[name='my-checkbox']").bootstrapSwitch();
+  %input{:checked => @global_lock_in_status, :name => "global_lock_checkbox", :type => "checkbox", "data-on-color" => "danger", "data-off-color" => "success"}/
+.row
+  .col-sm-3
+    %h3="#{ t('.delete_all_rooms').titleize}:"
+    %p
+      =link_to t('.delete_all_rooms').titleize, '#', {class: "btn btn-lg btn-danger"}
+  .col-sm-3
+    %h3="#{ t('.delete_all_shifts').titleize}:"
+    %p
+      =link_to t('.delete_all_shifts').titleize, '#', {class: "btn btn-lg btn-danger"}
+  .col-sm-3
+    %h3="#{ t('.delete_all_users').titleize}:"
+    %p
+      =link_to t('.delete_all_users').titleize, '#', {class: "btn btn-lg btn-danger"}
+  .col-sm-3
+    %h3="#{ t('.delete_all_offsprings').titleize}:"
+    %p
+      =link_to t('.delete_all_offsprings').titleize, '#', {class: "btn btn-lg btn-danger"}
+
+
+- content_for :javascripts do
+  :javascript
+    $('input[name="global_lock_checkbox"]').bootstrapSwitch().on('switchChange.bootstrapSwitch', function (event, state) {
+      $.post('/myconfig/global_lock_switch')
+    });
+    
+    
