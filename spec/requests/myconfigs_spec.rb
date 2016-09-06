@@ -13,6 +13,5 @@ RSpec.describe "Myconfigs", type: :request do
       expect(response).to redirect_to(dashboard_index_path)
       expect(Myconfig.global_lock?).to be_falsy
     end
-
   end
 end
