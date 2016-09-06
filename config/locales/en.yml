@@ -54,7 +54,7 @@ en:
     reports:                "reports"
     dashboard:              "dashboard"
     models:
-      errors_prohibited_saving: "prohibited this %{model} from being saved" 
+      errors_prohibited_saving: "prohibited this %{model} from being saved"
       room:
         room:                   "room"
         name:                   "name"
@@ -70,6 +70,7 @@ en:
         room_updated:           "room updated succesfully"
         room_not_updated:       "room could not be updated"
         there_are_no_rooms_yet: "there are no rooms yet defined"
+        redirect_to_index:      "go back"
       shift:
         shift:           "shift"
         site:            "site"
