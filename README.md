@@ -1,6 +1,8 @@
 # Shift reservation
 [![Dependency Status](https://gemnasium.com/badges/github.com/propedeutica/shift-reservation.svg)](https://gemnasium.com/github.com/propedeutica/shift-reservation)
 [![Build Status](https://travis-ci.org/propedeutica/shift-reservation.svg?branch=master)](https://travis-ci.org/propedeutica/shift-reservation)
+[![Chat](https://badges.gitter.im/propedeutica/shift-reservation.png)](https://gitter.im/propedeutica/shift-reservation)
+
 ## Introduction
 This application tries to make it possible to reserve places in a school where the users are not capable of doing on their own (because they are under age). Parents can sign up with their won data and then add their offspring. Once that is done they can ask for a particular shift where they want their offspring to be assigned.
 
