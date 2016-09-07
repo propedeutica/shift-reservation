@@ -95,6 +95,8 @@ en:
         shift_delete_error: "there has been an error deleting the shift"
         shift_updated:      "shift updated succesfully"
         shift_not_updated:  "there was an error updating the shift"
+        redirect_to_index:  "go back"
+        cancel_edit_shift:  "cancel"
   week:
     monday:     "Monday"
     tuesday:    "Tuesday"
