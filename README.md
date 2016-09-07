@@ -4,7 +4,7 @@
 [![Chat](https://badges.gitter.im/propedeutica/shift-reservation.png)](https://gitter.im/propedeutica/shift-reservation)
 
 ## Introduction
-This application tries to make it possible to reserve places in a school where the users are not capable of doing on their own (because they are under age). Parents can sign up with their won data and then add their offspring. Once that is done they can ask for a particular shift where they want their offspring to be assigned.
+This application tries to make it possible to reserve places in a school where the users are not capable of doing on their own (because they are under age). Parents can sign up with their own data and then add their offspring. Once that is done they can ask for a particular shift where they want their offspring to be assigned.
 
 It is also a technology example for the following:
 - Rails 5
@@ -37,7 +37,7 @@ There are different rooms that hold classes in parallel, and each of those rooms
 This does not take into account that the parents can need
 
 ### Users
-Users are identified as parents. They can add and delete offspring and assigning them so a shift. Only one parent is in the system, and there is no option for two parents (although it could be added). They can sign up and add children into the system, and they can assign those children to shifts that has some space available. They can also delete those children from the system.
+Users are identified as parents. They can add and delete offspring and assigning them to a shift. Only one parent is in the system, and there is no option for two parents (although it could be added). They can sign up and add children into the system, and they can assign those children to shifts that have some space available. They can also delete those children from the system.
 The amount of information requested is the minimum possible.
 
 ### Offsprings
@@ -59,4 +59,4 @@ An offspring can only be assigned to a shift in a single room. Trying to add ano
     $ bin/setup                  # Installs dependencies, config, prepares database, etc
     $ bower install              # Installs bower components
     $ rails s                    # Application starting in development
-- Using your prefer browser, go to [http://localhost:3000] (http://localhost:3000)
+- Using your favorite browser, go to [http://localhost:3000] (http://localhost:3000)
