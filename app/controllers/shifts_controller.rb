@@ -33,7 +33,7 @@ class ShiftsController < ApplicationController
     @room = @shift.room
     if @shift.update_attributes(shifts_params)
       flash[:success] = (t "application.models.shift.shift_updated").capitalize
-      redirect_to rooms_path
+      redirect_to shift_path(@shift)
     else
       flash[:danger] = (t "application.models.shift.shift_not_updated").capitalize
       render 'edit'
