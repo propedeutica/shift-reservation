@@ -11,7 +11,7 @@
       =(t 'application.models.shift.sites_available').titleize
     .form-control
       = "#{@shift.sites_available} (#{@shift.sites_available})"
-  .form-group 
+  .form-group
     .control-label
       =(t 'application.models.shift.day_of_week').titleize
     .form-control
@@ -36,6 +36,7 @@
       =(t 'application.models.shift.sites_reserved').titleize
     .form-control
       = @shift.sites_reserved
-  
+
 %p
   = link_to t("application.models.shift.edit_shift").titleize, edit_shift_path(@shift), class: "btn btn-primary"
+  = link_to (t "application.models.shift.redirect_to_index").titleize, rooms_path, class:"btn btn-default"
