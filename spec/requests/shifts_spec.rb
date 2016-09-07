@@ -9,8 +9,10 @@ RSpec.describe "Shifts", type: :request do
       get shift_path(shift)
       expect(response).to have_http_status(200)
     end
-
-    pending "#index should redirect to rooms index"
+    it "DESTROY ALL" do
+      shift
+      expect { get destroy_all_shifts_path }.to change(Shift, :count).from(1).to(0)
+    end
     pending "#edit should show the edit template for shift"
     pending "#update"
   end

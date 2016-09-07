@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   # Temporary root
   root to: "information#about"
   # Resources for Rooms and Shifts
+  get 'shifts/destroy_all', as: 'destroy_all_shifts', to: 'shifts#destroy_all'
   resources :rooms do
-    resources :shifts, shallow: true
+    collection do
+      get 'destroy_all'
+    end
+    resources :shifts, shallow: true, except: [:index]
   end
-
   get 'dashboard', to: "dashboard#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

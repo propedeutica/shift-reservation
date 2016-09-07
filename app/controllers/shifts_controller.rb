@@ -50,6 +50,11 @@ class ShiftsController < ApplicationController
     redirect_to rooms_path
   end
 
+  def destroy_all
+    Shift.destroy_all
+    redirect_to dashboard_path
+  end
+
   private
 
   def shifts_params
