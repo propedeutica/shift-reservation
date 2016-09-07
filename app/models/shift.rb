@@ -11,7 +11,7 @@ class Shift < ApplicationRecord
   validates :end_time, format: { with: REGEX, message: I18n.t("bad_format", scope: SCOPE) }
   validates_each :end_time do |shift|
     shift.errors.add(:shift, I18n.t("end_time_earlier_than_start_time", scope: SCOPE + ".attributes.end_time")) if
-                     shift.start_time > shift.end_time
+                     shift.start_time >= shift.end_time
   end
 
   validates :sites_reserved, numericality: { only_integer: true }

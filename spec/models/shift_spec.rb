@@ -86,6 +86,14 @@ RSpec.describe Shift, type: :model do
     expect(shift).not_to be_valid
     expect(shift.errors[:shift]).to include "should be later than init_time"
   end
+
+  it "start_time equal to end_time is invalid." do
+    shift.start_time = "10:00"
+    shift.end_time = "10:00"
+    shift.valid?
+    expect(shift).not_to be_valid
+    expect(shift.errors[:shift]).to include "should be later than init_time"
+  end
   context "Shift::" do
     let!(:room)  { FactoryGirl.create(:room, capacity: 20) }
     let!(:room2) { FactoryGirl.create(:room, capacity: 20) }
