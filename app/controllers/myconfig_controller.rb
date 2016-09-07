@@ -10,7 +10,11 @@ class MyconfigController < ApplicationController
   end
 
   def global_lock_switch
-    Myconfig.global_lock_switch
-    head :no_content
+    if Myconfig.global_lock_switch
+      head :no_content
+    else
+      flash.now[:error] = t '.global_lock_switch_error'
+      redirect_to dashboard_path
+    end
   end
 end

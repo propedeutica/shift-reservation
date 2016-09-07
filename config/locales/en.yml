@@ -21,6 +21,14 @@
 
 en:
   hello: "Hello world"
+  myconfig:
+    global_lock_switch:
+      global_lock_switch_success:         "Switch has been changed succesfully"
+      global_lock_switch_error:           "There was an error updating the switch"
+      global_lock_set_true_success:       "Global lock is now in place"
+      global_lock_set_true_error:         "There was an error setting the global lock to true"
+      global_lock_set_false_success:       "Global lock is now not in place"
+      global_lock_set_false_error:         "There was an error setting the global lock to false"
   layouts:
     header:
       users:                 "users"
