@@ -9,10 +9,16 @@ RSpec.describe "Shifts", type: :request do
       get shift_path(shift)
       expect(response).to have_http_status(200)
     end
+
     it "DESTROY ALL" do
       shift
       expect { get destroy_all_shifts_path }.to change(Shift, :count).from(1).to(0)
     end
+
+    it "returns if there are seats available" do
+      expect(shift.sites_available?).to be_truthy
+    end
+
     pending "#edit should show the edit template for shift"
     pending "#update"
   end
