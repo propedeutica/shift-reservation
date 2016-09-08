@@ -1,35 +1,32 @@
-- provide :title, "#{ t('application.dashboard') }"
-%h1=t('application.dashboard').titleize
+- provide :title, (t 'application.dashboard').to_s
+%h1= t('application.dashboard').titleize
 = render 'info'
 .well.well-lg
   .row
     .container
-      %h2=t('.global_lock_in_status').titleize
+      %h2= t('.global_lock_in_status').titleize
       %p
-        %input{:checked => @global_lock_in_status, :name => "global_lock_checkbox", :type => "checkbox", "data-on-color" => "danger", "data-off-color" => "success"}/
+        %input{checked: @global_lock_in_status, name: "global_lock_checkbox", type: "checkbox", "data-on-color" => "danger", "data-off-color" => "success"}/
   .row
     .col-sm-3
-      %h3="#{ t('.destroy_all_rooms').titleize}:"
+      %h3= t('.destroy_all_rooms').titleize
       %p
-        =link_to t('.destroy_all_rooms').titleize, destroy_all_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_rooms').titleize, destroy_all_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3="#{ t('.destroy_all_shifts').titleize}:"
+      %h3= t('.destroy_all_shifts').titleize
       %p
-        =link_to t('.destroy_all_shifts').titleize, destroy_all_shifts_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_shifts').titleize, destroy_all_shifts_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3="#{ t('.destroy_all_users').titleize}:"
+      %h3= t('.destroy_all_users').titleize
       %p
-        =link_to t('.destroy_all_users').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_users').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3="#{ t('.destroy_all_offsprings').titleize}:"
+      %h3= t('.destroy_all_offsprings').titleize
       %p
-        =link_to t('.destroy_all_offsprings').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
-
+        = link_to t('.destroy_all_offsprings').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
 
 - content_for :javascripts do
   :javascript
     $('input[name="global_lock_checkbox"]').bootstrapSwitch().on('switchChange.bootstrapSwitch', function (event, state) {
       $.post('/myconfig/global_lock_switch')
     });
-    
-    

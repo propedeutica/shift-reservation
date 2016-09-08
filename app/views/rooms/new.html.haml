@@ -1,9 +1,9 @@
-- provide(:title, "#{t 'application.models.room.add_room'}")
+- provide(:title, (t 'application.models.room.add_room').to_s)
 %h1= (t 'application.models.room.add_room').titleize
-=form_for @room do |f|
+= form_for @room do |f|
   = render 'form_errors', object: @room
   .form
-    = render 'room_form', f:f
+    = render 'room_form', f: f
     .form-group
       .col-sm-offset-2.col-sm-10.actions
-        = f.submit t("application.models.room.add_room").titleize, class:"btn btn-primary btn-lg"    
+        = f.submit t("application.models.room.add_room").titleize, class: "btn btn-primary btn-lg"    

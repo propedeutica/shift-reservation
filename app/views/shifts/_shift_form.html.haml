@@ -2,7 +2,7 @@
   .col-sm-6
     = f.label :day_of_week
   .col-sm-12
-    = f.select :day_of_week, (0..6).map {|w| [week_day_convert(w), w]}, class: 'form-control'
+    = f.select :day_of_week, (0..6).map { |w| [week_day_convert(w), w] }, class: 'form-control'
 .form-group
   .col-sm-6
     = f.label :start_time
@@ -14,5 +14,5 @@
 .form-group
   .col-sm-6
     = f.label :sites_reserved
-    =" (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})" 
+    (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})
   = f.number_field :sites_reserved, class: 'form-control'

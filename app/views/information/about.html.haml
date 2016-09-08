@@ -1,4 +1,4 @@
-- provide :title, "#{ t('application.about') }"
+- provide :title, (t 'application.about').to_s
 %h1 Welcome to the Shift Reservation example application
 %p You can find this application in github
 = link_to t("application.name"), t("application.github_link")

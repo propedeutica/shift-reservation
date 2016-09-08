@@ -11,7 +11,7 @@ addons:
 env:
   - TEST_SUITE=rspec
   - TEST_SUITE=rubocop
-  - TEST_SUITE=haml-lint app/views/
+  - TEST_SUITE='haml-lint app/views/'
 script:
 - bin/$TEST_SUITE
 bundler_args: --binstubs=./bundler_stubs

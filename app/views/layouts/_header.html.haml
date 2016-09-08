@@ -1,64 +1,64 @@
-%nav.navbar.navbar-default.navbar-pf{:role => "navigation"}
+%nav.navbar.navbar-default.navbar-pf{role: "navigation"}
   .navbar-header
-    %button.navbar-toggle{"data-target" => ".navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggle{"data-target" => ".navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
       %span.sr-only Toggle navigation
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{:href => "/"}
-      = image_tag("brand.svg", height:"64", alt: (t 'application.name').to_s)
+    %a.navbar-brand{href: "/"}
+      = image_tag("brand.svg", height: "64", alt: (t 'application.name').to_s)
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{:href => "#"} Status
+        %a{href: "#"} Status
       %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
           Usuario de Prueba
           %b.caret
         %ul.dropdown-menu
           %li
-            %a{:href => "#"} Link
+            %a{href: "#"} Link
           %li
-            %a{:href => "#"} Another link
+            %a{href: "#"} Another link
           %li
-            %a{:href => "#"} Something else here
+            %a{href: "#"} Something else here
           %li.divider
           %li.dropdown-submenu
-            %a{:href => "#", :tabindex => "-1"} More options
+            %a{href: "#", tabindex: "-1"} More options
             %ul.dropdown-menu
               %li
-                %a{:href => "#"} Link
+                %a{href: "#"} Link
               %li
-                %a{:href => "#"} Another link
+                %a{href: "#"} Another link
               %li
-                %a{:href => "#"} Something else here
+                %a{href: "#"} Something else here
               %li.divider
               %li.dropdown-header Nav header
               %li
-                %a{:href => "#"} Separated link
+                %a{href: "#"} Separated link
               %li.divider
               %li
-                %a{:href => "#"} One more separated link
+                %a{href: "#"} One more separated link
           %li.divider
           %li
-            %a{:href => "about"}= t ".about"
+            %a{href: "about"}= t ".about"
     %ul.nav.navbar-nav.navbar-primary
       %li
-        =link_to "#{t('.users').titleize}", "#"
+        = link_to t('.users').titleize.to_s, "#"
       %li
-        =link_to "#{t('.control_panel').titleize}", dashboard_path
+        = link_to t('.control_panel').titleize.to_s, dashboard_path
       %li
-        =link_to "#{t('.rooms').titleize}", rooms_path
+        = link_to t('.rooms').titleize.to_s, rooms_path
       %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          =(t ".help").titleize
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          = (t ".help").titleize
           %b.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "help"}= (t ".help").titleize
-              %a{:href => "info"}= (t ".info").titleize
-              %a{:href => "about"}= (t ".about").titleize
+              %a{href: "help"}= (t ".help").titleize
+              %a{href: "info"}= (t ".info").titleize
+              %a{href: "about"}= (t ".about").titleize
     :javascript
       $(function() {
           // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line

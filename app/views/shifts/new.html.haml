@@ -1,10 +1,10 @@
-- provide(:title, "#{ t 'application.models.shift.add_shift'} #{@shift.id}")
-%h1="#{ (t 'application.models.shift.add_shift')}: #{(t 'application.models.room.room')} \"#{@room.name}\"".titleize
-=form_for [@room, @shift] do |f|
+- provide(:title, (t 'application.models.shift.add_shift').to_s)
+%h1= t 'application.models.shift.add_shift_in_room', room: @room.name
+= form_for [@room, @shift] do |f|
   = render 'form_errors', object: @shift
   .form
-    = render 'shift_form', f:f
+    = render 'shift_form', f: f
     .form-group
       .col-sm-offset-2.col-sm-10.actions
-        = f.submit t("application.models.shift.add_shift"), class:"btn btn-primary btn-lg"    
+        = f.submit t("application.models.shift.add_shift"), class: "btn btn-primary btn-lg"    
 

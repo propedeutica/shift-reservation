@@ -89,6 +89,8 @@ en:
         site:            "site"
         sites_available: "sites available"
         add_shift:       "add shift"
+        add_shift_in_room: "Add Shift to Room \"%{room}\""
+        edit_shift_in_room: "Update Shift %{shift} in Room \"%{room}\""
         delete_shift:    "delete shift"
         update_shift:    "update shift"
         edit_shift:      "edit shift"

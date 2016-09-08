@@ -1,14 +1,14 @@
-- provide(:title, "#{ t 'application.models.room.room'} #{@room.id}")
-%h1="#{ (t 'application.models.room.room').titleize } #{@room.id}"
+- provide(:title, "#{t 'application.models.room.room'} #{@room.id}")
+%h1 #{(t 'application.models.room.room').titleize} #{@room.id}
 .form
   .form-group
     .control-label
-      =(t 'application.models.room.name').titleize
+      = (t 'application.models.room.name').titleize
     .form-control
-      = "#{@room.name}"
+      = @room.name.to_s
   .form-group
     .control-label
-      =(t 'application.models.room.capacity').titleize
+      = (t 'application.models.room.capacity').titleize
     .form-control
       = @room.capacity
 %p
