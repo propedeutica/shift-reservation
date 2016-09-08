@@ -40,6 +40,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'coveralls', require: false
+  gem 'haml_lint', require: false
 end
 
 group :development do
