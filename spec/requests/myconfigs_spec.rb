@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Myconfigs", type: :request do
-  describe "POST /myconfigs" do
+  context "when no errors" do
+    # Errors in the request would have to be at the database level and will raise an exeption
     it "changes lock to enabled" do
       post admin_myconfig_global_lock_enable_path
       expect(Myconfig.global_lock?).to be_truthy
