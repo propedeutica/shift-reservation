@@ -6,6 +6,6 @@
 - Devise for admins
 - Change to nested routes
 - Translation into Spanish
-- Installation instructions (configuration options)
+~~Installation instructions (configuration options)~~
 - Mail for Devise
-- 
+-
