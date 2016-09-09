@@ -11,11 +11,11 @@
     .col-sm-3
       %h3= t('.destroy_all_rooms').titleize
       %p
-        = link_to t('.destroy_all_rooms').titleize, destroy_all_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_rooms').titleize, destroy_all_admin_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
       %h3= t('.destroy_all_shifts').titleize
       %p
-        = link_to t('.destroy_all_shifts').titleize, destroy_all_shifts_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_shifts').titleize, admin_shifts_destroy_all_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
       %h3= t('.destroy_all_users').titleize
       %p

@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class Admin::DashboardController < ApplicationController
   def index
     @global_lock_in_status = Myconfig.global_lock?
     @number_of_rooms = Room.count

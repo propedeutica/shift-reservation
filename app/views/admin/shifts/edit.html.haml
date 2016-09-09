@@ -1,12 +1,12 @@
 - provide(:title, "#{t 'application.models.shift.update_shift'} #{@shift.id}")
 %h1= t 'application.models.shift.edit_shift_in_room', shift: @shift.id, room: @room.name
-= form_for @shift do |f|
+= form_for [:admin, @shift] do |f|
   = render 'form_errors', object: @shift
   .form
     = render 'shift_form', f: f
     .container
       .form-group
         .actions
-          = link_to (t "application.models.shift.delete_shift").titleize, shift_path(@shift), class: "btn btn-danger btn-lg", method: :delete
+          = link_to (t "application.models.shift.delete_shift").titleize, admin_shift_path(@shift), class: "btn btn-danger btn-lg", method: :delete
           = f.submit (t "application.models.shift.update_shift").titleize, class: "btn btn-primary btn-lg", method: :update
-          = link_to (t "application.models.shift.cancel_edit_shift").titleize, shift_path(@shift), class: "btn btn-default btn-lg"
+          = link_to (t "application.models.shift.cancel_edit_shift").titleize, admin_shift_path(@shift), class: "btn btn-default btn-lg"

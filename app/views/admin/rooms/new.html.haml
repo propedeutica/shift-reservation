@@ -1,6 +1,6 @@
 - provide(:title, (t 'application.models.room.add_room').to_s)
 %h1= (t 'application.models.room.add_room').titleize
-= form_for @room do |f|
+= form_for [:admin, @room] do |f|
   = render 'form_errors', object: @room
   .form
     = render 'room_form', f: f

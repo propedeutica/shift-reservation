@@ -12,5 +12,5 @@
     .form-control
       = @room.capacity
 %p
-  = link_to t("application.models.room.edit_room").titleize, edit_room_path(@room), class: "btn btn-primary"
-  = link_to t("application.models.room.redirect_to_index").titleize, rooms_path, class: "btn btn-default"
+  = link_to t("application.models.room.edit_room").titleize, edit_admin_room_path(@room), class: "btn btn-primary"
+  = link_to t("application.models.room.redirect_to_index").titleize, admin_rooms_path, class: "btn btn-default"

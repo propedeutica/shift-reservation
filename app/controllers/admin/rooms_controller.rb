@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class Admin::RoomsController < ApplicationController
   def index
     @sites_available = Shift.total_sites_available
     @rooms = Room.all
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
     @room = Room.new(rooms_params)
     if @room.save
       flash[:success] = (t 'application.models.room.room_added').capitalize
-      redirect_to room_path @room
+      redirect_to admin_room_path @room
     else
       flash[:error] = (t 'application.models.room.room_not_added').capitalize
       render 'new'
@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
     @room = Room.find_by_id(params[:id])
     if @room.update_attributes(rooms_params)
       flash[:success] = (t "application.models.room.room_updated").capitalize
-      redirect_to room_path @room
+      redirect_to admin_room_path @room
     else
       flash[:danger] = (t "application.models.room.room_not_updated").capitalize
       render 'edit'
@@ -45,12 +45,12 @@ class RoomsController < ApplicationController
     else
       flash[:danger] = (t "application.models.room.room_delete_error").capitalize
     end
-    redirect_to rooms_path
+    redirect_to admin_rooms_path
   end
 
   def destroy_all
     Room.destroy_all
-    redirect_to dashboard_path
+    redirect_to admin_dashboard_path
   end
 
   private

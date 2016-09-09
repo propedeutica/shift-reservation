@@ -21,14 +21,6 @@
 
 en:
   hello: "Hello world"
-  myconfig:
-    global_lock_switch:
-      global_lock_switch_success:         "Switch has been changed succesfully"
-      global_lock_switch_error:           "There was an error updating the switch"
-      global_lock_set_true_success:       "Global lock is now in place"
-      global_lock_set_true_error:         "There was an error setting the global lock to true"
-      global_lock_set_false_success:       "Global lock is now not in place"
-      global_lock_set_false_error:         "There was an error setting the global lock to false"
   layouts:
     header:
       users:                 "users"
@@ -38,24 +30,33 @@ en:
       help:                  "help"
       about:                 "about"
       info:                  "information"
-  dashboard:
-    index:
-      enable:                "enable"
-      disable:               "disable"
-      global_lock_in_status: "global lock in status:"
-      status:                "status"
-      destroy_all_rooms:      "delete all rooms"
-      destroy_all_shifts:     "delete all shifts"
-      destroy_all_users:      "delete all users"
-      destroy_all_offsprings: "delete all offsprings"
-      irreversible:           "Are you sure? The following action can not be undone"
-    info:
-      rooms:                 "rooms"
-      shifts:                "shifts"
-      total_sites_available: "sites available"
-      total_capacity:        "capacity on all shifts"
-      refresh:               "refresh"
-      space_available:       "space available"
+  admin:
+    myconfig:
+      global_lock_switch:
+        global_lock_switch_success:         "Switch has been changed succesfully"
+        global_lock_switch_error:           "There was an error updating the switch"
+        global_lock_set_true_success:       "Global lock is now in place"
+        global_lock_set_true_error:         "There was an error setting the global lock to true"
+        global_lock_set_false_success:       "Global lock is now not in place"
+        global_lock_set_false_error:         "There was an error setting the global lock to false"
+    dashboard:
+      index:
+        enable:                "enable"
+        disable:               "disable"
+        global_lock_in_status: "global lock in status:"
+        status:                "status"
+        destroy_all_rooms:      "delete all rooms"
+        destroy_all_shifts:     "delete all shifts"
+        destroy_all_users:      "delete all users"
+        destroy_all_offsprings: "delete all offsprings"
+        irreversible:           "Are you sure? The following action can not be undone"
+      info:
+        rooms:                 "rooms"
+        shifts:                "shifts"
+        total_sites_available: "sites available"
+        total_capacity:        "capacity on all shifts"
+        refresh:               "refresh"
+        space_available:       "space available"
   application:
     name:                   "Shift Reservation"
     about:                  "about"

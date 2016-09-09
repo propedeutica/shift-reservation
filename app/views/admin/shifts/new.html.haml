@@ -1,6 +1,6 @@
 - provide(:title, (t 'application.models.shift.add_shift').to_s)
 %h1= t 'application.models.shift.add_shift_in_room', room: @room.name
-= form_for [@room, @shift] do |f|
+= form_for [:admin, @room, @shift] do |f|
   = render 'form_errors', object: @shift
   .form
     = render 'shift_form', f: f

@@ -5,7 +5,7 @@
     .control-label
       = (t 'application.models.room.room').titleize
     .form-control.disabled
-      = link_to @shift.room.name.to_s, room_path(@shift.room)
+      = link_to @shift.room.name.to_s, admin_room_path(@shift.room)
   .form-group
     .control-label
       = (t 'application.models.shift.sites_available').titleize
@@ -38,5 +38,5 @@
       = @shift.sites_reserved
 
 %p
-  = link_to t("application.models.shift.edit_shift").titleize, edit_shift_path(@shift), class: "btn btn-primary"
-  = link_to (t "application.models.shift.redirect_to_index").titleize, rooms_path, class: "btn btn-default"
+  = link_to t("application.models.shift.edit_shift").titleize, edit_admin_shift_path(@shift), class: "btn btn-primary"
+  = link_to (t "application.models.shift.redirect_to_index").titleize, admin_rooms_path, class: "btn btn-default"

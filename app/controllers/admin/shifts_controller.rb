@@ -1,8 +1,8 @@
-class ShiftsController < ApplicationController
+class Admin::ShiftsController < ApplicationController
   def show
     @shift = Shift.find_by_id(params[:id])
     if @shift.nil?
-      redirect_to rooms_path
+      redirect_to admin_rooms_path
     end
   end
 
@@ -16,7 +16,7 @@ class ShiftsController < ApplicationController
     @shift = @room.shifts.build(shifts_params)
     if @shift.save
       flash[:success] = (t "application.models.shift.shift_added").capitalize
-      redirect_to rooms_path
+      redirect_to admin_rooms_path
     else
       flash[:danger] = (t "application.models.shift.shift_not_added").capitalize
       render 'new'
@@ -33,7 +33,7 @@ class ShiftsController < ApplicationController
     @room = @shift.room
     if @shift.update_attributes(shifts_params)
       flash[:success] = (t "application.models.shift.shift_updated").capitalize
-      redirect_to shift_path(@shift)
+      redirect_to admin_shift_path(@shift)
     else
       flash[:danger] = (t "application.models.shift.shift_not_updated").capitalize
       render 'edit'
@@ -47,12 +47,12 @@ class ShiftsController < ApplicationController
     else
       flash[:danger] = (t "application.models.shift.shift_delete_error").capitalize
     end
-    redirect_to rooms_path
+    redirect_to admin_rooms_path
   end
 
   def destroy_all
     Shift.destroy_all
-    redirect_to dashboard_path
+    redirect_to admin_dashboard_path
   end
 
   private

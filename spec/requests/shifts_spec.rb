@@ -6,13 +6,13 @@ RSpec.describe "Shifts", type: :request do
     let(:shift) { FactoryGirl.create(:shift, room: room) }
 
     it "#show" do
-      get shift_path(shift)
+      get admin_shift_path(shift)
       expect(response).to have_http_status(200)
     end
 
     it "DESTROY ALL" do
       shift
-      expect { get destroy_all_shifts_path }.to change(Shift, :count).from(1).to(0)
+      expect { get admin_shifts_destroy_all_path }.to change(Shift, :count).from(1).to(0)
     end
 
     it "returns if there are seats available" do
