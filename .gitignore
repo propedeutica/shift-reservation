@@ -22,3 +22,7 @@
 
 # Ignore bower_components (install/update with bower install/update)
 vendor/assets/bower_components/*
+
+
+# Ignore coverage files
+coverage/
