@@ -57,6 +57,12 @@ en:
         total_capacity:        "capacity on all shifts"
         refresh:               "refresh"
         space_available:       "space available"
+    rooms:
+      add_shift:
+        irreversible:           "Are you sure? The following action can not be undone"
+    shifts:
+      edit:
+        irreversible:           "Are you sure? The following action can not be undone"
   application:
     name:                   "Shift Reservation"
     about:                  "about"
