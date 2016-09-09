@@ -12,6 +12,6 @@ class Admin::MyconfigController < ApplicationController
 
   def global_lock_switch
     Myconfig.global_lock_switch
-      head :no_content
+    head :no_content
   end
 end
