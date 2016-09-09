@@ -57,7 +57,13 @@ An offspring can only be assigned to a shift in a single room. Trying to add ano
 
 ### Get the Rails environment up and running
 - [**Clone (or fork if you want contribute) this repository in your local machine**] (https://github.com/propedeutica/shift-reservation)
-    $ bin/setup            # Installs dependencies, config, prepares database, etc
-    $ bower install        # Installs bower components
-    $ rails s              # Application starting in development
+```bash
+$ bin/setup            # Installs dependencies, config, prepares database, etc
+$ rails s              # Application starting in development
+```
 - Using your favorite browser, go to [http://localhost:3000] (http://localhost:3000)
+
+- You can also install dependencies and database manually. If you choose this way, you should install `bower` component before starting application.
+```bash
+$ bower install     
+```
