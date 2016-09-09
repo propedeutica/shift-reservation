@@ -7,6 +7,7 @@
     .container
       .form-group
         .actions
-          = link_to (t "application.models.shift.delete_shift").titleize, admin_shift_path(@shift), class: "btn btn-danger btn-lg", method: :delete
-          = f.submit (t "application.models.shift.update_shift").titleize, class: "btn btn-primary btn-lg", method: :update
-          = link_to (t "application.models.shift.cancel_edit_shift").titleize, admin_shift_path(@shift), class: "btn btn-default btn-lg"
+          = link_to (t "application.models.shift.delete_shift").titleize, admin_shift_path(@shift), class: "btn btn-lg btn-danger", method: :delete,
+            data: { confirm: t('.irreversible') }
+          = f.submit (t "application.models.shift.update_shift").titleize, class: "btn btn-lg btn-primary", method: :update
+          = link_to (t "application.models.shift.cancel_edit_shift").titleize, admin_shift_path(@shift), class: "btn btn-lg btn-default"
