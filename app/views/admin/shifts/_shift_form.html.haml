@@ -54,4 +54,10 @@
           }
         }
       });
+      $("#timepicker1").on("dp.change", function (e) {
+            $('#timepicker2').data("DateTimePicker").minDate(e.date);
+      });
+      $("#timepicker2").on("dp.change", function (e) {
+            $('#timepicker1').data("DateTimePicker").maxDate(e.date);
+      });
     });
