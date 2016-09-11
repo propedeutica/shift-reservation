@@ -4,6 +4,8 @@
 [![Chat](https://badges.gitter.im/propedeutica/shift-reservation.png)](https://gitter.im/propedeutica/shift-reservation)
 [![Coverage Status](https://coveralls.io/repos/github/propedeutica/shift-reservation/badge.svg?branch=master)](https://coveralls.io/github/propedeutica/shift-reservation?branch=master)
 
+[![Build history for master branch](https://buildstats.info/travisci/chart/propedeutica/shift-reservation?branch=master&buildCount=50)](https://travis-ci.org/propedeutica/shift-reservation/branches)
+
 ## Introduction
 This application tries to make it possible to reserve places in a school where the users are not capable of doing on their own (because they are under age). Parents can sign up with their own data and then add their offspring. Once that is done they can ask for a particular shift where they want their offspring to be assigned.
 
