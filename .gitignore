@@ -26,3 +26,6 @@ vendor/assets/bower_components/*
 
 # Ignore coverage files
 coverage/
+
+# Ignore other configuration for IDE
+.vscode/
