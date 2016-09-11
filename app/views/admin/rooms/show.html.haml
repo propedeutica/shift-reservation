@@ -4,12 +4,12 @@
   .form-group
     .control-label
       = (t 'application.models.room.name').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @room.name.to_s
   .form-group
     .control-label
       = (t 'application.models.room.capacity').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @room.capacity
 %p
   = link_to t("application.models.room.edit_room").titleize, edit_admin_room_path(@room), class: "btn btn-primary"

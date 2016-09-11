@@ -4,37 +4,37 @@
   .form-group
     .control-label
       = (t 'application.models.room.room').titleize
-    .form-control.disabled
+    .form-control{disabled: :disabled}
       = link_to @shift.room.name.to_s, admin_room_path(@shift.room)
   .form-group
     .control-label
       = (t 'application.models.shift.sites_available').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       #{@shift.sites_available} (#{@shift.sites_available})
   .form-group
     .control-label
       = (t 'application.models.shift.day_of_week').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = week_day_convert @shift.day_of_week
   .form-group
     .control-label
       = (t 'application.models.shift.start_time').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @shift.start_time
   .form-group
     .control-label
       = (t 'application.models.shift.end_time').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @shift.end_time
   .form-group
     .control-label
       = (t 'application.models.shift.sites_assigned').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @shift.sites_assigned
   .form-group
     .control-label
       = (t 'application.models.shift.sites_reserved').titleize
-    .form-control
+    .form-control{disabled: :disabled}
       = @shift.sites_reserved
 
 %p
