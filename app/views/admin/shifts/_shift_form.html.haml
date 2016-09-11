@@ -1,18 +1,57 @@
-.form-group
-  .col-sm-6
-    = f.label :day_of_week
-  .col-sm-12
-    = f.select :day_of_week, (0..6).map { |w| [week_day_convert(w), w] }, class: 'form-control'
-.form-group
-  .col-sm-6
-    = f.label :start_time
-  = f.text_field :start_time, class: 'form-control'
-.form-group
-  .col-sm-6
-    = f.label :end_time
-  = f.text_field :end_time, class: 'form-control'
-.form-group
-  .col-sm-6
-    = f.label :sites_reserved
-    (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})
-  = f.number_field :sites_reserved, class: 'form-control'
+.container
+  .form-group.row
+    .col-sm-6
+      = f.label :day_of_week
+    .col-sm-12
+      = f.select :day_of_week, (0..6).map { |w| [week_day_convert(w), w] }, class: 'form-control'
+  .row.form-group.time-picker-pf
+    .col-sm-6
+      = f.label :start_time
+    .col-sm-8
+      .input-group#timepicker1
+        %span.input-group-addon.btn.btn-default
+          %span.fa.fa-clock-o
+        = f.text_field :start_time, class: 'form-control'
+        
+  .row.form-group.time-picker-pf
+    .col-sm-6
+      = f.label :end_time
+    .col-sm-8
+      .input-group#timepicker2
+        %span.input-group-addon.btn.btn-default
+          %span.fa.fa-clock-o
+        = f.text_field :end_time, class: 'form-control'
+
+  .form-group.row
+    .col-sm-6
+      = f.label :sites_reserved
+      (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})
+    .col-sm-12
+      = f.number_field :sites_reserved, class: 'form-control'
+
+-content_for :javascripts do
+  :javascript
+    $(function () {
+      $('#timepicker1').datetimepicker({
+        format: 'HH:mm',
+        useCurrent: false,
+        stepping: 5,
+        keyBinds: {
+          enter: function () {
+            $('#timepicker1').find('input').trigger('change');
+            this.hide();
+          }
+        }
+      });
+      $('#timepicker2').datetimepicker({
+        format: 'HH:mm',
+        useCurrent: false,
+        stepping: 5,
+        keyBinds: {
+          enter: function () {
+            $('#timepicker2').find('input').trigger('change');
+            this.hide();
+          }
+        }
+      });
+    });

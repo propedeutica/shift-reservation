@@ -17,5 +17,7 @@
 //= require matchHeight
 //= require patternfly
 //= require bootstrap-datepicker
+//= require moment
+//= require eonasdan-bootstrap-datetimepicker
 //= require bootstrap-select
 //= require bootstrap-switch
