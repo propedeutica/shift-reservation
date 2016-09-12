@@ -21,3 +21,4 @@
 //= require eonasdan-bootstrap-datetimepicker
 //= require bootstrap-select
 //= require bootstrap-switch
+//= require shift
