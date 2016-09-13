@@ -6,5 +6,5 @@
     = render 'shift_form', f: f
     .form-group
       .col-sm-offset-2.col-sm-10.actions
-        = f.submit t("application.models.shift.add_shift"), class: "btn btn-primary btn-lg"    
-
+        = f.submit t("application.models.shift.add_shift").titleize, class: "btn btn-primary btn-lg"
+        = link_to t("application.models.room.redirect_to_index").titleize, admin_rooms_path, class: "btn btn-default btn-lg"
