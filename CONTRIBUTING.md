@@ -12,6 +12,16 @@ Opening issues will allows us to write better code and make sure it is more usab
 
 If you wish to contribute with a translation of the project in your language, we are of course happy to accept them.
 
+All pull request need to pass some tests before they are merged. You can find a list of tests in travis-ci.org.
+You can also run the same tests locally to make sure that PR can be accepted.
+
+- You can run the following test from the root directory of the repository:
+```bash
+    $ bundle exec rspec              # It shouldn't give failures
+    $ rubocop                        # It shouldn't give offenses
+    $ haml-lint app/views/           # It shouldn't print nothing
+```
+
 **Thanks for your contribution!**
 
 ## License
