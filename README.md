@@ -65,7 +65,7 @@ $ rails s              # Application starting in development
 ```
 - Using your favorite browser, go to [http://localhost:3000] (http://localhost:3000)
 
-- You can also install dependencies and database manually. If you choose this way, you should install `bower` component before starting application.
+You can also install dependencies and database manually. If you choose this way, you should install `bower` before starting application.
 ```bash
 $ bower install     
 ```
