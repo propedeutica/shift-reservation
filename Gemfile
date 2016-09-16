@@ -61,7 +61,7 @@ end
 
 # Use SCSS for stylesheets and patternfly
 # Install it wil bower, not as a gem, to install JS dependencies
-gem 'patternfly-sass', '~> 3.10.0'
+gem 'patternfly-sass', '~> 3.11.0'
 #
 # Devise
 #
