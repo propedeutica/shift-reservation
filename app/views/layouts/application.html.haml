@@ -5,7 +5,10 @@
     = yield(:head_javascripts)
   %body
     / = render 'layouts/image'
-    = render 'layouts/header'
+    - if  admin_signed_in?
+      = render 'layouts/admin_header' if admin_signed_in?
+    - else
+      = render 'layouts/header'
     .container-fluid
       = render 'layouts/flash'
       = yield

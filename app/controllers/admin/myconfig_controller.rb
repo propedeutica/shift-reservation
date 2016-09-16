@@ -1,4 +1,4 @@
-class Admin::MyconfigController < ApplicationController
+class Admin::MyconfigController < Admin::AdminController
   def global_lock_enable
     Myconfig.global_lock_set_true
     # If there is a failure an exception will be raised, not need to test it

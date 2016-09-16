@@ -22,11 +22,18 @@
 en:
   hello: "Hello world"
   layouts:
-    header:
+    admin_header:
       users:                 "users"
       rooms:                 "rooms"
       control_panel:         "dashboard"
       reports:               "reports"
+      help:                  "help"
+      about:                 "about"
+      info:                  "information"
+    header:
+      rooms:                 "rooms"
+      user_panel:            "My information"
+      offsprings:            "Offsprings"
       help:                  "help"
       about:                 "about"
       info:                  "information"

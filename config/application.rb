@@ -12,6 +12,7 @@ module ShiftReservation
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.force_ssl = true
     config.time_zone = "Madrid"
     config.beggining_of_week = :monday
     config.week_days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]

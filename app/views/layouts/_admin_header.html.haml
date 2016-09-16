@@ -45,11 +45,11 @@
             = link_to (t '.about').titleize, about_path
     %ul.nav.navbar-nav.navbar-primary
       %li
-        = link_to (t'.user_panel').titleize, "#"
+        = link_to (t'.users').titleize, "#"
       %li
-        = link_to t('.offsprings').titleize, "#"
+        = link_to t('.control_panel').titleize, admin_dashboard_path
       %li
-        = link_to t('.rooms').titleize, "#"
+        = link_to t('.rooms').titleize, admin_rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           = (t ".help").titleize
