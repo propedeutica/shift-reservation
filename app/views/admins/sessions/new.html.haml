@@ -13,7 +13,7 @@
       / /.col-*
       .col-sm-7.col-md-6.col-lg-5.login
         = form_for(@admin, as: @admin, url: new_admin_session_path(@admin)) do |f|
-          .form-horizontal{:role => "form"}
+          .form-horizontal{role: "form"}
             = render 'form_errors', object: @admin
             .form-group
               .col-sm-2.col-md-2.control-label= f.label :email
@@ -28,14 +28,14 @@
                   = f.check_box :remember_me
                   
             .form-group.col-xs-4.col-sm-4.col-md-4.submit
-              = f.submit (t ".log_in") , class: "btn btn-lg btn-primary"
+              = f.submit (t ".log_in"), class: "btn btn-lg btn-primary"
             = render "admins/shared/links"
       / /.col-*
       .col-sm-5.col-md-6.col-lg-7.details
         %p
           %strong= t ".welcome"
         %p
-          =t ".welcome-text"
+          = t ".welcome-text"
       / /.col-*
     / /.row
   / /.container

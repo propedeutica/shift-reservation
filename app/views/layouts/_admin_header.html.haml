@@ -10,11 +10,11 @@
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{href: "#"} #{admin_signed_in? ? t(".signed_in").titleize: t(".not_signed_in").titleize}
+        %a{href: "#"}= admin_signed_in? ? t(".signed_in").titleize: t(".not_signed_in").titleize
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
-          =admin_signed_in? ? current_admin.email : t(".not_identified")
+          = admin_signed_in? ? current_admin.email : t(".not_identified")
           %b.caret
         %ul.dropdown-menu
           - if admin_signed_in?
