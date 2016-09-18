@@ -63,6 +63,9 @@ en:
         destroy_all_offsprings: "delete all offsprings"
         irreversible:           "Are you sure? The following action can not be undone"
       info:
+        admins:                "admins"
+        users:                 "users"
+        offsprings:            "offsprings"
         rooms:                 "rooms"
         shifts:                "shifts"
         total_sites_available: "sites available"
