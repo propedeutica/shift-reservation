@@ -20,8 +20,8 @@
           - if admin_signed_in?
             %li
               = link_to (t '.change_password').titleize, "#"
-            %li
-              = link_to (t '.change_password').titleize, "#"
+            / %li
+            /  = link_to (t '.change_password').titleize, "#"
             %li.divider
             %li
               = link_to (t '.sign_out').titleize, destroy_admin_session_path, method: :delete
@@ -37,7 +37,11 @@
             = link_to (t '.about').titleize, about_path
     %ul.nav.navbar-nav.navbar-primary
       %li
+        = link_to (t'.admins').titleize, "#"
+      %li
         = link_to (t'.users').titleize, "#"
+      %li
+        = link_to (t'.offsprings').titleize, "#"
       %li
         = link_to t('.control_panel').titleize, admin_dashboard_path
       %li

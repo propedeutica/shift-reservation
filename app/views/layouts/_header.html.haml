@@ -18,9 +18,9 @@
           %b.caret
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Link
+            %a{href: "#"} Log_in
           %li
-            %a{href: "#"} Another link
+            %a{href: "#"} 
           %li
             %a{href: "#"} Something else here
           %li.divider
@@ -39,7 +39,7 @@
                 %a{href: "#"} Separated link
               %li.divider
               %li
-                %a{href: "#"} One more separated link
+                =link_to (t '.log_in_as_admin'), new_admin_session_path 
           %li.divider
           %li
             = link_to (t '.about').titleize, about_path

@@ -34,7 +34,8 @@ en:
       not_signed_in:         "identification needed"
       change_password:       "change password"
       sign_out:              "sign_out"
-
+      admins:                "Administrators"
+      offsprings:            "Offsprings"
     header:
       rooms:                 "rooms"
       user_panel:            "My information"
@@ -42,6 +43,7 @@ en:
       help:                  "help"
       about:                 "about"
       info:                  "information"
+      log_in_as_admin:       "Log-in as an adminsitrator"
   admin:
     myconfig:
       global_lock_switch:
