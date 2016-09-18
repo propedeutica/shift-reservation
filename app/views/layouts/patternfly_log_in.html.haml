@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+%html.login-pf
+  %head
+    = render 'layouts/head'
+    = yield(:head_javascripts)
+  %body
+    = render 'layouts/flash'
+    = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = yield(:javascripts)

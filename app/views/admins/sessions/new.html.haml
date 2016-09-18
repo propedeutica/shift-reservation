@@ -1,0 +1,41 @@
+- provide(:title, (t '.admin').to_s)
+.container-fluid
+  %h2= t ".log_in"
+  %p
+    %span#badge
+      = image_tag("brand.svg", alt: t("application.name").to_s, class: "img-responsive")
+  .container
+    .row
+      .col-sm-12
+        #brand
+          = image_tag("brand.svg", alt: (t 'application.name').to_s)
+        / /#brand
+      / /.col-*
+      .col-sm-7.col-md-6.col-lg-5.login
+        = form_for(@admin, as: @admin, url: new_admin_session_path(@admin)) do |f|
+          .form-horizontal{role: "form"}
+            = render 'form_errors', object: @admin
+            .form-group
+              .col-sm-2.col-md-2.control-label= f.label :email
+              .col-sm-10.col-md-10= f.email_field :email, class: 'form-control', autofocus: true
+            .form-group
+              %label.col-sm-2.col-md-2.control-label= f.label :password
+              .col-sm-10.col-md-10= f.password_field :password, autocomplete: "off", class: 'form-control'
+            - if devise_mapping.rememberable?
+              .form-group
+                .col-xs-8.col-sm-offset-2.col-sm-6.col-md-offset-2.col-md-6
+                  = f.label :remember_me
+                  = f.check_box :remember_me
+                  
+            .form-group.col-xs-4.col-sm-4.col-md-4.submit
+              = f.submit (t ".log_in"), class: "btn btn-lg btn-primary"
+            = render "admins/shared/links"
+      / /.col-*
+      .col-sm-5.col-md-6.col-lg-7.details
+        %p
+          %strong= t ".welcome"
+        %p
+          = t ".welcome-text"
+      / /.col-*
+    / /.row
+  / /.container

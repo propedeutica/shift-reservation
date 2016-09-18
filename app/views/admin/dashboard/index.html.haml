@@ -28,5 +28,5 @@
 - content_for :javascripts do
   :javascript
     $('input[name="global_lock_checkbox"]').bootstrapSwitch().on('switchChange.bootstrapSwitch', function (event, state) {
-      $.post('/admin/myconfig/global_lock_switch')
+      $.post('/admin/myconfig/global_lock_switch') 
     });

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # Information for the application
   get 'info',  to: 'information#info'
   get 'help',  to: 'information#help'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       resources :shifts, shallow: true, except: [:index]
     end
     get 'dashboard', to: "dashboard#index"
+    resources :admins, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
