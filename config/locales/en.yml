@@ -30,6 +30,11 @@ en:
       help:                  "help"
       about:                 "about"
       info:                  "information"
+      signed_in:             "signed in"
+      not_signed_in:         "identification needed"
+      change_password:       "change password"
+      sign_out:              "sign_out"
+
     header:
       rooms:                 "rooms"
       user_panel:            "My information"
@@ -73,6 +78,14 @@ en:
     shifts:
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
+  admins:
+    sessions:
+      new:
+        admin:                  "Admin log in"
+        log_in:                 "Log in"
+        welcome:                "Welcome to Shift Reservation | Admin interface"
+        welcome-text:           "This interface will allow only admins to sign in"
+        remember_username:      "Remember user"
   application:
     name:                   "Shift Reservation"
     about:                  "about"
