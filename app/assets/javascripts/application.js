@@ -22,3 +22,4 @@
 //= require bootstrap-select
 //= require bootstrap-switch
 //= require shift
+//= require datatables

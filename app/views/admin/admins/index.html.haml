@@ -1,0 +1,16 @@
+%table.datatable.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th ID
+      %th Email
+      %th Created at
+      %th Updated at
+  %tbody
+    =render @admins
+
+- content_for :javascripts do
+  :javascript
+    // Initialize Datatables
+    $(document).ready(function() {
+      $('.datatable').dataTable();
+    });
