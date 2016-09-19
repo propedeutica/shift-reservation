@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 RSpec.describe "Rooms", type: :request do
   context "when admin authenticated" do
