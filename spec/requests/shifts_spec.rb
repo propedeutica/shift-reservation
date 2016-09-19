@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 RSpec.describe "Shifts", type: :request do
   context "when authenticated as admin" do
