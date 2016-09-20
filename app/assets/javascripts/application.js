@@ -23,3 +23,5 @@
 //= require bootstrap-switch
 //= require shift
 //= require datatables
+//= require c3
+//= require d3
