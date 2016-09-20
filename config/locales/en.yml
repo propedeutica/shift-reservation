@@ -75,7 +75,10 @@ en:
         refresh:               "refresh"
         space_available:       "space available"
     rooms:
-      room:                     "Room"
+      room:                     
+        room:                      "Room"
+        available:                "Available"
+        occupied:                 "Occupied"
       add_shift:
         irreversible:           "Are you sure? The following action can not be undone"
       edit:

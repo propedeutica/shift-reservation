@@ -58,7 +58,7 @@
               %span.fa.fa-user-secret
               %span.card-pf-aggregate-status-count
                 =  @number_of_admins || 0
-              = link_to (t '.admins').titleize, "#"
+              = link_to (t '.admins').titleize, admin_admins_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
@@ -89,7 +89,7 @@
     - percentage = (@total_sites_available.to_f/@total_capacity*100).to_int unless @total_capacity.zero?
     .progress.progress-label-left
       .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => percentage, role: "progressbar", style: "width: #{percentage}%;"}
-        %span= percentage
+        %span #{percentage}% 
 - content_for :javascripts do
   :javascript
     $(function() {
