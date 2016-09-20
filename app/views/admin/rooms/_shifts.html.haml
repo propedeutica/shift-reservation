@@ -1,21 +1,33 @@
 / Rendering shifts in order
-.col-md-7
-  .row
-    - (0..3).each do |day|
-      .col-md-3
-        %ul.list-group
-          %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
-          - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
-            %li.list-group-item-text
-              = link_to "#{shift.start_time} - #{shift.end_time}, #{pluralize shift.sites_available, t('application.models.shift.site')}",
-                admin_shift_path(shift)
-.col-md-5
-  .row
-    - (4..6).each do |day|
-      .col-md-4
-        %ul.list-group
-          %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
-          - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
-            %li.list-group-item-text
-              = link_to "#{shift.start_time} - #{shift.end_time}, #{pluralize shift.sites_available, t("application.models.shift.site")}",
-                admin_shift_path(shift)
+- if config.include_weekends
+  .col-md-7
+    .row
+      - (0..3).each do |day|
+        .col-md-3
+          %ul.list-group
+            %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
+            - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
+              %li.list-group-item-text
+                = link_to "#{shift.start_time} - #{shift.end_time}, #{pluralize shift.sites_available, t('application.models.shift.site')}",
+                  admin_shift_path(shift)
+  .col-md-5
+    .row
+      - (4..6).each do |day|
+        .col-md-4
+          %ul.list-group
+            %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
+            - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
+              %li.list-group-item-text
+                = link_to "#{shift.start_time} - #{shift.end_time}, #{pluralize shift.sites_available, t("application.models.shift.site")}",
+                  admin_shift_path(shift)
+- else
+  .col-md-12
+    .row
+      - (0..4).each do |day|
+        .col-md-2
+          %ul.list-group
+            %li.list-group-item.list-group-item-heading.active= week_day_convert(day)
+            - room.shifts.where(day_of_week: day).order("start_time").each do |shift|
+              %li.list-group-item-text
+                = link_to "#{shift.start_time} - #{shift.end_time}, #{pluralize shift.sites_available, t('application.models.shift.site')}",
+                  admin_shift_path(shift)

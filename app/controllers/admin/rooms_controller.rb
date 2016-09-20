@@ -2,6 +2,7 @@ class Admin::RoomsController < Admin::AdminController
   def index
     @sites_available = Shift.total_sites_available
     @rooms = Room.all
+    @number_of_rooms = Room.count
   end
 
   def new
