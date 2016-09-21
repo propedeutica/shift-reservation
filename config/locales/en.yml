@@ -169,3 +169,28 @@ en:
               sites_available_greater_than_or_equal_to_0: "reservations should be lower than maximum capacity"
             end_time:
               end_time_earlier_than_start_time: "should be later than init_time"
+        user:
+          attributes:
+            first_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+            last_name:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+            email:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+              invalid:            "is invalid"
+              duplicated:         "has already been taken"
+            password:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+            phone:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+              invalid:            "is invalid"
