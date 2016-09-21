@@ -21,9 +21,9 @@ RSpec.describe Admin, type: :model do
   end
 
   it "is invalid with a password too long" do
-    admin.password = "a" * 18
+    admin.password = "a" * 129
     admin.valid?
-    expect(admin.errors[:password]).to include "Password is too long"
+    expect(admin.errors[:password]).to include "is too long (maximum is 128 characters)"
   end
 
   it "is invalid without an email" do
@@ -35,7 +35,7 @@ RSpec.describe Admin, type: :model do
   it "is invalid with a too short email" do
     admin.email = "a"
     admin.valid?
-    expect(admin.errors[:email]).to include "Email address is too short"
+    expect(admin.errors[:email]).to include "is invalid"
   end
 
   it "is invalid with a too long email" do
