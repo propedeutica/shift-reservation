@@ -11,37 +11,37 @@ RSpec.describe Admin, type: :model do
   it "is invalid without a password" do
     admin.password = "  "
     admin.valid?
-    expect(admin.errors[:password]).to include "can't be blank"
+    expect(user.errors[:password]).to include(I18n.t('password.blank', scope: active_record_user))
   end
 
   it "is invalid with a password too short" do
     admin.password = "a" * 7
     admin.valid?
-    expect(admin.errors[:password]).to include "is too short (minimum is 8 characters)"
+    expect(user.errors[:password]).to include(I18n.t('password.too_short', count: 8, scope: active_record_user))
   end
 
   it "is invalid with a password too long" do
     admin.password = "a" * 129
     admin.valid?
-    expect(admin.errors[:password]).to include "is too long (maximum is 128 characters)"
+    expect(user.errors[:password]).to include(I18n.t('password.too_long', count: 129, scope: active_record_user))
   end
 
   it "is invalid without an email" do
     admin.email = "   "
     admin.valid?
-    expect(admin.errors[:email]).to include "can't be blank"
+    expect(user.errors[:email]).to include(I18n.t('email.blank', scope: active_record_user))
   end
 
   it "is invalid with a too short email" do
     admin.email = "a"
     admin.valid?
-    expect(admin.errors[:email]).to include "is invalid"
+    expect(admin.errors[:email]).to include(I18n.t('email.too_short', count: 0, scope: active_record_user))
   end
 
   it "is invalid with a too long email" do
     admin.email = "a" * 255 + "b"
     admin.valid?
-    expect(admin.errors[:email]).to include "is invalid"
+    expect(admin.errors[:email]).to include(I18n.t('email.too_long', count: 257, scope: active_record_user))
   end
 
   it "rejects duplicate emails" do
