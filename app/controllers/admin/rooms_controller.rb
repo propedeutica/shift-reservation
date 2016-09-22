@@ -41,7 +41,7 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
 
   def destroy
     @room = Room.find_by_id(params["id"])
-    if @room && @room.destroy
+    if @room&.destroy
       flash[:success] = (t "application.models.room.room_deleted").capitalize
     else
       flash[:danger] = (t "application.models.room.room_delete_error").capitalize

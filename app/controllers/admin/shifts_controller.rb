@@ -42,7 +42,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
 
   def destroy
     @shift = Shift.find_by_id(params["id"])
-    if @shift && @shift.destroy
+    if @shift&.destroy
       flash[:success] = (t "application.models.shift.shift_deleted").capitalize
     else
       flash[:danger] = (t "application.models.shift.shift_delete_error").capitalize
