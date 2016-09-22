@@ -45,6 +45,7 @@ en:
       about:                 "about"
       info:                  "information"
       log_in:                "Log in"
+      log_out:               "Log out"
       log_in_as_admin:       "Log in as an administrator"
       more_options:          "More options"
       signed_in:             "signed in"

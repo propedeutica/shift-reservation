@@ -18,20 +18,27 @@
           %b.caret
         %ul.dropdown-menu
           %li
-            = link_to (t '.log_in').titleize, new_user_session_path
+            = link_to  new_user_session_path do
+              .fa.fa-sign-in= (t '.log_in').titleize
+            
           %li
-            %a{href: "#"} 
+            = link_to destroy_user_session_path do
+              .fa.fa-sign-out= (t '.log_out').titleize 
+          %li.divider
           %li
-            = link_to (t '.sign_up').titleize, new_user_registration_path
+            = link_to new_user_registration_path do
+              .fa.fa-user-plus= (t '.sign_up').titleize
           %li.divider
           %li.dropdown-submenu
             %a{href: "#", tabindex: "-1"}= t '.more_options'
             %ul.dropdown-menu
               %li
-                = link_to (t '.log_in_as_admin'), new_admin_session_path 
+                = link_to new_admin_session_path do
+                  .fa.fa-user-secret= (t '.log_in_as_admin')
           %li.divider
           %li
-            = link_to (t '.about').titleize, about_path
+            = link_to about_path do
+              .fa.fa-question-circle-o= (t '.about').titleize 
     %ul.nav.navbar-nav.navbar-primary
       %li
         - if user_signed_in?
