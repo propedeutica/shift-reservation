@@ -20,8 +20,6 @@
           - if admin_signed_in?
             %li
               = link_to (t '.change_password').titleize, "#"
-            / %li
-            /  = link_to (t '.change_password').titleize, "#"
             %li.divider
             %li
               = link_to (t '.sign_out').titleize, destroy_admin_session_path, method: :delete
