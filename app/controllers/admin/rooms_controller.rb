@@ -1,4 +1,4 @@
-class Admin::RoomsController < Admin::AdminController
+class Admin::RoomsController < Admin::AdminIdentifiedController
   def index
     @sites_available = Shift.total_sites_available
     @rooms = Room.all

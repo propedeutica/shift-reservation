@@ -10,34 +10,23 @@
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{href: "#"} Status
+        %a{href: "#"}= user_signed_in? ? t(".signed_in").titleize: t(".not_signed_in").titleize
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
-          Usuario de Prueba
+          = user_signed_in? ? current_user.first_name : t(".not_identified")
           %b.caret
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Log_in
+            = link_to (t '.log_in').titleize, new_user_session_path
           %li
             %a{href: "#"} 
           %li
-            %a{href: "#"} Something else here
+            = link_to (t '.sign_up').titleize, new_user_registration_path
           %li.divider
           %li.dropdown-submenu
-            %a{href: "#", tabindex: "-1"} More options
+            %a{href: "#", tabindex: "-1"}= t '.more_options'
             %ul.dropdown-menu
-              %li
-                %a{href: "#"} Link
-              %li
-                %a{href: "#"} Another link
-              %li
-                %a{href: "#"} Something else here
-              %li.divider
-              %li.dropdown-header Nav header
-              %li
-                %a{href: "#"} Separated link
-              %li.divider
               %li
                 = link_to (t '.log_in_as_admin'), new_admin_session_path 
           %li.divider
@@ -45,7 +34,10 @@
             = link_to (t '.about').titleize, about_path
     %ul.nav.navbar-nav.navbar-primary
       %li
-        = link_to (t'.user_panel').titleize, "#"
+        - if user_signed_in?
+          = link_to (t'.user_panel').titleize, user_path(current_user)
+        - else
+          = link_to (t'.user_panel').titleize, "#"
       %li
         = link_to t('.offsprings').titleize, "#"
       %li

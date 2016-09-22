@@ -1,0 +1,32 @@
+- provide :title, (t'.sign_up')
+%h2= t '.sign_up'
+.container
+  = form_for(resource, as: resource_name, url: user_registration_path, format: :json) do |f|
+    %form.form-horizontal
+      = render 'form_errors', object: @user
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+      .form-group
+        = f.label :phone
+        = f.telephone_field :phone, class: 'form-control'
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{t('.characters_minimum', characters: @minimum_password_length)})
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: 'form-control'
+      .actions
+        = f.submit (t'.create'), class: "btn btn-primary btn-lg"
+  .container-fluid
+    = render "devise/shared/links"
+
