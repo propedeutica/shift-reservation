@@ -1,0 +1,26 @@
+- provide(:title, @user.first_name)
+%h1 #{User.model_name.human}: #{@user.id}
+.form
+  .form-group
+    .control-label
+      = User.human_attribute_name 'first_name'
+    .form-control{disabled: :disabled}
+      = @user.first_name
+  .form-group
+    .control-label
+      = User.human_attribute_name 'last_name'
+    .form-control{disabled: :disabled}
+      = @user.last_name
+  .form-group
+    .control-label
+      = User.human_attribute_name 'email'
+    .form-control{disabled: :disabled}
+      = @user.email
+  .form-group
+    .control-label
+      = User.human_attribute_name 'phone'
+    .form-control{disabled: :disabled}
+      = @user.phone
+%p
+  = link_to t(".edit_user"), edit_user_registration_path(@user), class: "btn btn-primary"
+

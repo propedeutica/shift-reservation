@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get 'help',  to: 'information#help'
   get 'about', to: 'information#about'
 
-  # Temporary root
-  root to: "information#about"
-
+  authenticate :user do
+    root to: "users#show"
+    resources :users, only: [:show]
+    resources :rooms, only: [:index]
+  end
   namespace :admin do
     post 'myconfig/global_lock_enable'
     post 'myconfig/global_lock_disable'

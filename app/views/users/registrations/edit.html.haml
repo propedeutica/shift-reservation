@@ -1,0 +1,45 @@
+- provide :title, "#{t'.edit'} #{@user.email}"
+%h2
+  #{t '.edit'} #{resource_name.to_s.humanize} #{@user.email}
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  %form.form-horizontal
+    = render 'form_errors', object: @user
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control', autofocus: true
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %div
+        = t '.waiting_confirmation', resource: resource.unconfirmed_email
+    .form-group
+      = f.label :first_name
+      = f.text_field :first_name, class: 'form-control'
+    .form-group
+      = f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
+    .form-group
+      = f.label :phone
+      = f.telephone_field :phone, class: 'form-control'
+    .form-group
+      = f.label :password
+      - if @minimum_password_length
+        %em
+          (#{t('.characters_minimum', characters: @minimum_password_length)})
+          %i (#{t '.leave_blank_if_you_dont_want'})
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    .form-group
+      = f.label :current_password
+      %i (#{t '.we_need_your_current_password'})
+      %br/
+      = f.password_field :current_password, class: 'form-control', autocomplete: "off"
+    .actions
+      = f.submit (t'.update'), class: "btn btn-primary btn-lg"
+.container_fluid
+  %h3= (t '.cancel_my_account').to_s
+  %p
+    = (t'.unhappy?').to_s
+    = button_to (t'.cancel_my_account'), registration_path(resource_name), class: "btn btn-danger btn-lg",
+      data: { confirm: (t'.are_you_sure?') }, method: :delete
+  = link_to (t'.back'), :back

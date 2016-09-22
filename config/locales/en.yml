@@ -32,6 +32,7 @@ en:
       info:                  "information"
       signed_in:             "signed in"
       not_signed_in:         "identification needed"
+      not_identified:        "User"
       change_password:       "change password"
       sign_out:              "sign_out"
       admins:                "Administrators"
@@ -43,7 +44,15 @@ en:
       help:                  "help"
       about:                 "about"
       info:                  "information"
-      log_in_as_admin:       "Log-in as an adminsitrator"
+      log_in:                "Log in"
+      log_in_as_admin:       "Log in as an administrator"
+      more_options:          "More options"
+      signed_in:             "signed in"
+      sign_up:               "Sign up"
+      not_signed_in:         "identification needed"
+      not_identified:        "User"
+      change_password:       "change password"
+      sign_out:              "sign_out"
   admin:
     myconfig:
       global_lock_switch:
@@ -93,7 +102,27 @@ en:
         log_in:                 "Log in"
         welcome:                "Welcome to Shift Reservation | Admin interface"
         welcome-text:           "This interface will allow only admins to sign in"
-        remember_username:      "Remember user"
+        remember_username:      "Remember admin"
+  users:
+    registrations:
+      new:
+        sign_up:               "Sign up"
+        remember_username:     "Remember user"
+        characters_minimum:    "characters minimum"
+        create:                "Create"
+      edit:
+        edit:                          "Edit"
+        waiting_confirmation:          "Currently waiting confirmation for: %{resource}"
+        leave_blank_if_you_dont_want:  "Leave blank if you don't want to change it"
+        characters_minimum:            "%{characters} characters minimum"
+        we_need_your_current_password: "we need your current password to confirm your changes"
+        update:                        "Update"
+        cancel_my_account:             "Cancel my account"
+        unhappy?:                      "Unhappy?"
+        are_you_sure?:                 "Are you sure?"
+        back:                          "Back"
+    show:
+      edit_user:             "Edit user"
   application:
     name:                   "Shift Reservation"
     about:                  "about"

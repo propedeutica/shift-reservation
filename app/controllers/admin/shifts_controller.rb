@@ -1,4 +1,4 @@
-class Admin::ShiftsController < Admin::AdminController
+class Admin::ShiftsController < Admin::AdminIdentifiedController
   def show
     @shift = Shift.find_by_id(params[:id])
     if @shift.nil?
