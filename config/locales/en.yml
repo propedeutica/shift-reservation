@@ -84,7 +84,7 @@ en:
         refresh:               "refresh"
         space_available:       "space available"
     rooms:
-      room:                     
+      room:
         room:                      "Room"
         available:                "Available"
         occupied:                 "Occupied"
@@ -223,3 +223,15 @@ en:
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is to long (maximum is %{count} characters)"
               invalid:            "is invalid"
+        admin:
+          attributes:
+            email:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
+              invalid:            "is invalid"
+              duplicated:         "has already been taken"
+            password:
+              blank:              "can't be blank"
+              too_short:          "is too short (minimum is %{count} characters)"
+              too_long:           "is to long (maximum is %{count} characters)"
