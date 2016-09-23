@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index]
   end
   namespace :admin do
+    resources :users, only: [:index, :show]
     post 'myconfig/global_lock_enable'
     post 'myconfig/global_lock_disable'
     post 'myconfig/global_lock_switch'

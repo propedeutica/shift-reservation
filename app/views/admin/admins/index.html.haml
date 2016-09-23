@@ -1,10 +1,11 @@
+- provide :title, (t '.admins').to_s
 %table.datatable.table.table-striped.table-bordered
   %thead
     %tr
-      %th ID
-      %th Email
-      %th Created at
-      %th Updated at
+      %th= Admin.human_attribute_name('id')
+      %th= Admin.human_attribute_name('email')
+      %th= Admin.human_attribute_name('created_at')
+      %th= Admin.human_attribute_name('updated_at')
   %tbody
     = render @admins
 
