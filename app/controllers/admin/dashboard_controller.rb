@@ -6,5 +6,6 @@ class Admin::DashboardController < Admin::AdminIdentifiedController
     @total_sites_available = Shift.total_sites_available
     @total_capacity = Shift.total_capacity
     @number_of_admins = Admin.count
+    @number_of_users = User.count
   end
 end
