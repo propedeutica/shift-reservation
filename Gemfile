@@ -35,7 +35,7 @@ group :development, :test do
   gem 'minitest',  require: false
   gem 'byebug', platform: :mri
   gem 'rspec-rails',              '~> 3.5'
-  gem 'capybara',                 "~>2.8.0"
+  gem 'capybara',                 "~>2.9.0"
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'faker'
