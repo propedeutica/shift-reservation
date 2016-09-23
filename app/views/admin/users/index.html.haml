@@ -1,0 +1,20 @@
+- provide :title, (t '.users').to_s
+%table.datatable.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th= User.human_attribute_name('id')
+      %th= User.human_attribute_name('first_name')
+      %th= User.human_attribute_name('last_name')
+      %th= User.human_attribute_name('phone')
+      %th= User.human_attribute_name('email')
+      %th= User.human_attribute_name('created_at')
+      %th= User.human_attribute_name('updated_at')
+  %tbody
+    = render @users
+
+- content_for :javascripts do
+  :javascript
+    // Initialize Datatables
+    $(document).ready(function() {
+      $('.datatable').dataTable();
+    });
