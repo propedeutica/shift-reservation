@@ -102,6 +102,8 @@ en:
     shifts:
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
+      show:
+        shift_not_found:              "We couldn't find the shift"
   admins:
     sessions:
       new:

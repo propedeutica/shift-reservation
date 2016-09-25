@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
   # Validates name
-  validates :first_name, presence: true, length: { within: 3..60 }
+  validates :first_name, presence: true, length: { within: 2..60 }
   validates :last_name, presence: true, length: { within: 2..60 }
   # Validating phone numbers
   VALID_TELEPHONE_REGEX = /\A(\+\d\d|00\d\d)?\d{9}\z/

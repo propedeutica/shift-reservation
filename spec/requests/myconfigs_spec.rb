@@ -32,9 +32,29 @@ RSpec.describe "Myconfigs", type: :request do
     end
   end
   context "when authenticated as user" do
-    pending "does not enable lock"
-    pending "does not disable lock"
-    pending "does not switch lock"
+    let(:user) { FactoryGirl.create(:user) }
+    after(:each) do
+      Warden.test_reset!
+    end
+
+    it "does not enable lock" do
+      login_as(user, scope: :user)
+      Myconfig.instance.global_lock = false
+      expect { post admin_myconfig_global_lock_enable_path }.to_not change { Myconfig.global_lock? }
+      expect(response).to redirect_to new_admin_session_path
+    end
+    it "does not disable lock" do
+      login_as(user, scope: :user)
+      Myconfig.instance.global_lock = true
+      expect { post admin_myconfig_global_lock_disable_path }.to_not change { Myconfig.global_lock? }
+      expect(response).to redirect_to new_admin_session_path
+    end
+    it "does not switch lock" do
+      login_as(user, scope: :user)
+      Myconfig.instance.global_lock = false
+      expect { post admin_myconfig_global_lock_switch_path }.to_not change { Myconfig.global_lock? }
+      expect(response).to redirect_to new_admin_session_path
+    end
   end
   context "when not authenticated" do
     let(:admin) { FactoryGirl.create(:admin) }
@@ -46,10 +66,19 @@ RSpec.describe "Myconfigs", type: :request do
     end
 
     it "does not enable lock" do
-      post admin_myconfig_global_lock_enable_path
+      Myconfig.instance.global_lock = false
+      expect { post admin_myconfig_global_lock_enable_path }.to_not change { Myconfig.global_lock? }
       expect(response).to redirect_to new_admin_session_path
     end
-    pending "does not disable lock"
-    pending "does not switch lock"
+    it "does not disable lock" do
+      Myconfig.instance.global_lock = true
+      expect { post admin_myconfig_global_lock_disable_path }.to_not change { Myconfig.global_lock? }
+      expect(response).to redirect_to new_admin_session_path
+    end
+    it "does not switch lock" do
+      Myconfig.instance.global_lock = false
+      expect { post admin_myconfig_global_lock_switch_path }.to_not change { Myconfig.global_lock? }
+      expect(response).to redirect_to new_admin_session_path
+    end
   end
 end
