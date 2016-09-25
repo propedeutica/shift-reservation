@@ -16,9 +16,9 @@ RSpec.describe User, type: :model do
   end
 
   it "is invalid with a first name too short" do
-    user.first_name = "aa"
+    user.first_name = "a"
     user.valid?
-    expect(user.errors[:first_name]).to include(I18n.t('first_name.too_short', count: 3, scope: active_record_user))
+    expect(user.errors[:first_name]).to include(I18n.t('first_name.too_short', count: 2, scope: active_record_user))
   end
 
   it "is invalid with a first name too long" do
