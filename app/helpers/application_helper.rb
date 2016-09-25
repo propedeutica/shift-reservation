@@ -16,7 +16,7 @@ module ApplicationHelper
     case messageType
     when "default", "primary" then "alert alert-info"
     when "notice", "success" then "alert alert-success"
-    when "alert", "warning" then "alert alert-warning"
+    when "error", "alert", "warning", "danger" then "alert alert-warning"
     else "alert alert-#{messageType}"
     end
   end
@@ -27,7 +27,7 @@ module ApplicationHelper
     when "info" then "pficon pficon-info"
     when "notice", "success" then "pficon pficon-ok"
     when "warning" then "pficon pficon-warning-triangle-o"
-    when "alert", "danger" then "pficon pficon-error-circle-o"
+    when "error", "alert", "danger" then "pficon pficon-error-circle-o"
     end
   end
 

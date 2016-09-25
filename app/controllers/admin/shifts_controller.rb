@@ -3,6 +3,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @shift = Shift.find_by_id(params[:id])
     if @shift.nil?
       redirect_to admin_rooms_path
+      flash[:alert] = (t ".shift_not_found")
     end
   end
 
