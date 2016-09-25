@@ -53,3 +53,11 @@ FactoryGirl.create(:shift, start_time: "17:15", end_time: "18:00", day_of_week: 
 FactoryGirl.create(:shift, start_time: "17:15", end_time: "18:00", day_of_week: 4, sites_reserved: 0, room: r)
 FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 0, sites_reserved: 0, room: r)
 FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 1, sites_reserved: 0, room: r)
+
+#
+# Users
+#
+
+100.times do
+  FactoryGirl.create(:user)
+end

@@ -90,6 +90,15 @@ en:
     users:
       index:
         users:               "Users"
+      show:
+        edit_user:           "Edit user"
+      edit:
+        edit:                         "Edit"
+        we_need_your_admin_password:  "We need your admin password to delete the account"
+        update:                       "Update"
+        delete_the_account:           "Delete the account"
+        are_you_sure?:                "Are you sure?"
+        back:                         "Back"
     rooms:
       room:
         room:                      "Room"
