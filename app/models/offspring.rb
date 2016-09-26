@@ -1,0 +1,2 @@
+class Offspring < ApplicationRecord
+end
