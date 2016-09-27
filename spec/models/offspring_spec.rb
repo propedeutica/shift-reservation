@@ -9,56 +9,18 @@ RSpec.describe Offspring, type: :model do
     expect(subject).to be_a_kind_of described_class
   end
 
-  it "should identify its parent class" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "should not exist without parent" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "subclass must be able to identify with is parent class" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "subclass must be able to identify its class" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "always has a parent associated to it" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "deletes all child classes when parent class destroyed" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "has config in yaml for the type of kids they have" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "has all attributes validated" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "courses are defined with an enum" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
-
-  it "has a max and min age definde in config yaml file" do
-    pending("something else getting finished")
-    this_should_not_get_executed
-  end
+  pending("should identify its parent class")
+  pending("should not exist without parent")
+  pending("subclass must be able to identify with is parent class")
+  pending("subclass must be able to identify its class")
+  pending("always has a parent associated to it")
+  pending("deletes all child classes when parent class destroyed")
+  pending("has config in yaml for the type of kids they have")
+  pending("has all attributes validated")
+  pending("courses are defined with an enum")
+  pending("has a max and min age definde in config yaml file")
 end
+
 describe "validating attribute first_name " do
   it "should be required" do
     blank = Factory.build(:offspring, first_name: "")
