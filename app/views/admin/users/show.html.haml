@@ -1,2 +1,39 @@
-%h1 Admin::Users#show
-%p Find me in app/views/admin/users/show.html.haml
+- provide(:title, @user.first_name)
+%h1 #{User.model_name.human}: #{@user.id}
+.form
+  .form-group
+    .control-label
+      = User.human_attribute_name 'first_name'
+    .form-control{disabled: :disabled}
+      = @user.first_name
+  .form-group
+    .control-label
+      = User.human_attribute_name 'last_name'
+    .form-control{disabled: :disabled}
+      = @user.last_name
+  .form-group
+    .control-label
+      = User.human_attribute_name 'email'
+    .form-control{disabled: :disabled}
+      = @user.email
+  .form-group
+    .control-label
+      = User.human_attribute_name 'phone'
+    .form-control{disabled: :disabled}
+      = @user.phone
+  .form-group
+    .control-label
+      = User.human_attribute_name 'created_at'
+    .form-control{disabled: :disabled}
+      = l @user.created_at
+  .form-group
+    .control-label
+      = User.human_attribute_name 'udpated_at'
+    .form-control{disabled: :disabled}
+      = l @user.updated_at
+%p
+  = link_to t(".edit_user"), edit_admin_user_path(@user), class: "btn btn-primary"
+
+.container
+  Puts offspring here
+  /= render @user

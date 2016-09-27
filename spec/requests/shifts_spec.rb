@@ -45,16 +45,38 @@ RSpec.describe "Shifts", type: :request do
 
     it "#update should show the edit template for shift" do
       login_as(admin, scope: :admin)
-      patch "/admin/shifts/#{shift.id}", id: shift.to_param, shift: { day_of_week: 2 }
+      patch "/admin/shifts/#{shift.id}", params: { id: shift.to_param, shift: { day_of_week: 2 }}
       expect(response).to redirect_to admin_shift_path(shift.to_param)
       expect(controller.params[:id]).to eq(shift.to_param)
       expect(controller.params[:action]).to eq("update")
     end
 
-    pending"#new" do
+    it "#new" do
       login_as(admin, scope: :admin)
       get new_admin_room_shift_path(room)
-      raise "expect new shit object assigned to room"
+      expect(response).to have_http_status(200)
+      expect(controller.params[:room_id]).to eq(room.id.to_s)
+      expect(controller.params[:action]).to eq('new')
+    end
+
+    it "creates a shift" do
+      login_as(admin, scope: :admin)
+      expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) } }
+        .to change(Shift, :count).by(1)
+    end
+
+    it "deletes a shift" do
+      login_as(admin, scope: :admin)
+      shift
+      expect { delete admin_shift_path(shift) }.to change(Shift, :count).by(-1)
+    end
+
+    pending "does not create a shift with wrong strong_parameters" do
+      login_as(admin, scope: :admin)
+      room
+      myshift = spy(:create)
+      post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) }
+      expect(myshift).to receive(:create).with(an_instance_of(Shift))
     end
   end
 
@@ -97,7 +119,21 @@ RSpec.describe "Shifts", type: :request do
     end
     it "#update should show the edit template for shift" do
       login_as(user, scope: :user)
-      patch "/admin/shifts/#{shift.id}", id: shift.to_param, shift: { day_of_week: 2 }
+      patch "/admin/shifts/#{shift.id}", params: { id: shift.to_param, shift: { day_of_week: 2 }}
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it "does not create a shift" do
+      login_as(user, scope: :user)
+      expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) } }
+        .not_to change(Shift, :count)
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it "does not delete a shift" do
+      login_as(user, scope: :user)
+      shift
+      expect { delete admin_shift_path(shift) }.not_to change(Shift, :count)
       expect(response).to redirect_to(new_admin_session_path)
     end
   end
@@ -133,7 +169,19 @@ RSpec.describe "Shifts", type: :request do
       expect(response).to redirect_to(new_admin_session_path)
     end
     it "#update should show the edit template for shift" do
-      patch "/admin/shifts/#{shift.id}", id: shift.to_param, shift: { day_of_week: 2 }
+      patch "/admin/shifts/#{shift.id}", params: { id: shift.to_param, shift: { day_of_week: 2 }}
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it "does not create a shift" do
+      expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) } }
+        .not_to change(Shift, :count)
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it "does not delete a shift" do
+      shift
+      expect { delete admin_shift_path(shift) }.not_to change(Shift, :count)
       expect(response).to redirect_to(new_admin_session_path)
     end
   end

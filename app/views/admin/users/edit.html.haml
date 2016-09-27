@@ -1,0 +1,36 @@
+- provide :title, "#{t'.edit'} #{@user.email}"
+%h2
+  #{t '.edit'} #{@user.first_name} #{@user.last_name} <#{@user.email}>
+= form_for(@user, url: admin_user_path(@user), html: { method: :put }) do |f|
+  %form.form-horizontal
+    = render 'form_errors', object: @user
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control', autofocus: true
+    .form-group
+      = f.label :first_name
+      = f.text_field :first_name, class: 'form-control'
+    .form-group
+      = f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
+    .form-group
+      = f.label :phone
+      = f.telephone_field :phone, class: 'form-control'
+    .form-group
+      = f.label :password
+      - if @minimum_password_length
+        %em
+          (#{t('.characters_minimum', characters: @minimum_password_length)})
+          %i (#{t '.leave_blank_if_you_dont_want'})
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    .actions
+      = f.submit (t'.update'), class: "btn btn-primary btn-lg"
+.container_fluid
+  %h3= (t '.delete_the_account').to_s
+  %p
+    = button_to (t'.delete_the_account'), admin_user_path(@user), class: "btn btn-danger btn-lg",
+      data: { confirm: (t'.are_you_sure?') }, method: :delete
+  = link_to (t'.back'), :back
