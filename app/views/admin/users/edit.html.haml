@@ -1,7 +1,7 @@
 - provide :title, "#{t'.edit'} #{@user.email}"
 %h2
   #{t '.edit'} #{@user.first_name} #{@user.last_name} <#{@user.email}>
-= form_for(@user, url: edit_admin_user_path(@user), html: { method: :put }) do |f|
+= form_for(@user, url: admin_user_path(@user), html: { method: :put }) do |f|
   %form.form-horizontal
     = render 'form_errors', object: @user
     .form-group

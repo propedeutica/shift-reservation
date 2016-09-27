@@ -99,6 +99,14 @@ en:
         delete_the_account:           "Delete the account"
         are_you_sure?:                "Are you sure?"
         back:                         "Back"
+      update:
+        user_updated:                 "User %{user} has been updated"
+        user_not_updated:             "User %{user} could not be updated"
+        admin_password_needed:        "You need to include your admin password"
+      destroy:
+        user_deleted:                 "User %{user} has been deleted"
+        user_not_deleted:             "User %{user} could not be deleted"
+        admin_password_needed:        "You need to add your admin password"
     rooms:
       room:
         room:                      "Room"
