@@ -13,14 +13,9 @@ class Admin::UsersController < Admin::AdminIdentifiedController
 
   def update
     @user = User.find(params[:id])
-    admin_password = params[:user][:current_password]
-    params[:user].delete :current_password
-    params[:user].delete(:password) if params[:user][:password].blank?
-    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
-    if !current_admin&.valid_password? admin_password
-      flash[:danger] = (t ".admin_password_needed")
-      render 'edit'
-    elsif @user.update_attributes(users_params)
+    delete_password_params!
+
+    if @user.update_attributes(users_params)
       flash[:success] = (t ".user_updated", user: @user.email)
       redirect_to admin_user_path(@user)
     else
@@ -44,5 +39,12 @@ class Admin::UsersController < Admin::AdminIdentifiedController
 
   def users_params
     params.require(:user).permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
+  end
+
+  def delete_password_params!
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
   end
 end

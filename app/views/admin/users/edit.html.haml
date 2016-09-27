@@ -26,11 +26,6 @@
     .form-group
       = f.label :password_confirmation
       = f.password_field :password_confirmation, class: 'form-control'
-    .form-group
-      = f.label :current_password
-      %i (#{t '.we_need_your_admin_password'})
-      %br/
-      = f.password_field :current_password, class: 'form-control', autocomplete: "off"
     .actions
       = f.submit (t'.update'), class: "btn btn-primary btn-lg"
 .container_fluid
