@@ -54,7 +54,7 @@ An offspring can only be assigned to a shift in a single room. Trying to add ano
 ## Getting started
 ### Prerequisites
 - [**Git**] (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [**Ruby 2.2.2 or newer and Rails 5**] (http://guides.rubyonrails.org/getting_started.html#installing-rails)
+- [**Ruby 2.3.1 or newer and Rails 5**] (http://guides.rubyonrails.org/getting_started.html#installing-rails)
 - [**Bower**] (https://bower.io/#install-bower)
 
 ### Get the Rails environment up and running
@@ -65,7 +65,7 @@ $ rails s              # Application starting in development
 ```
 - Using your favorite browser, go to [http://localhost:3000] (http://localhost:3000)
 
-You can also install dependencies and database manually. If you choose this way, you should install `bower` before starting application.
+You can also install dependencies and database manually. If you choose this way, you should install `bower` before starting the application, and don't forget to update it when necessary.
 ```bash
 $ bower install     
 ```
