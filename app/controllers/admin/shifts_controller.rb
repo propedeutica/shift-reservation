@@ -16,10 +16,10 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @room = Room.find_by_id(params[:room_id])
     @shift = @room.shifts.build(shifts_params)
     if @shift.save
-      flash[:success] = (t "application.models.shift.shift_added").capitalize
+      flash[:success] = (t ".shift_added", shift: @shift.id)
       redirect_to admin_rooms_path
     else
-      flash[:danger] = (t "application.models.shift.shift_not_added").capitalize
+      flash[:alert] = (t ".shift_not_added")
       render 'new'
     end
   end
@@ -33,10 +33,10 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     @shift = Shift.find(params[:id])
     @room = @shift.room
     if @shift.update_attributes(shifts_params)
-      flash[:success] = (t "application.models.shift.shift_updated").capitalize
+      flash[:success] = (t ".shift_updated")
       redirect_to admin_shift_path(@shift)
     else
-      flash[:danger] = (t "application.models.shift.shift_not_updated").capitalize
+      flash[:alert] = (t ".shift_not_updated")
       render 'edit'
     end
   end
@@ -44,15 +44,19 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
   def destroy
     @shift = Shift.find_by_id(params["id"])
     if @shift&.destroy
-      flash[:success] = (t "application.models.shift.shift_deleted").capitalize
+      flash[:success] = (t ".shift_deleted", shift: @shift.id)
     else
-      flash[:danger] = (t "application.models.shift.shift_delete_error").capitalize
+      flash[:alert] = (t ".shift_not_deleted")
     end
     redirect_to admin_rooms_path
   end
 
   def destroy_all
-    Shift.destroy_all
+    if Shift.destroy_all
+      flash[:success] = (t ".shift_destroy_all")
+    else
+      flash[:alert] = (t ".shift_destroy_all_error")
+    end
     redirect_to admin_dashboard_path
   end
 

@@ -102,11 +102,9 @@ en:
       update:
         user_updated:                 "User %{user} has been updated"
         user_not_updated:             "User %{user} could not be updated"
-        admin_password_needed:        "You need to include your admin password"
       destroy:
         user_deleted:                 "User %{user} has been deleted"
         user_not_deleted:             "User %{user} could not be deleted"
-        admin_password_needed:        "You need to add your admin password"
     rooms:
       room:
         room:                      "Room"
@@ -119,8 +117,23 @@ en:
     shifts:
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
+      update:
+        shift_updated:        "Shift updated succesfully"
+        shift_not_updated:    "There was an error updating the shift"
       show:
-        shift_not_found:              "We couldn't find the shift"
+        shift_not_found:      "We couldn't find the shift"
+        shift_not_added:      "Shift could not be added"
+      create:
+        shift_added:          "Shift %{shift} added"
+        shift_not_added:      "Shift could not be added"
+      destroy:
+        shift_deleted:        "Shift %{shift} has been deleted"
+        shift_not_deleted :   "There has been an error deleting the shift"
+      destroy_all:
+        shift_destroy_all:    "All Shifts has been deleted"
+        shift_destroy_all_error: "There was an error trying to delete all shifts"
+
+
   admins:
     sessions:
       new:
@@ -192,12 +205,6 @@ en:
         day_of_week:     "day of week"
         start_time:      "start time"
         end_time:        "end time"
-        shift_not_added: "shift could not be added"
-        shift_added:     "shift added"
-        shift_deleted:   "shift has been deleted"
-        shift_delete_error: "there has been an error deleting the shift"
-        shift_updated:      "shift updated succesfully"
-        shift_not_updated:  "there was an error updating the shift"
         redirect_to_index:  "go back"
         cancel_edit_shift:  "cancel"
   week:
