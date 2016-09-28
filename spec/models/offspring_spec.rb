@@ -5,7 +5,7 @@ RSpec.describe Offspring, type: :model do
     it "should be required" do
       blank = Factory.build(:offspring, first_name: "")
       blank.should_not be_valid
-      blank.errors[:first_name].should include("can't be blank")
+      blank.errors.generate_message(:first_name, :blank)
       blank.name = "Foo"
       blank.should be_valid
     end
@@ -30,7 +30,7 @@ RSpec.describe Offspring, type: :model do
     it "should be required" do
       blank = Factory.build(:offspring, last_name: "")
       blank.should_not be_valid
-      blank.errors[:last_name].should include("can't be blank")
+      blank.errors.generate_message(:last_name, :blank)
       blank.name = "Foo"
       blank.should be_valid
     end
