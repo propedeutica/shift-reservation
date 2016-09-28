@@ -1,0 +1,2 @@
+class GradedOffspring < Offspring
+end

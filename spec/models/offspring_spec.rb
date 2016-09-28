@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Offspring, type: :model do
   describe "validating attribute first_name " do
     it "should be required" do
-      blank = Factory.build(:offspring, first_name: "")
+      blank = FactoryGirl.build(:offspring, first_name: "")
       blank.should_not be_valid
       blank.errors.generate_message(:first_name, :blank)
       blank.name = "Foo"
@@ -11,7 +11,7 @@ RSpec.describe Offspring, type: :model do
     end
 
     it "should be longer than 1 character" do
-      too_short = Factory.build(:offspring, first_name: 'a')
+      too_short = FactoryGirl.build(:offspring, first_name: 'a')
       too_short.should_not be_valid
       too_short.errors[:first_name].should include("is too short (minimum is 2 characters)")
       too_short.name = 'aa'
@@ -19,7 +19,7 @@ RSpec.describe Offspring, type: :model do
     end
 
     it "should be shorter than 101 characters" do
-      too_long = Factory.build(:offspring, first_name: 'a' * 101)
+      too_long = FactoryGirl.build(:offspring, first_name: 'a' * 101)
       too_long.should_not be_valid
       too_long.errors[:first_name].should include("is too long (maximum is 100 characters)")
       too_long.name = 'a' * 100
@@ -28,7 +28,7 @@ RSpec.describe Offspring, type: :model do
   end
   describe "validating attribute last_name " do
     it "should be required" do
-      blank = Factory.build(:offspring, last_name: "")
+      blank = FactoryGirl.build(:offspring, last_name: "")
       blank.should_not be_valid
       blank.errors.generate_message(:last_name, :blank)
       blank.name = "Foo"
@@ -36,7 +36,7 @@ RSpec.describe Offspring, type: :model do
     end
 
     it "should be longer than 1 character" do
-      too_short = Factory.build(:offspring, last_name: 'a')
+      too_short = FactoryGirl.build(:offspring, last_name: 'a')
       too_short.should_not be_valid
       too_short.errors[:last_name].should include("is too short (minimum is 2 characters)")
       too_short.name = 'aa'
@@ -44,7 +44,7 @@ RSpec.describe Offspring, type: :model do
     end
 
     it "should be shorter than 101 characters" do
-      too_long = Factory.build(:offspring, last_name: 'a' * 101)
+      too_long = FactoryGirl.build(:offspring, last_name: 'a' * 101)
       too_long.should_not be_valid
       too_long.errors[:last_name].should include("is too long (maximum is 100 characters)")
       too_long.name = 'a' * 100
