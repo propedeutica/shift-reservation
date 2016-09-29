@@ -11,30 +11,38 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
 
   def edit
     @room = Room.find_by_id(params[:id])
+    if @room.nil?
+      flash[:alert] = (t ".room_not_found")
+      redirect_to admin_rooms_path
+    end
   end
 
   def create
     @room = Room.new(rooms_params)
     if @room.save
-      flash[:success] = (t 'application.models.room.room_added').capitalize
+      flash[:success] = (t '.room_added')
       redirect_to admin_room_path @room
     else
-      flash[:error] = (t 'application.models.room.room_not_added').capitalize
+      flash[:alert] = (t '.room_not_added')
       render 'new'
     end
   end
 
   def show
     @room = Room.find_by_id(params[:id])
+    if @room.nil?
+      flash[:alert] = (t ".room_not_found")
+      redirect_to admin_rooms_path
+    end
   end
 
   def update
     @room = Room.find_by_id(params[:id])
-    if @room.update_attributes(rooms_params)
-      flash[:success] = (t "application.models.room.room_updated").capitalize
+    if @room&.update_attributes(rooms_params)
+      flash[:success] = (t ".room_updated")
       redirect_to admin_room_path @room
     else
-      flash[:danger] = (t "application.models.room.room_not_updated").capitalize
+      flash[:alert] = (t ".room_not_updated")
       render 'edit'
     end
   end
@@ -42,15 +50,19 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
   def destroy
     @room = Room.find_by_id(params["id"])
     if @room&.destroy
-      flash[:success] = (t "application.models.room.room_deleted").capitalize
+      flash[:success] = (t ".room_deleted", room: @room.name)
     else
-      flash[:danger] = (t "application.models.room.room_delete_error").capitalize
+      flash[:alert] = (t ".room_not_deleted")
     end
     redirect_to admin_rooms_path
   end
 
   def destroy_all
-    Room.destroy_all
+    if Room.destroy_all
+      flash[:success] = (t ".rooms_destroy_all")
+    else
+      flash[:alert] = (t ".rooms_destroy_all_error")
+    end
     redirect_to admin_dashboard_path
   end
 

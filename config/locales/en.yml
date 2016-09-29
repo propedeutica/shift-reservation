@@ -107,16 +107,32 @@ en:
         user_not_deleted:             "User %{user} could not be deleted"
     rooms:
       room:
-        room:                      "Room"
+        room:                     "Room"
         available:                "Available"
         occupied:                 "Occupied"
       add_shift:
         irreversible:           "Are you sure? The following action can not be undone"
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
+        room_not_found:         "We couldn't find the room"
+      destroy:
+        room_deleted:           "Room %{room} has been deleted"
+        room_not_deleted:      "There has been an error deleting the room"
+      destroy_all:
+        rooms_destroy_all:      "All Rooms have been deleted"
+        rooms_destroy_all_error: "There was an error trying to delete all rooms"
+      show:
+        room_not_found:         "We couldn't find the room"
+      update:
+        room_updated:        "Room updated succesfully"
+        room_not_updated:    "There was an error updating the room"
+      create:
+        room_added:          "Room #{room} added"
+        room_not_added:      "There was an error adding the room"
     shifts:
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
+        shift_not_found:        "We couldn't find the shift"
       update:
         shift_updated:        "Shift updated succesfully"
         shift_not_updated:    "There was an error updating the shift"
@@ -130,10 +146,8 @@ en:
         shift_deleted:        "Shift %{shift} has been deleted"
         shift_not_deleted :   "There has been an error deleting the shift"
       destroy_all:
-        shift_destroy_all:    "All Shifts has been deleted"
+        shift_destroy_all:    "All Shifts have been deleted"
         shift_destroy_all_error: "There was an error trying to delete all shifts"
-
-
   admins:
     sessions:
       new:
