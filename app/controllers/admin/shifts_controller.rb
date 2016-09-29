@@ -14,7 +14,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
 
   def create
     @room = Room.find_by_id(params[:room_id])
-    @shift = @room.shifts.build(shifts_params)
+    @shift = @room.shifts.new(shifts_params)
     if @shift.save
       flash[:success] = (t ".shift_added", shift: @shift.id)
       redirect_to admin_rooms_path
@@ -26,13 +26,17 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
 
   def edit
     @shift = Shift.find_by_id(params[:id])
-    @room = @shift.room
+    if @shift.nil?
+      flash[:alert] = (t ".shift_not_found")
+      redirect_to admin_rooms_path
+    end
+    @room = @shift&.room
   end
 
   def update
     @shift = Shift.find(params[:id])
     @room = @shift.room
-    if @shift.update_attributes(shifts_params)
+    if @shift&.update_attributes(shifts_params)
       flash[:success] = (t ".shift_updated")
       redirect_to admin_shift_path(@shift)
     else

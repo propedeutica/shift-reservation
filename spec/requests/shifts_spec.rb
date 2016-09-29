@@ -15,9 +15,10 @@ RSpec.describe "Shifts", type: :request do
       login_as(admin, scope: :admin)
       get admin_shift_path(shift)
       expect(response).to have_http_status(200)
+      expect(response.body).to include(shift.start_time)
     end
 
-    it "DESTROY ALL" do
+    it "can destroy all" do
       login_as(admin, scope: :admin)
       shift
       expect { get admin_shifts_destroy_all_path }.to change(Shift, :count).from(1).to(0)
@@ -53,7 +54,15 @@ RSpec.describe "Shifts", type: :request do
       expect(controller.params[:action]).to eq("edit")
     end
 
-    it "#update should show the edit template for shift" do
+    it "#edit shows flash and redirect if shift is not right" do
+      login_as(admin, scope: :admin)
+      get edit_admin_shift_path(100)
+      expect(response).to redirect_to admin_rooms_path
+      expect(controller.params[:action]).to eq("edit")
+      expect(flash[:alert]).to eq I18n.t('admin.shifts.edit.shift_not_found')
+    end
+
+    it "#update should show update via post" do
       login_as(admin, scope: :admin)
       patch "/admin/shifts/#{shift.id}", params: { id: shift.to_param, shift: { day_of_week: 2 }}
       expect(response).to redirect_to admin_shift_path(shift.to_param)
@@ -75,6 +84,13 @@ RSpec.describe "Shifts", type: :request do
       expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) } }
         .to change(Shift, :count).by(1)
       expect(flash[:success]).to eq I18n.t("admin.shifts.create.shift_added", shift: Shift.last.id)
+    end
+
+    it "can't create a shift with errors" do
+      login_as(admin, scope: :admin)
+      myparams = { shift: FactoryGirl.attributes_for(:shift, room: room, day_of_week: 11) }
+      expect { post admin_room_shifts_path(room), params: myparams }.to_not change(Shift, :count)
+      expect(flash[:alert]).to eq I18n.t("admin.shifts.create.shift_not_added")
     end
 
     it "does not #update a shift with errors" do
@@ -104,10 +120,9 @@ RSpec.describe "Shifts", type: :request do
     pending "does not create a shift with wrong strong_parameters" do
       login_as(admin, scope: :admin)
       room
-      myshift = spy(:create)
-      post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) }
-      expect(myshift).to receive(:create).with(an_instance_of(Shift))
-      expect(flash[:success]).to eq I18n.t("admin.shifts.create.shift_added", shift: shift.id)
+      expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, admin: true) } }
+        .to_not change(Shift, :count)
+      expect(flash[:alert]).to eq I18n.t("admin.shifts.create.shift_not_added", shift: shift.id)
     end
   end
 
