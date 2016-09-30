@@ -6,7 +6,6 @@ RSpec.describe Offspring, type: :model do
   after(:each) do
     Warden.test_reset!
   end
-  
   describe "validating attribute first_name " do
     it "is invalid without first_name" do
       off = FactoryGirl.build(:offspring, first_name: "")
