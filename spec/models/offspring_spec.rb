@@ -61,4 +61,5 @@ RSpec.describe Offspring, type: :model do
   pending("has config in yaml for the type of kids they have")
   pending("has all attributes validated")
   pending("courses are defined with an enum")
+  pending("has a max and min age definde in config yaml file")
 end
