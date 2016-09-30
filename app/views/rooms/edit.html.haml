@@ -1,11 +1,11 @@
 - provide(:title, (t 'application.models.room.edit_room').to_s)
-%h1 = (t 'application.models.room.edit_room').titleize
+%h1 = (t 'application.models.room.edit_room')
 = form_for @room do |f|
   = render 'form_errors', object: @room
   .form
     = render 'room_form', f: f
     .form-group.actions
       .col-sm-offset-2.col-sm-10
-        = link_to (t "application.models.room.delete_room").titleize, room_path(@room), class: "btn btn-danger btn-lg", method: :delete
-        = f.submit t("application.models.room.edit_room").titleize, class: "btn btn-primary btn-lg"
-        = link_to (t "application.models.room.cancel_action").titleize, rooms_path, class: "btn btn-lg btn-default"
+        = link_to (t "application.models.room.delete_room"), room_path(@room), class: "btn btn-danger btn-lg", method: :delete
+        = f.submit t("application.models.room.edit_room"), class: "btn btn-primary btn-lg"
+        = link_to (t "application.models.room.cancel_action"), rooms_path, class: "btn btn-lg btn-default"

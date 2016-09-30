@@ -25,6 +25,6 @@
   .form-group.row
     .col-sm-6
       = f.label :sites_reserved
-      (#{(t 'application.models.shift.sites_available').titleize}: #{@shift.sites_available})
+      (#{(t 'application.models.shift.sites_available')}: #{@shift.sites_available})
     .col-sm-12
       = f.number_field :sites_reserved, class: 'form-control'

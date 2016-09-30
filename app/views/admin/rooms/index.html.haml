@@ -1,8 +1,8 @@
 - provide(:title, (t 'application.models.room.room_index').to_s)
-%h1= (t 'application.models.room.room_index').titleize
+%h1= (t 'application.models.room.room_index')
 = render "add_room"
 .row
-  %h2= (t "application.models.room.there_are_no_rooms_yet").titleize if @rooms.empty?
+  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms.empty?
   = render @rooms
 = render "add_room"
 

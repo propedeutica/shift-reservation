@@ -10,7 +10,7 @@
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{href: "#"}= user_signed_in? ? t(".signed_in").titleize: t(".not_signed_in")
+        %a{href: "#"}= user_signed_in? ? t(".signed_in"): t(".not_signed_in")
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
@@ -38,7 +38,7 @@
           %li.divider
           %li
             = link_to about_path do
-              .fa.fa-question-circle-o= (t '.about').titleize 
+              .fa.fa-question-circle-o= (t '.about') 
     %ul.nav.navbar-nav.navbar-primary
       %li
         - if user_signed_in?
@@ -53,7 +53,7 @@
           = link_to t('.rooms'), "#"
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          = (t ".help").titleize
+          = (t ".help")
           %b.caret
           %ul.dropdown-menu
             %li

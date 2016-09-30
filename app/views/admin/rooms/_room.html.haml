@@ -6,7 +6,7 @@
           .card-pf-heading
             = pluralize(room.shifts.count, "Shift")
           %h2.card-pf-title
-            = room.name.titleize
+            = room.name
           .card-pf-body
             .donut-chart-pf.example-donut-chart-mini{id: "donut-chart-capacity-#{room.id}"}
               %div{style: "text-align: center; width: 220px;"}

@@ -1,29 +1,29 @@
 - provide :title, (t 'application.dashboard').to_s
-%h1= t('application.dashboard').titleize
+%h1= t('application.dashboard')
 = render 'info'
 .well.well-lg
   .row
     .container
-      %h2= t('.global_lock_in_status').titleize
+      %h2= t('.global_lock_in_status')
       %p
         %input{checked: @global_lock_in_status, name: "global_lock_checkbox", type: "checkbox", "data-on-color" => "danger", "data-off-color" => "success"}/
   .row
     .col-sm-3
-      %h3= t('.destroy_all_rooms').titleize
+      %h3= t('.destroy_all_rooms')
       %p
-        = link_to t('.destroy_all_rooms').titleize, destroy_all_admin_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_rooms'), destroy_all_admin_rooms_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3= t('.destroy_all_shifts').titleize
+      %h3= t('.destroy_all_shifts')
       %p
-        = link_to t('.destroy_all_shifts').titleize, admin_shifts_destroy_all_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_shifts'), admin_shifts_destroy_all_path, class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3= t('.destroy_all_users').titleize
+      %h3= t('.destroy_all_users')
       %p
-        = link_to t('.destroy_all_users').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_users'), '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
     .col-sm-3
-      %h3= t('.destroy_all_offsprings').titleize
+      %h3= t('.destroy_all_offsprings')
       %p
-        = link_to t('.destroy_all_offsprings').titleize, '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
+        = link_to t('.destroy_all_offsprings'), '#', class: "btn btn-lg btn-danger", data: { confirm: t('.irreversible') }
 
 - content_for :javascripts do
   :javascript
