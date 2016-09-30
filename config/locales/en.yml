@@ -282,11 +282,11 @@ en:
               too_long:           "is to long (maximum is %{count} characters)"
         offspring:
           attributes:
-            first_name:
+            f_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is to long (maximum is %{count} characters)"
-            last_name:
+            l_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is to long (maximum is %{count} characters)"
