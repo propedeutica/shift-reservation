@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 RSpec.describe Offspring, type: :model do
   active_record_offspring = 'activerecord.errors.models.offspring.attributes'
@@ -56,14 +57,4 @@ RSpec.describe Offspring, type: :model do
       expect(off).to be_valid
     end
   end
-  pending("it can identify its parent class")
-  pending("it cannot exist without parent")
-  pending("subclass must be able to identify with is parent class")
-  pending("subclass must be able to identify its class")
-  pending("always has a parent associated to it")
-  pending("deletes all child classes when parent class destroyed")
-  pending("has config in yaml for the type of kids they have")
-  pending("has all attributes validated")
-  pending("courses are defined with an enum")
-  pending("has a max and min age definde in config yaml file")
 end
