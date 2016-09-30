@@ -1,12 +1,12 @@
 - provide(:title, (t 'application.models.room.edit_room').to_s)
-%h1 #{(t 'application.models.room.edit_room').titleize} #{@room.id}
+%h1 #{(t 'application.models.room.edit_room')} #{@room.id}
 = form_for [:admin, @room] do |f|
   = render 'form_errors', object: @room
   .form
     = render 'room_form', f: f
     .form-group.actions
       .col-sm-offset-2.col-sm-10
-        = link_to (t "application.models.room.delete_room").titleize, admin_room_path(@room), class: "btn btn-lg btn-danger", method: :delete,
+        = link_to (t "application.models.room.delete_room"), admin_room_path(@room), class: "btn btn-lg btn-danger", method: :delete,
           data: { confirm:  t('.irreversible') }
-        = f.submit t("application.models.room.update_room").titleize, class: "btn btn-lg btn-primary"
-        = link_to (t "application.models.room.cancel_action").titleize, admin_rooms_path, class: "btn btn-lg btn-default"
+        = f.submit t("application.models.room.update_room"), class: "btn btn-lg btn-primary"
+        = link_to (t "application.models.room.cancel_action"), admin_rooms_path, class: "btn btn-lg btn-default"

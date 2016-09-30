@@ -10,7 +10,7 @@
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{href: "#"}= user_signed_in? ? t(".signed_in").titleize: t(".not_signed_in").titleize
+        %a{href: "#"}= user_signed_in? ? t(".signed_in"): t(".not_signed_in")
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
@@ -19,15 +19,15 @@
         %ul.dropdown-menu
           %li
             = link_to  new_user_session_path do
-              .fa.fa-sign-in= (t '.log_in').titleize
+              .fa.fa-sign-in= (t '.log_in')
             
           %li
-            = link_to destroy_user_session_path do
-              .fa.fa-sign-out= (t '.log_out').titleize 
+            = link_to destroy_user_session_path, method: :delete do
+              .fa.fa-sign-out= (t '.log_out') 
           %li.divider
           %li
             = link_to new_user_registration_path do
-              .fa.fa-user-plus= (t '.sign_up').titleize
+              .fa.fa-user-plus= (t '.sign_up')
           %li.divider
           %li.dropdown-submenu
             %a{href: "#", tabindex: "-1"}= t '.more_options'
@@ -38,26 +38,28 @@
           %li.divider
           %li
             = link_to about_path do
-              .fa.fa-question-circle-o= (t '.about').titleize 
+              .fa.fa-question-circle-o= (t '.about') 
     %ul.nav.navbar-nav.navbar-primary
       %li
         - if user_signed_in?
-          = link_to (t'.user_panel').titleize, user_path(current_user)
+          = link_to (t'.user_panel'), user_path(current_user)
         - else
-          = link_to (t'.user_panel').titleize, "#"
+          = link_to (t'.log_in'), new_user_session_path
       %li
-        = link_to t('.offsprings').titleize, "#"
+        - if user_signed_in?
+          = link_to t('.offsprings'), "#"
       %li
-        = link_to t('.rooms').titleize, "#"
+        - if user_signed_in?
+          = link_to t('.rooms'), "#"
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          = (t ".help").titleize
+          = (t ".help")
           %b.caret
           %ul.dropdown-menu
             %li
-              = link_to (t '.help').titleize, help_path
-              = link_to (t '.info').titleize, info_path
-              = link_to (t '.about').titleize, about_path
+              = link_to (t '.help'), help_path
+              = link_to (t '.info'), info_path
+              = link_to (t '.about'), about_path
 - content_for :javascripts do
   :javascript
     $(function() {

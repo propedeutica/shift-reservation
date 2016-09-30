@@ -10,7 +10,7 @@
   .collapse.navbar-collapse.navbar-collapse-1
     %ul.nav.navbar-nav.navbar-utility
       %li
-        %a{href: "#"}= admin_signed_in? ? t(".signed_in").titleize: t(".not_signed_in").titleize
+        %a{href: "#"}= admin_signed_in? ? t(".signed_in"): t(".not_signed_in")
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           %span.pficon.pficon-user
@@ -19,10 +19,10 @@
         %ul.dropdown-menu
           - if admin_signed_in?
             %li
-              = link_to (t '.change_password').titleize, "#"
+              = link_to (t '.change_password'), "#"
             %li.divider
             %li
-              = link_to (t '.sign_out').titleize, destroy_admin_session_path, method: :delete
+              = link_to (t '.sign_out'), destroy_admin_session_path, method: :delete
           - else
             %li
               %a{href: "#"} Link
@@ -32,27 +32,27 @@
             %a{href: "#"} Something else here
           %li.divider
           %li
-            = link_to (t '.about').titleize, about_path
+            = link_to (t '.about'), about_path
     %ul.nav.navbar-nav.navbar-primary
       %li
-        = link_to (t'.admins').titleize, admin_admins_path
+        = link_to (t'.admins'), admin_admins_path
       %li
-        = link_to (t'.users').titleize, admin_users_path
+        = link_to (t'.users'), admin_users_path
       %li
-        = link_to (t'.offsprings').titleize, "#"
+        = link_to (t'.offsprings'), "#"
       %li
-        = link_to t('.control_panel').titleize, admin_dashboard_path
+        = link_to t('.control_panel'), admin_dashboard_path
       %li
-        = link_to t('.rooms').titleize, admin_rooms_path
+        = link_to t('.rooms'), admin_rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          = (t ".help").titleize
+          = (t ".help")
           %b.caret
           %ul.dropdown-menu
             %li
-              = link_to (t '.help').titleize, help_path
-              = link_to (t '.info').titleize, info_path
-              = link_to (t '.about').titleize, about_path
+              = link_to (t '.help'), help_path
+              = link_to (t '.info'), info_path
+              = link_to (t '.about'), about_path
 - content_for :javascripts do
   :javascript
     $(function() {

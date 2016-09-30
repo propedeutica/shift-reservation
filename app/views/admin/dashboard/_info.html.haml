@@ -1,11 +1,11 @@
 .container-fluid
   .col-xs-10
     %h2
-      = t('application.reports').titleize
+      = t('application.reports')
   .col-xs-2
     = link_to admin_dashboard_path do
       %span.pficon.pficon-refresh
-      = (t '.refresh').titleize
+      = (t '.refresh')
 .container-fluid
   .cards-pf
     .container-fluid.container-cards-pf
@@ -16,7 +16,7 @@
               %span.fa.fa-cube
               %span.card-pf-aggregate-status-count
                 =  @number_of_rooms
-              = link_to (t '.rooms').titleize, admin_rooms_path
+              = link_to (t '.rooms'), admin_rooms_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
@@ -28,7 +28,7 @@
               %span.fa.fa-calendar-plus-o
               %span.card-pf-aggregate-status-count
                 =  @number_of_shifts
-              = link_to (t '.shifts').titleize, admin_rooms_path
+              = link_to (t '.shifts'), admin_rooms_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
@@ -39,7 +39,7 @@
               %span.fa.fa-battery-full
               %span.card-pf-aggregate-status-count
                 =  @total_capacity
-              = (t '.total_capacity').titleize
+              = (t '.total_capacity')
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
         .col-xs-6.col-sm-4.col-md-4
@@ -48,7 +48,7 @@
               %span.fa.fa-battery-half
               %span.card-pf-aggregate-status-count
                 =  @total_sites_available
-              = (t '.total_sites_available').titleize
+              = (t '.total_sites_available')
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
       .row.row-cards-pf
@@ -58,7 +58,7 @@
               %span.fa.fa-user-secret
               %span.card-pf-aggregate-status-count
                 =  @number_of_admins || 0
-              = link_to (t '.admins').titleize, admin_admins_path
+              = link_to (t '.admins'), admin_admins_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
@@ -68,7 +68,7 @@
               %span.fa.fa-user
               %span.card-pf-aggregate-status-count
                 =  @number_of_users || 0
-              = link_to (t '.users').titleize, admin_users_path
+              = link_to (t '.users'), admin_users_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification       
@@ -78,13 +78,13 @@
               %span.fa.fa-child
               %span.card-pf-aggregate-status-count
                 =  @number_of_offspring || 0
-              = link_to (t '.offsprings').titleize, "#"
+              = link_to (t '.offsprings'), "#"
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
 .container-fluid
   .com-xs-6.col-sm-4.col-md-4
-    %h2= (t '.space_available').titleize
+    %h2= (t '.space_available')
     - percentage = 0
     - percentage = (@total_sites_available.to_f/@total_capacity*100).to_int unless @total_capacity.zero?
     .progress.progress-label-left

@@ -1,16 +1,16 @@
 - provide(:title, "#{t 'application.models.room.room'} #{@room.id}")
-%h1 #{(t 'application.models.room.room').titleize} #{@room.id}
+%h1 #{t 'application.models.room.room'} #{@room.id}
 .form
   .form-group
     .control-label
-      = (t 'application.models.room.name').titleize
+      = (t 'application.models.room.name')
     .form-control{disabled: :disabled}
       = @room.name.to_s
   .form-group
     .control-label
-      = (t 'application.models.room.capacity').titleize
+      = (t 'application.models.room.capacity')
     .form-control{disabled: :disabled}
       = @room.capacity
 %p
-  = link_to t("application.models.room.edit_room").titleize, edit_admin_room_path(@room), class: "btn btn-primary"
-  = link_to t("application.models.room.redirect_to_index").titleize, admin_rooms_path, class: "btn btn-default"
+  = link_to t("application.models.room.edit_room"), edit_admin_room_path(@room), class: "btn btn-primary"
+  = link_to t("application.models.room.redirect_to_index"), admin_rooms_path, class: "btn btn-default"

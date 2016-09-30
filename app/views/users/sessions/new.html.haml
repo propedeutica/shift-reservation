@@ -1,0 +1,21 @@
+- provide(:title, (t '.user').to_s)
+%h2= t '.log_in'
+.container-fluid.col-md-6
+  = form_for(@user, as: @user, url: new_user_session_path(@user)) do |f|
+    .form{role: "form"}
+      = render 'form_errors', object: @user
+      .form-group
+        .control-label= f.label :email
+        = f.email_field :email, class: 'form-control', autofocus: true
+      .form-group
+        .control-label= f.label :password
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+      - if devise_mapping.rememberable?
+        .form-group
+          .col-xs-8.col-sm-offset-2.col-sm-6.col-md-offset-2.col-md-6
+            .control-label= f.label :remember_me
+            = f.check_box :remember_me
+          
+    .form-group.submit
+      = f.submit (t ".log_in"), class: "btn btn-lg btn-primary"
+  = render "admins/shared/links"

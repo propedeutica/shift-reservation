@@ -1,5 +1,5 @@
 - provide(:title, @user.first_name)
-%h1 #{User.model_name.human}: #{@user.id}
+%h1 #{User.model_name.human}: #{full_name(@user)}
 .form
   .form-group
     .control-label
