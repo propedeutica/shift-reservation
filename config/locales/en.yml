@@ -285,8 +285,8 @@ en:
             f_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
             l_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
