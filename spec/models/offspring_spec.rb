@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Offspring, type: :model do
   active_record_offspring = 'activerecord.errors.models.offspring.attributes'
+
+  after(:each) do
+    Warden.test_reset!
+  end
+  
   describe "validating attribute first_name " do
     it "is invalid without first_name" do
       off = FactoryGirl.build(:offspring, first_name: "")
