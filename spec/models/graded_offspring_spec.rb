@@ -67,15 +67,17 @@ RSpec.describe GradedOffspring, type: :model do
         off.valid?
         expect(off.errors[:grade]).to include(I18n.t('grade.blank', scope: active_record_offspring))
       end
-      it "is invalid if grade is equal to cero" do
-        off = FactoryGirl.build(:gradedOffspring, grade: 0)
-        off.valid?
-        expect(off.errors[:grade]).to include(I18n.t('grade.min_grade', scope: active_record_offspring))
+      it 'is in any grade' do
+        off = FactoryGirl.build(:gradedOffspring)
+        GradedOffspring.grades.keys.each do |i|
+          off.grade = i
+          off.valid?
+          expect(off).to be_valid
+        end
       end
-      it "is invalid if grade is less than cero" do
-        off = FactoryGirl.build(:gradedOffspring, grade: -1)
-        off.valid?
-        expect(off.errors[:grade]).to include(I18n.t('grade.min_grade', scope: active_record_offspring))
+      it "is invalid with grades that don't belong to the grade list" do
+        off = FactoryGirl.build(:gradedOffspring)
+        expect { off.grade = 100 }.to raise_error(ArgumentError).with_message(/is not a valid grade/)
       end
     end
   end

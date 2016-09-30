@@ -250,15 +250,15 @@ en:
             first_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
             last_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
             email:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
               invalid:            "is invalid"
               duplicated:         "has already been taken"
             password:
@@ -294,5 +294,6 @@ en:
               blank:              "Age can't be null, Age is not a number"
               min_age:            "must be greater than 0"
             grade:
-              blank:              "can't be blank"
-              min_grade:          "must be greater than 0"  
+              blank:              "grade can't be blank"
+              invalid:            "the chosen grade is invalid"
+              min_grade:          "must be greater than 0"
