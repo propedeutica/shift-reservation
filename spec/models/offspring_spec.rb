@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Offspring, type: :model do
-  let(:user1) { FactoryGirl.build(:user) }
   active_record_offspring = 'activerecord.errors.models.offspring.attributes'
-  describe "validating belongs_to" do
-    it "adds offspring to users" do
-
-    end
-  end
-
   describe "validating attribute first_name " do
     it "is invalid without first_name" do
       off = FactoryGirl.build(:offspring, first_name: "")
