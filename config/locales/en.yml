@@ -264,11 +264,11 @@ en:
             password:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
             phone:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
               invalid:            "is invalid"
         admin:
           attributes:
@@ -279,7 +279,7 @@ en:
             password:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
-              too_long:           "is to long (maximum is %{count} characters)"
+              too_long:           "is too long (maximum is %{count} characters)"
         offspring:
           attributes:
             f_name:
