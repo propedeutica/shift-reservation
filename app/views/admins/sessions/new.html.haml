@@ -16,7 +16,7 @@
           .form-horizontal{role: "form"}
             = render 'form_errors', object: @admin
             .form-group
-              .col-sm-2.col-md-2.control-label= f.label :email
+              %label.col-sm-2.col-md-2.control-label= f.label :email
               .col-sm-10.col-md-10= f.email_field :email, class: 'form-control', autofocus: true
             .form-group
               %label.col-sm-2.col-md-2.control-label= f.label :password
@@ -24,7 +24,7 @@
             - if devise_mapping.rememberable?
               .form-group
                 .col-xs-8.col-sm-offset-2.col-sm-6.col-md-offset-2.col-md-6
-                  = f.label :remember_me
+                  %label= f.label :remember_me
                   = f.check_box :remember_me
                   
             .form-group.col-xs-4.col-sm-4.col-md-4.submit

@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.describe "User", type: :request do
+RSpec.describe "Users", type: :request do
   context "when authenticated as admin" do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:user) { FactoryGirl.create(:user) }
