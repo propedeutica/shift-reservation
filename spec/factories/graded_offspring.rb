@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :offspring do
+  factory :graded_offspring do
     grade 3
   end
 end

@@ -1,58 +1,66 @@
 require 'rails_helper'
 
 RSpec.describe Offspring, type: :model do
+  let(:user1) { FactoryGirl.build(:user) }
+  active_record_offspring = 'activerecord.errors.models.offspring.attributes'
+  describe "validating belongs_to" do
+    it "adds offspring to users" do
+
+    end
+  end
+
   describe "validating attribute first_name " do
-    it "should be required" do
-      blank = FactoryGirl.build(:offspring, first_name: "")
-      blank.should_not be_valid
-      blank.errors.generate_message(:first_name, :blank)
-      blank.name = "Foo"
-      blank.should be_valid
+    it "is invalid without first_name" do
+      off = FactoryGirl.build(:offspring, first_name: "")
+      off.valid?
+      expect(off.errors[:first_name]).to include(I18n.t('first_name.blank', scope: active_record_offspring))
+      off.first_name = "Foo"
+      expect(off).to be_valid
     end
 
-    it "should be longer than 1 character" do
-      too_short = FactoryGirl.build(:offspring, first_name: 'a')
-      too_short.should_not be_valid
-      too_short.errors[:first_name].should include("is too short (minimum is 2 characters)")
-      too_short.name = 'aa'
-      too_short.should be_valid
+    it "is invalid with less than 1 character" do
+      off = FactoryGirl.build(:offspring, first_name: 'a')
+      off.valid?
+      expect(off.errors[:first_name]).to include(I18n.t('first_name.too_short', count:2, scope: active_record_offspring))
+      off.first_name = 'aa'
+      expect(off).to be_valid
     end
 
-    it "should be shorter than 101 characters" do
-      too_long = FactoryGirl.build(:offspring, first_name: 'a' * 101)
-      too_long.should_not be_valid
-      too_long.errors[:first_name].should include("is too long (maximum is 100 characters)")
-      too_long.name = 'a' * 100
-      too_long.should be_valid
+    it "is invalid with more than 60 characters" do
+      off = FactoryGirl.build(:offspring, first_name: 'a' * 61)
+      off.valid?
+      expect(off.errors[:first_name]).to include(I18n.t('first_name.too_long', count:60, scope: active_record_offspring))
+      off.first_name = 'a' * 60
+      expect(off).to be_valid
     end
   end
   describe "validating attribute last_name " do
-    it "should be required" do
-      blank = FactoryGirl.build(:offspring, last_name: "")
-      blank.should_not be_valid
-      blank.errors.generate_message(:last_name, :blank)
-      blank.name = "Foo"
-      blank.should be_valid
+    it "is invalid without last_name" do
+      off = FactoryGirl.build(:offspring, last_name: "")
+      off.valid?
+      expect(off.errors[:last_name]).to include(I18n.t('last_name.blank', scope: active_record_offspring))
+      off.last_name = "Richardson"
+      expect(off).to be_valid
     end
 
-    it "should be longer than 1 character" do
-      too_short = FactoryGirl.build(:offspring, last_name: 'a')
-      too_short.should_not be_valid
-      too_short.errors[:last_name].should include("is too short (minimum is 2 characters)")
-      too_short.name = 'aa'
-      too_short.should be_valid
+    it "is invalid with less than 2 characters" do
+      off = FactoryGirl.build(:offspring, last_name: 'a')
+      off.valid?
+      expect(off.errors[:last_name]).to include(I18n.t('last_name.too_short', count:2, scope: active_record_offspring))
+      off.last_name = 'aa'
+      expect(off).to be_valid
     end
 
-    it "should be shorter than 101 characters" do
-      too_long = FactoryGirl.build(:offspring, last_name: 'a' * 101)
-      too_long.should_not be_valid
-      too_long.errors[:last_name].should include("is too long (maximum is 100 characters)")
-      too_long.name = 'a' * 100
-      too_long.should be_valid
+    it "is invalid with more than 60 characters" do
+      off = FactoryGirl.build(:offspring, last_name: 'a' * 61)
+      off.valid?
+      expect(off.errors[:last_name]).to include(I18n.t('last_name.too_long', count: 60, scope: active_record_offspring))
+      off.last_name = 'a' * 60
+      expect(off).to be_valid
     end
   end
-  pending("should identify its parent class")
-  pending("should not exist without parent")
+  pending("it can identify its parent class")
+  pending("it cannot exist without parent")
   pending("subclass must be able to identify with is parent class")
   pending("subclass must be able to identify its class")
   pending("always has a parent associated to it")
@@ -60,5 +68,4 @@ RSpec.describe Offspring, type: :model do
   pending("has config in yaml for the type of kids they have")
   pending("has all attributes validated")
   pending("courses are defined with an enum")
-  pending("has a max and min age definde in config yaml file")
 end
