@@ -1,3 +1,3 @@
 class AgedOffspring < Offspring
-  validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 end

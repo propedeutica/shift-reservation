@@ -2,98 +2,97 @@ require 'rails_helper'
 
 RSpec.describe Shift, type: :model do
   let(:shift) { FactoryGirl.build_stubbed(:shift) }
+  i18n_scope = 'activerecord.errors.models.shift.attributes'
+
   it "has a valid model" do
     shift.valid?
     expect(shift).to be_valid
   end
 
-  it "has a day of the week" do
-    shift.day_of_week = nil
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:day_of_week]).to include "can't be blank"
-  end
-  it "day is an integer greater or equal to 0" do
-    shift.day_of_week = -1
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:day_of_week]).to include "must be greater than or equal to 0"
+  context "#day_of_week" do
+    it "is invalid without a day of week" do
+      shift.day_of_week = nil
+      shift.valid?
+      expect(shift.errors[:day_of_week]).to include(I18n.t('day_of_week.blank', scope: i18n_scope))
+    end
+
+    it "is invalid with a day of week not numeric" do
+      shift.day_of_week = "Monday"
+      shift.valid?
+      expect(shift.errors[:day_of_week]).to include(I18n.t('day_of_week.not_a_number', scope: i18n_scope))
+    end
+
+    it "day is an integer greater or equal to 0" do
+      shift.day_of_week = -1
+      shift.valid?
+      expect(shift.errors[:day_of_week]).to include(I18n.t('day_of_week.greater_than_or_equal_to',
+                                                           count: 0, scope: i18n_scope))
+    end
+
+    it "days is an integer lower or equal to 7" do
+      shift.day_of_week = 7
+      shift.valid?
+      expect(shift.errors[:day_of_week]).to include(I18n.t('day_of_week.less_than_or_equal_to',
+                                                           count: 6, scope: i18n_scope))
+    end
   end
 
-  it "days is an integer lower or equal to 7" do
-    shift.day_of_week = 7
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:day_of_week]).to include "must be less than or equal to 6"
+  context "#sites_reserved" do
+    it "sites_reserved is an integer" do
+      shift.sites_reserved = "seven"
+      shift.valid?
+      expect(shift.errors[:sites_reserved]).to include(I18n.t('sites_reserved.not_a_number', scope: i18n_scope))
+    end
+
+    it "sites_reserved is lower than the capacity of the room it belongs to" do
+      shift.sites_reserved = shift.room.capacity + 1
+      shift.valid?
+      expect(shift.errors[:shift]).to include(I18n.t('sites_reserved.sites_available_greater_than_or_equal_to_0',
+                                                     scope: i18n_scope))
+    end
   end
 
-  it "sites_reserved is an integer" do
-    shift.sites_reserved = "seven"
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:sites_reserved]).to include "is not a number"
+  context "#start_time" do
+    it "is not a wrong time" do
+      %w(24:00 23:60 2230 noon monday).each do |x|
+        shift.start_time = x
+        shift.valid?
+        expect(shift.errors[:start_time]).to include(I18n.t('start_time.invalid_format', scope: i18n_scope))
+      end
+    end
   end
 
-  it "sites_reserved is lower than the capacity of the room it belongs to" do
-    shift.sites_reserved = shift.room.capacity + 1
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:shift]).to include "reservations should be lower than maximum capacity"
+  context "#end_time" do
+    it "is not a wrong time" do
+      %w(24:00 23:60 2230 noon monday).each do |x|
+        shift.end_time = x
+        shift.valid?
+        expect(shift.errors[:end_time]).to include(I18n.t('end_time.invalid_format', scope: i18n_scope))
+      end
+    end
+
+    it "start_time earlier than end_time is valid." do
+      shift.start_time = "10:00"
+      shift.end_time = "10:30"
+      shift.valid?
+      expect(shift).to be_valid
+    end
+
+    it "start_time later than end_time is invalid." do
+      shift.start_time = "10:30"
+      shift.end_time = "10:00"
+      shift.valid?
+      expect(shift.errors[:shift]).to include(I18n.t('end_time.end_time_earlier_than_start_time', scope: i18n_scope))
+    end
+
+    it "start_time equal to end_time is invalid." do
+      shift.start_time = "10:00"
+      shift.end_time = "10:00"
+      shift.valid?
+      expect(shift.errors[:shift]).to include "should be later than init_time"
+    end
   end
 
-  it "start_time is a time" do
-    expect(shift.start_time).to be_instance_of(String)
-    shift.valid?
-    expect(shift).to be_valid
-  end
-
-  it "end_time is a time" do
-    expect(shift.end_time).to be_instance_of(String)
-    shift.valid?
-    expect(shift).to be_valid
-  end
-
-  it "start_time is not a wrong time" do
-    shift.start_time = "24:00"
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:start_time]).to include "should be formatted as hh:mm"
-    shift.start_time = "23:60"
-    shift.valid?
-    expect(shift).not_to be_valid
-  end
-
-  it "end_time is not a wrong time" do
-    shift.end_time = "24:00"
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:end_time]).to include "should be formatted as hh:mm"
-    shift.end_time = "23:60"
-    shift.valid?
-    expect(shift).not_to be_valid
-  end
-
-  it "start_time earlier than end_time is valid." do
-    shift = FactoryGirl.build_stubbed(:shift, start_time: "10:00", end_time: "10:30")
-    shift.valid?
-    expect(shift).to be_valid
-  end
-
-  it "start_time later than end_time is invalid." do
-    shift.start_time = "10:30"
-    shift.end_time = "10:00"
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:shift]).to include "should be later than init_time"
-  end
-
-  it "start_time equal to end_time is invalid." do
-    shift.start_time = "10:00"
-    shift.end_time = "10:00"
-    shift.valid?
-    expect(shift).not_to be_valid
-    expect(shift.errors[:shift]).to include "should be later than init_time"
-  end
   context "Shift::" do
     let!(:room)  { FactoryGirl.create(:room, capacity: 20) }
     let!(:room2) { FactoryGirl.create(:room, capacity: 20) }
@@ -110,5 +109,6 @@ RSpec.describe Shift, type: :model do
       expect { room.destroy }.to change(Shift, :count).by(-2)
     end
   end
+
   pending "relations are nullified when the shift is detroyed"
 end
