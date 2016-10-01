@@ -5,10 +5,18 @@ class Admin::UsersController < Admin::AdminIdentifiedController
 
   def show
     @user = User.find_by_id(params[:id])
+    if @user.nil?
+      redirect_to admin_users_path
+      flash[:alert] = (t ".user_not_found")
+    end
   end
 
   def edit
     @user = User.find_by_id(params[:id])
+    if @user.nil?
+      redirect_to admin_users_path
+      flash[:alert] = (t ".user_not_found")
+    end
   end
 
   def update

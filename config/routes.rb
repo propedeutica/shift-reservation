@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]
+      resources :offsprings, only: [:index, :show]
       post 'myconfig/global_lock_enable'
       post 'myconfig/global_lock_disable'
       post 'myconfig/global_lock_switch'

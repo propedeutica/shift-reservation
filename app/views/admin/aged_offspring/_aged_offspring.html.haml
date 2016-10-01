@@ -1,0 +1,8 @@
+%tr
+  %td= link_to aged_offspring.id, admin_offspring_path(aged_offspring)
+  %td= link_to full_name(aged_offspring.user), admin_user_path(aged_offspring.user)
+  %td= link_to aged_offspring.first_name, admin_offspring_path(aged_offspring)
+  %td= aged_offspring.last_name
+  %td= aged_offspring.age
+  %td= l aged_offspring.created_at
+  %td= l aged_offspring.updated_at

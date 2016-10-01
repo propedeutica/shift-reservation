@@ -62,6 +62,20 @@ FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 
   FactoryGirl.create(:admin, email: "ana@example.com")
 end
 
-100.times do
-  FactoryGirl.create(:offspring)
+1.times do
+  FactoryGirl.create(:user, email: "ana@example.com")
+end
+
+if Rails.application.config.offspring_type == 'GradedOffspring'
+  100.times do
+    FactoryGirl.create(:gradedOffspring)
+  end
+elsif Rails.application.config.offspring_type == 'AgedOffspring'
+  100.times do
+    FactoryGirl.create(:agedOffspring)
+  end
+else
+  100.times do
+    FactoryGirl.create(:offspring)
+  end
 end
