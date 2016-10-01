@@ -23,7 +23,7 @@ en:
   hello: "Hello world"
   layouts:
     admin_header:
-      users:                 "users"
+      users:                 "Users"
       rooms:                 "Rooms"
       control_panel:         "Dashboard"
       reports:               "Reports"
@@ -61,29 +61,29 @@ en:
         global_lock_switch_error:           "There was an error updating the switch"
         global_lock_set_true_success:       "Global lock is now in place"
         global_lock_set_true_error:         "There was an error setting the global lock to true"
-        global_lock_set_false_success:       "Global lock is now not in place"
-        global_lock_set_false_error:         "There was an error setting the global lock to false"
+        global_lock_set_false_success:      "Global lock is now not in place"
+        global_lock_set_false_error:        "There was an error setting the global lock to false"
     dashboard:
       index:
-        enable:                "enable"
-        disable:               "disable"
-        global_lock_in_status: "global lock in status:"
-        status:                "status"
-        destroy_all_rooms:      "delete all rooms"
-        destroy_all_shifts:     "delete all shifts"
-        destroy_all_users:      "delete all users"
-        destroy_all_offsprings: "delete all offsprings"
+        enable:                "Enable"
+        disable:               "Disable"
+        global_lock_in_status: "Global lock in status:"
+        status:                "Status"
+        destroy_all_rooms:      "Delete all rooms"
+        destroy_all_shifts:     "Delete all shifts"
+        destroy_all_users:      "Delete all users"
+        destroy_all_offsprings: "Delete all offsprings"
         irreversible:           "Are you sure? The following action can not be undone"
       info:
-        admins:                "admins"
-        users:                 "users"
-        offsprings:            "offsprings"
-        rooms:                 "rooms"
-        shifts:                "shifts"
-        total_sites_available: "sites available"
-        total_capacity:        "capacity on all shifts"
-        refresh:               "refresh"
-        space_available:       "space available"
+        admins:                "Admins"
+        users:                 "Users"
+        offsprings:            "Offsprings"
+        rooms:                 "Rooms"
+        shifts:                "Shifts"
+        total_sites_available: "Sites available"
+        total_capacity:        "Capacity on all shifts"
+        refresh:               "Refresh"
+        space_available:       "Space available"
     admins:
       index:
         admins:              "Admins"
@@ -117,9 +117,9 @@ en:
         room_not_found:         "We couldn't find the room"
       destroy:
         room_deleted:           "Room %{room} has been deleted"
-        room_not_deleted:      "There has been an error deleting the room"
+        room_not_deleted:       "There has been an error deleting the room"
       destroy_all:
-        rooms_destroy_all:      "All Rooms have been deleted"
+        rooms_destroy_all:       "All Rooms have been deleted"
         rooms_destroy_all_error: "There was an error trying to delete all rooms"
       show:
         room_not_found:         "We couldn't find the room"
@@ -146,8 +146,8 @@ en:
         shift_deleted:        "Shift %{shift} has been deleted"
         shift_not_deleted :   "There has been an error deleting the shift"
       destroy_all:
-        shift_destroy_all:    "All Shifts have been deleted"
-        shift_destroy_all_error: "There was an error trying to delete all shifts"
+        shift_destroy_all:        "All Shifts have been deleted"
+        shift_destroy_all_error:  "There was an error trying to delete all shifts"
   admins:
     sessions:
       new:
@@ -182,73 +182,81 @@ en:
       edit_user:             "Edit user"
   application:
     name:                   "Shift Reservation"
-    about:                  "about"
+    about:                  "About"
     forward_url:            "http://www.patternfly.org"
     github_link:            "https://github.com/propedeutica/shift-reservation"
-    help:                   "help"
-    info:                   "information"
-    reports:                "reports"
-    dashboard:              "dashboard"
+    help:                   "Help"
+    info:                   "Information"
+    reports:                "Reports"
+    dashboard:              "Dashboard"
     models:
       errors_prohibited_saving: "prohibited this %{model} from being saved"
       room:
-        room:                   "room"
-        name:                   "name"
-        capacity:               "capacity"
-        room_index:             "room index"
-        add_room:               "add room"
-        delete_room:            "delete room"
-        update_room:            "update room"
-        edit_room:              "edit room"
-        cancel_action:          "cancel"
-        room_added:             "room added"
-        room_deleted:           "room deleted"
-        room_not_added:         "room could not be added"
-        room_updated:           "room updated succesfully"
-        room_not_updated:       "room could not be updated"
-        there_are_no_rooms_yet: "there are no rooms yet defined"
-        redirect_to_index:      "go back"
+        room:                   "Room"
+        name:                   "Name"
+        capacity:               "Capacity"
+        room_index:             "Room index"
+        add_room:               "Add room"
+        delete_room:            "Delete room"
+        update_room:            "Update room"
+        edit_room:              "Edit room"
+        cancel_action:          "Cancel"
+        room_added:             "Room added"
+        room_deleted:           "Room deleted"
+        room_not_added:         "Room could not be added"
+        room_updated:           "Room updated succesfully"
+        room_not_updated:       "Room could not be updated"
+        there_are_no_rooms_yet: "There are no rooms yet defined"
+        redirect_to_index:      "Go back"
       shift:
-        shift:           "shift"
-        site:            "site"
-        sites_available: "sites available"
-        add_shift:       "add shift"
-        add_shift_in_room: "Add Shift to Room \"%{room}\""
-        edit_shift_in_room: "Update Shift %{shift} in Room \"%{room}\""
-        delete_shift:    "delete shift"
-        update_shift:    "update shift"
-        edit_shift:      "edit shift"
-        sites_reserved:  "sites reserved"
-        sites_assigned:  "sites assigned"
-        day_of_week:     "day of week"
-        start_time:      "start time"
-        end_time:        "end time"
-        redirect_to_index:  "go back"
-        cancel_edit_shift:  "cancel"
+        shift:                  "Shift"
+        site:                   "Site"
+        sites_available:        "Sites available"
+        add_shift:              "Add shift"
+        add_shift_in_room:      "Add Shift to Room \"%{room}\""
+        edit_shift_in_room:     "Update Shift %{shift} in Room \"%{room}\""
+        delete_shift:           "Delete shift"
+        update_shift:           "Update shift"
+        edit_shift:             "Edit shift"
+        sites_reserved:         "Sites reserved"
+        sites_assigned:         "Sites assigned"
+        day_of_week:            "Day of week"
+        start_time:             "Start time"
+        end_time:               "End time"
+        redirect_to_index:      "Go back"
+        cancel_edit_shift:      "Cancel"
   week:
-    monday:     "Monday"
-    tuesday:    "Tuesday"
-    wednesday:  "Wednesday"
-    thursday:   "Thursday"
-    friday:     "Friday"
-    saturday:   "Saturday"
-    sunday:     "Sunday"
-    no_day:     "Never"
+    monday:                     "Monday"
+    tuesday:                    "Tuesday"
+    wednesday:                  "Wednesday"
+    thursday:                   "Thursday"
+    friday:                     "Friday"
+    saturday:                   "Saturday"
+    sunday:                     "Sunday"
+    no_day:                     "Never"
   activerecord:
     errors:
       template:
         header:
-          one:   "1 error prohibited this %{model} from being saved"
-          other: "%{count} errors prohibited this %{model} from being saved"
-          body:  "There were problems with the following fields:"
+          one:                  "1 error prohibited this %{model} from being saved"
+          other:                "%{count} errors prohibited this %{model} from being saved"
+          body:                 "There were problems with the following fields:"
       models:
         shift:
-          bad_format: "should be formatted as hh:mm"
           attributes:
             sites_reserved:
-              sites_available_greater_than_or_equal_to_0: "reservations should be lower than maximum capacity"
+              sites_available_greater_than_or_equal_to_0:   "should be lower than maximum capacity"
+              not_a_number:                                 "is not a number"
+            start_time:
+              invalid_format:           "should be formatted as hh:mm"
             end_time:
-              end_time_earlier_than_start_time: "should be later than init_time"
+              invalid_format:           "should be formatted as hh:mm"
+              end_time_earlier_than_start_time:             "should be later than init_time"
+            day_of_week:
+              not_a_number:                                  "is not a number" 
+              blank:                                         "can't be blank"
+              greater_than_or_equal_to:                      "must be greater than or equal to %{count}"
+              less_than_or_equal_to:                         "must be less than or equal to %{count}"
         user:
           attributes:
             first_name:
@@ -286,18 +294,19 @@ en:
               too_long:           "is too long (maximum is %{count} characters)"
         offspring:
           attributes:
-            f_name:
+            first_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is too long (maximum is %{count} characters)"
-            l_name:
+            last_name:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is too long (maximum is %{count} characters)"
             age:
-              blank:              "Age can't be null, Age is not a number"
-              min_age:            "must be greater than 0"
+              blank:                          "can't be blank'"
+              too_short_or_equal_to:          "must be greater than or equal to %{count}"
             grade:
-              blank:              "grade can't be blank"
+              blank:              "can't be blank"
               invalid:            "the chosen grade is invalid"
+              too_short:          "is too short (minimum is %{count} characters)"
               min_grade:          "must be greater than 0"

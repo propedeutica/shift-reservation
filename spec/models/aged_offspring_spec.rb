@@ -1,82 +1,68 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 RSpec.describe AgedOffspring, type: :model do
-  active_record_offspring = 'activerecord.errors.models.offspring.attributes'
+  let(:offspring) { FactoryGirl.build(:agedOffspring) }
+  i18n_scope = 'activerecord.errors.models.offspring.attributes'
 
-  context "when authenticated as admin" do
-    let(:admin) { FactoryGirl.create(:admin) }
+  it "has a valid factory" do
+    expect(offspring).to be_valid
+  end
 
-    after(:each) do
-      Warden.test_reset!
+  describe "#first_name" do
+    it "is invalid without first_name" do
+      offspring.first_name = ""
+      offspring.valid?
+      expect(offspring.errors[:first_name]).to include(I18n.t('first_name.blank', scope: i18n_scope))
     end
 
-    describe "validating attribute first_name " do
-      it "is invalid without first_name" do
-        off = FactoryGirl.build(:agedOffspring, first_name: "")
-        off.valid?
-        expect(off.errors[:first_name]).to include(I18n.t('f_name.blank', scope: active_record_offspring))
-        off.first_name = "Peter"
-        expect(off).to be_valid
-      end
-
-      it "is invalid with less than 1 character" do
-        off = FactoryGirl.build(:agedOffspring, first_name: 'a')
-        off.valid?
-        expect(off.errors[:first_name]).to include(I18n.t('f_name.too_short', count: 2, scope: active_record_offspring))
-        off.first_name = 'Aa'
-        expect(off).to be_valid
-      end
-
-      it "is invalid with more than 60 characters" do
-        off = FactoryGirl.build(:agedOffspring, first_name: 'a' * 61)
-        off.valid?
-        expect(off.errors[:first_name]).to include(I18n.t('f_name.too_long', count: 60, scope: active_record_offspring))
-        off.first_name = 'a' * 60
-        expect(off).to be_valid
-      end
+    it "is invalid with less than 2 characters" do
+      offspring.first_name = "a"
+      offspring.valid?
+      expect(offspring.errors[:first_name]).to include(I18n.t('first_name.too_short', count: 2, scope: i18n_scope))
     end
-    describe "validating attribute last_name " do
-      it "is invalid without last_name" do
-        off = FactoryGirl.build(:agedOffspring, last_name: "")
-        off.valid?
-        expect(off.errors[:last_name]).to include(I18n.t('l_name.blank', scope: active_record_offspring))
-        off.last_name = "Richardson"
-        expect(off).to be_valid
-      end
 
-      it "is invalid with less than 2 characters" do
-        off = FactoryGirl.build(:agedOffspring, last_name: 'a')
-        off.valid?
-        expect(off.errors[:last_name]).to include(I18n.t('l_name.too_short', count: 2, scope: active_record_offspring))
-        off.last_name = 'Aa'
-        expect(off).to be_valid
-      end
-
-      it "is invalid with more than 60 characters" do
-        off = FactoryGirl.build(:agedOffspring, last_name: 'a' * 61)
-        off.valid?
-        expect(off.errors[:last_name]).to include(I18n.t('l_name.too_long', count: 60, scope: active_record_offspring))
-        off.last_name = 'a' * 60
-        expect(off).to be_valid
-      end
+    it "is invalid with more than 60 characters" do
+      offspring.first_name = 'a' * 61
+      offspring.valid?
+      expect(offspring.errors[:first_name]).to include(I18n.t('first_name.too_long', count: 60, scope: i18n_scope))
     end
-    describe "validating attribute age " do
-      it "is invalid without age" do
-        off = FactoryGirl.build(:agedOffspring, age: nil)
-        off.valid?
-        expect(off.errors[:age]).to include(I18n.t('age.blank', scope: active_record_offspring))
-      end
-      it "is invalid if age is equal to cero" do
-        off = FactoryGirl.build(:agedOffspring, age: 0)
-        off.valid?
-        expect(off.errors[:age]).to include(I18n.t('age.min_age', scope: active_record_offspring))
-      end
-      it "is invalid if age is less than cero" do
-        off = FactoryGirl.build(:agedOffspring, age: -1)
-        off.valid?
-        expect(off.errors[:age]).to include(I18n.t('age.min_age', scope: active_record_offspring))
-      end
+  end
+
+  describe "#last_name " do
+    it "is invalid without last_name" do
+      offspring.last_name = ""
+      offspring.valid?
+      expect(offspring.errors[:last_name]).to include(I18n.t('last_name.blank', scope: i18n_scope))
+    end
+
+    it "is invalid with less than 2 characters" do
+      offspring.last_name = 'a'
+      offspring.valid?
+      expect(offspring.errors[:last_name]).to include(I18n.t('last_name.too_short', count: 2, scope: i18n_scope))
+    end
+
+    it "is invalid with more than 60 characters" do
+      offspring.last_name = 'a' * 61
+      offspring.valid?
+      expect(offspring.errors[:last_name]).to include(I18n.t('last_name.too_long', count: 60, scope: i18n_scope))
+    end
+  end
+
+  describe "#age " do
+    it "is invalid without age" do
+      offspring.age = nil
+      offspring.valid?
+      expect(offspring.errors[:age]).to include(I18n.t('age.blank', scope: i18n_scope))
+    end
+    it "is invalid if age is equal to cero" do
+      offspring.age = 0
+      offspring.valid?
+      expect(offspring.errors[:age]).to include(I18n.t('age.too_short_or_equal_to', count: 1, scope: i18n_scope))
+    end
+    it "is invalid if age is less than cero" do
+      offspring.age = -1
+      offspring.valid?
+      expect(offspring.errors[:age]).to include(I18n.t('age.too_short_or_equal_to', count: 1, scope: i18n_scope))
     end
   end
 end
