@@ -43,4 +43,20 @@ RSpec.describe Offspring, type: :model do
       expect(offspring.errors[:last_name]).to include(I18n.t('last_name.too_long', count: 60, scope: i18n_scope))
     end
   end
+  describe "#user" do
+    it "is invalid wihout a user" do
+      offspring.user = nil
+      offspring.valid?
+      expect(offspring.errors[:user]).to include(I18n.t('user.blank', scope: i18n_scope))
+    end
+    it "is destroyed when the user is" do
+      offspring.save
+      FactoryGirl.create(:offspring, user: offspring.user)
+      expect(offspring.user.offsprings).not_to be_empty
+      offspring.user.destroy
+      expect(offspring.user.destroyed?).to be_truthy
+      expect(offspring.user.offsprings).to be_empty
+      expect(Offspring.all).not_to include(offspring)
+    end
+  end
 end

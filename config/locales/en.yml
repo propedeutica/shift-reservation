@@ -310,3 +310,5 @@ en:
               invalid:            "the chosen grade is invalid"
               too_short:          "is too short (minimum is %{count} characters)"
               min_grade:          "must be greater than 0"
+            user:
+              blank:              "can't be blank'"

@@ -1,7 +1,5 @@
 FactoryGirl.define do
-  factory :gradedOffspring do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+  factory :gradedOffspring, class: GradedOffspring, parent: :offspring do
     grade { Faker::Number.between(1, 3) }
   end
 end

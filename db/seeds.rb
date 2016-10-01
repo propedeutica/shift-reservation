@@ -58,6 +58,10 @@ FactoryGirl.create(:shift, start_time: "18:15", end_time: "19:00", day_of_week: 
 # Users
 #
 
+1.times do
+  FactoryGirl.create(:admin, email: "ana@example.com")
+end
+
 100.times do
-  FactoryGirl.create(:user)
+  FactoryGirl.create(:offspring)
 end
