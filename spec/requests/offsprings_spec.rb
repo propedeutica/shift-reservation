@@ -11,9 +11,9 @@ RSpec.describe "Offsprings", type: :request do
       Warden.test_reset!
     end
 
-    it "#show user" do
+    it "#index" do
       login_as(admin, scope: :admin)
-      get admin_offsprings_index_path
+      get admin_offsprings_path
       expect(response).to have_http_status("200")
     end
   end
