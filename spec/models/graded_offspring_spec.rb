@@ -67,4 +67,21 @@ RSpec.describe GradedOffspring, type: :model do
       expect { offspring.grade = 100 }.to raise_error(ArgumentError).with_message(/is not a valid grade/)
     end
   end
+
+  describe "#user" do
+    it "is invalid wihout a user" do
+      offspring.user = nil
+      offspring.valid?
+      expect(offspring.errors[:user]).to include(I18n.t('user.blank', scope: i18n_scope))
+    end
+    it "is destroyed when the user is" do
+      offspring.save
+      FactoryGirl.create(:gradedOffspring, user: offspring.user)
+      expect(offspring.user.offsprings).not_to be_empty
+      offspring.user.destroy
+      expect(offspring.user.destroyed?).to be_truthy
+      expect(offspring.user.offsprings).to be_empty
+      expect(Offspring.all).not_to include(offspring)
+    end
+  end
 end

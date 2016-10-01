@@ -1,7 +1,7 @@
 set -v
 
 if [[ "$TEST_SUITE" == "rspec" ]]; then
-  RAILS_ENV=test bundle exec rake db:migrate --trace
+  bin/rails db:drop db:create db:migrate RAILS_ENV=test --trace
 fi
 
 set +v
