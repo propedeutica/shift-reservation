@@ -1,0 +1,24 @@
+- provide :title, (t '.offsprings').to_s
+%h1= (t '.offsprings').to_s
+%table.datatable.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th= Offspring.human_attribute_name('id')
+      %th= Offspring.human_attribute_name('user')
+      %th= Offspring.human_attribute_name('first_name')
+      %th= Offspring.human_attribute_name('last_name')
+      - if Rails.application.config.offspring_type == 'AgedOffspring'
+        %th= Offspring.human_attribute_name('age')
+      - if Rails.application.config.offspring_type == 'GradedOffspring'
+        %th= Offspring.human_attribute_name('grade') 
+      %th= Offspring.human_attribute_name('created_at')
+      %th= Offspring.human_attribute_name('updated_at')
+  %tbody
+    = render @offsprings
+
+- content_for :javascripts do
+  :javascript
+    // Initialize Datatables
+    $(document).ready(function() {
+      $('.datatable').dataTable();
+    });

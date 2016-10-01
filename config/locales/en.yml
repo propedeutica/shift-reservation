@@ -105,6 +105,9 @@ en:
       destroy:
         user_deleted:                 "User %{user} has been deleted"
         user_not_deleted:             "User %{user} could not be deleted"
+    offsprings:
+      index:
+        offsprings:               "Offsprings"
     rooms:
       room:
         room:                     "Room"
@@ -129,6 +132,8 @@ en:
       create:
         room_added:          "Room #{room} added"
         room_not_added:      "There was an error adding the room"
+      index:
+        room_index:          "Room index"
     shifts:
       edit:
         irreversible:           "Are you sure? The following action can not be undone"
@@ -234,6 +239,11 @@ en:
     saturday:                   "Saturday"
     sunday:                     "Sunday"
     no_day:                     "Never"
+  grades:
+    primary_first:              "First of primary"
+    primary_second:             "Second of primary"
+    primary_third:              "Third of primary"
+    others:                     "Others"
   activerecord:
     errors:
       template:

@@ -7,5 +7,6 @@ class Admin::DashboardController < Admin::AdminIdentifiedController
     @total_capacity = Shift.total_capacity
     @number_of_admins = Admin.count
     @number_of_users = User.count
+    @number_of_offsprings = Offspring.count
   end
 end

@@ -77,8 +77,8 @@
             %h2.card-pf-title
               %span.fa.fa-child
               %span.card-pf-aggregate-status-count
-                =  @number_of_offspring || 0
-              = link_to (t '.offsprings'), "#"
+                =  @number_of_offsprings || 0
+              = link_to (t '.offsprings'), admin_offsprings_path
             .card-pf-body
               %p.card-pf-aggregate-status-notifications
                 %span.card-pf-aggregate-status-notification
