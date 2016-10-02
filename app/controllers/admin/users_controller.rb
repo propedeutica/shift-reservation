@@ -23,22 +23,25 @@ class Admin::UsersController < Admin::AdminIdentifiedController
     @user = User.find(params[:id])
     delete_password_params!
 
-    if @user.update_attributes(users_params)
+    if @user&.update_attributes(users_params)
       flash[:success] = (t ".user_updated", user: @user.email)
       redirect_to admin_user_path(@user)
     else
-      flash[:danger] = (t ".user_not_updated", user: @user.email)
+      flash[:alert] = (t ".user_not_updated", user: @user.email)
       render 'edit'
     end
   end
 
   def destroy
-    @user = User.find(params["id"])
-    if @user&.destroy
+    @user = User.find_by_id(params[:id])
+    if !@user
+      flash[:alert] = (t ".user_not_found")
+      redirect_to admin_users_path
+    elsif @user.destroy
       flash[:success] = (t ".user_deleted", user: @user.email)
       redirect_to admin_users_path
     else
-      flash[:danger] = (t ".user_delete_error", user: @user.email)
+      flash[:alert] = (t ".user_not_deleted", user: @user.email)
       render 'edit'
     end
   end
