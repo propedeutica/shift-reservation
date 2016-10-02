@@ -1,8 +1,8 @@
 %tr
   %td= link_to graded_offspring.id, admin_offspring_path(graded_offspring)
-  %td= link_to full_name(graded_offspring.user), admin_user_path(graded_offspring.user)
   %td= link_to graded_offspring.first_name, admin_offspring_path(graded_offspring)
-  %td= graded_offspring.last_name
+  %td= link_to graded_offspring.last_name, admin_offspring_path(graded_offspring)
   %td= I18n.t graded_offspring.grade, scope: 'grades'
+  %td= link_to full_name(graded_offspring.user), admin_user_path(graded_offspring.user)
   %td= l graded_offspring.created_at
   %td= l graded_offspring.updated_at

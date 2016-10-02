@@ -105,9 +105,13 @@ en:
       destroy:
         user_deleted:                 "User %{user} has been deleted"
         user_not_deleted:             "User %{user} could not be deleted"
+        user_not_found:               "We couldn't find the user'"
     offsprings:
       index:
         offsprings:               "Offsprings"
+      show:
+        edit_offspring:          "Edit offspring"
+        offspring_not_found:     "We couldn't find the offspring"
     rooms:
       room:
         room:                     "Room"

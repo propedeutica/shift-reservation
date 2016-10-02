@@ -22,6 +22,7 @@ RSpec.describe "Rooms", type: :request do
       login_as(admin, scope: :admin)
       room
       expect { get destroy_all_admin_rooms_path }.to change(Room, :count).from(1).to(0)
+      expect('admin.rooms.destroy_all.rooms_destroy_all').not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t('admin.rooms.destroy_all.rooms_destroy_all')
     end
 
@@ -30,6 +31,7 @@ RSpec.describe "Rooms", type: :request do
       room
       login_as(admin, scope: :admin)
       expect { get destroy_all_admin_rooms_path }.to_not change(Room, :count)
+      expect('admin.rooms.destroy_all.rooms_destroy_all_error').not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t('admin.rooms.destroy_all.rooms_destroy_all_error')
     end
 
@@ -46,6 +48,7 @@ RSpec.describe "Rooms", type: :request do
       login_as(admin, scope: :admin)
       get admin_room_path(bad_room)
       expect(response).to redirect_to admin_rooms_path
+      expect('admin.rooms.show.room_not_found').not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t('admin.rooms.show.room_not_found')
     end
 
@@ -62,6 +65,7 @@ RSpec.describe "Rooms", type: :request do
       get edit_admin_room_path(100)
       expect(response).to redirect_to admin_rooms_path
       expect(controller.params[:action]).to eq("edit")
+      expect('admin.rooms.edit.room_not_found').not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t('admin.rooms.edit.room_not_found')
     end
 
@@ -72,6 +76,7 @@ RSpec.describe "Rooms", type: :request do
       expect(response).to redirect_to admin_room_path(room.to_param)
       expect(controller.params[:id]).to eq(room.to_param)
       expect(controller.params[:action]).to eq("update")
+      expect('admin.rooms.update.room_updated').not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t('admin.rooms.update.room_updated')
     end
 
@@ -81,6 +86,7 @@ RSpec.describe "Rooms", type: :request do
       expect(response).to have_http_status(200)
       expect(controller.params[:id]).to eq(room.to_param)
       expect(controller.params[:action]).to eq("update")
+      expect('admin.rooms.update.room_not_updated').not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t('admin.rooms.update.room_not_updated')
     end
 
@@ -95,6 +101,7 @@ RSpec.describe "Rooms", type: :request do
       login_as(admin, scope: :admin)
       expect { post admin_rooms_path(room), params: { room: FactoryGirl.attributes_for(:room) } }
         .to change(Room, :count).by(1)
+      expect("admin.rooms.create.room_added").not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t("admin.rooms.create.room_added", room: room.name)
       expect(response).to redirect_to admin_room_path Room.last
     end
@@ -103,6 +110,7 @@ RSpec.describe "Rooms", type: :request do
       login_as(admin, scope: :admin)
       myparams = { room: FactoryGirl.attributes_for(:room, capacity: -1) }
       expect { post admin_rooms_path, params: myparams }.to_not change(Room, :count)
+      expect("admin.rooms.create.room_not_added").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("admin.rooms.create.room_not_added")
     end
 
@@ -110,6 +118,7 @@ RSpec.describe "Rooms", type: :request do
       login_as(admin, scope: :admin)
       room
       expect { delete admin_room_path(room) }.to change(Room, :count).by(-1)
+      expect("admin.rooms.destroy.room_deleted").not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t("admin.rooms.destroy.room_deleted", room: room.name)
       expect(response).to redirect_to admin_rooms_path
     end
@@ -119,6 +128,7 @@ RSpec.describe "Rooms", type: :request do
       room
       expect { delete admin_room_path(100_000) }.to_not change(Room, :count)
       expect(response).to redirect_to admin_rooms_path
+      expect("admin.rooms.destroy.room_not_deleted").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("admin.rooms.destroy.room_not_deleted")
     end
   end
@@ -139,6 +149,7 @@ RSpec.describe "Rooms", type: :request do
       room
       get admin_rooms_path
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -146,6 +157,7 @@ RSpec.describe "Rooms", type: :request do
       room
       expect { get destroy_all_admin_rooms_path }.to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -153,6 +165,7 @@ RSpec.describe "Rooms", type: :request do
       room
       expect { get destroy_all_admin_rooms_path }.to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -160,6 +173,7 @@ RSpec.describe "Rooms", type: :request do
       room
       get admin_room_path(room)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -167,18 +181,21 @@ RSpec.describe "Rooms", type: :request do
       bad_room = FactoryGirl.build_stubbed(:room)
       get admin_room_path(bad_room)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
     it "#edit should show the edit template for #room" do
       get edit_admin_room_path(room)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
     it "#edit shows flash when room does not exist" do
       get edit_admin_room_path(100)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -186,12 +203,14 @@ RSpec.describe "Rooms", type: :request do
       room
       patch "/admin/rooms/#{room.id}", params: { id: room.to_param, room: FactoryGirl.attributes_for(:room) }
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
     it "#update should not update the room with errors" do
       patch "/admin/rooms/#{room.id}", params: { id: room.to_param, room: { capacity: -1 }}
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -205,6 +224,7 @@ RSpec.describe "Rooms", type: :request do
       expect { post admin_rooms_path, params: { room: FactoryGirl.attributes_for(:room) } }
         .to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -212,6 +232,7 @@ RSpec.describe "Rooms", type: :request do
       myparams = { room: FactoryGirl.attributes_for(:room, capacity: -1) }
       expect { post admin_rooms_path, params: myparams }.to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -219,6 +240,7 @@ RSpec.describe "Rooms", type: :request do
       room
       expect { delete admin_room_path(room) }.to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
@@ -226,6 +248,7 @@ RSpec.describe "Rooms", type: :request do
       room
       expect { delete admin_room_path(100_000) }.to_not change(Room, :count)
       expect(response).to redirect_to(new_admin_session_path)
+      expect("devise.failure.unauthenticated").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
   end
