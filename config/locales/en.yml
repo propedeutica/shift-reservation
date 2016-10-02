@@ -108,6 +108,9 @@ en:
     offsprings:
       index:
         offsprings:               "Offsprings"
+      show:
+        edit_offspring:          "Edit offspring"
+        offspring_not_found:     "We couldn't find the offspring"
     rooms:
       room:
         room:                     "Room"

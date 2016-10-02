@@ -34,6 +34,26 @@
 %p
   = link_to t(".edit_user"), edit_admin_user_path(@user), class: "btn btn-primary"
 
-.container
-  Puts offspring here
-  /= render @user
+.container-fluid
+  %table.datatable.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th= Offspring.human_attribute_name('id')
+        %th= Offspring.human_attribute_name('first_name')
+        %th= Offspring.human_attribute_name('last_name')
+        - if Rails.application.config.offspring_type == 'AgedOffspring'
+          %th= Offspring.human_attribute_name('age')
+        - if Rails.application.config.offspring_type == 'GradedOffspring'
+          %th= Offspring.human_attribute_name('grade')
+        %th= Offspring.human_attribute_name('user')
+        %th= Offspring.human_attribute_name('created_at')
+        %th= Offspring.human_attribute_name('updated_at')
+    %tbody
+      = render @user.offsprings
+
+  - content_for :javascripts do
+    :javascript
+      // Initialize Datatables
+      $(document).ready(function() {
+        $('.datatable').dataTable();
+      });

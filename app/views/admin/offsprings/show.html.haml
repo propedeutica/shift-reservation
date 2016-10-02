@@ -1,2 +1,38 @@
-%h1 Admin::Offsprings#show
-%p Find me in app/views/admin/offsprings/show.html.haml
+- provide(:title, @offspring)
+%h1 #{Offspring.model_name.human}: #{@offspring.id}
+.form
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'first_name'
+    .form-control{disabled: :disabled}
+      = @offspring.first_name
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'last_name'
+    .form-control{disabled: :disabled}
+      = @offspring.last_name
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'grade'
+    .form-control{disabled: :disabled}
+      = @offspring.grade
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'created_at'
+    .form-control{disabled: :disabled}
+      = l @offspring.created_at
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'udpated_at'
+    .form-control{disabled: :disabled}
+      = l @offspring.updated_at
+  .form-group
+    .control-label
+      = Offspring.human_attribute_name 'user'
+    .form-control{disabled: :disabled}
+      = link_to full_name(@offspring.user), admin_user_path(@offspring.user)
+%p
+  = link_to t(".edit_offspring"), admin_offspring_path(@offspring), class: "btn btn-primary"
+
+.container
+  Here you will find the shift and room associated to the offspring
