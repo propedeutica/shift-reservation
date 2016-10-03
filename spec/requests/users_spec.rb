@@ -81,6 +81,14 @@ RSpec.describe "Users", type: :request do
       expect("admin.users.destroy.user_not_found").not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("admin.users.destroy.user_not_found")
     end
+
+    it "when #delete errors" do
+      user
+      allow_any_instance_of(User).to receive(:destroy).and_return(false)
+      expect { delete admin_user_path(user) }.to_not change(User, :count)
+      expect("admin.users.destroy.user_not_deleted").not_to include "translation missing:"
+      expect(flash[:alert]).to eq I18n.t("admin.users.destroy.user_not_deleted", user: user.email)
+    end
   end
 
   context "when authenticated as user" do

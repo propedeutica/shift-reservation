@@ -117,7 +117,8 @@ RSpec.describe "Shifts", type: :request do
       expect(flash[:alert]).to eq I18n.t("admin.shifts.destroy.shift_not_deleted")
     end
 
-    pending "does not create a shift with wrong strong_parameters" do
+    it "does not create a shift with wrong strong_parameters" do
+      allow_any_instance_of(Shift).to receive(:save).and_return(false)
       login_as(admin, scope: :admin)
       room
       expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, admin: true) } }
