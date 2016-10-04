@@ -267,7 +267,7 @@ en:
               invalid_format:           "should be formatted as hh:mm"
               end_time_earlier_than_start_time:             "should be later than init_time"
             day_of_week:
-              not_a_number:                                  "is not a number" 
+              not_a_number:                                  "is not a number"
               blank:                                         "can't be blank"
               greater_than_or_equal_to:                      "must be greater than or equal to %{count}"
               less_than_or_equal_to:                         "must be less than or equal to %{count}"
@@ -326,3 +326,11 @@ en:
               min_grade:          "must be greater than 0"
             user:
               blank:              "can't be blank'"
+        assignment:
+          attributes:
+            user:
+              blank:                 "User can't be null"
+            offspring:
+              blank:                 "must exist"
+            shift:
+              blank:                 "must exist"
