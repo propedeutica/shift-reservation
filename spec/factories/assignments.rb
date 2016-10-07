@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :assignment do
-    association :user, factory: :user
-    association :offspring, factory: :offspring
-    association :shift, factory: :shift
+    association :user
+    association :offspring
+    association :shift
   end
 end

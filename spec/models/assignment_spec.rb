@@ -7,7 +7,6 @@ RSpec.describe Assignment, type: :model do
   it "has a valid factory" do
     expect(assignment).to be_valid
   end
-
   describe "#attributes" do
     it "is invalid without an offspring" do
       assignment.offspring = nil
