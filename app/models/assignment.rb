@@ -1,5 +1,5 @@
 class Assignment < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :offspring
   belongs_to :shift
   validates :offspring, presence: true

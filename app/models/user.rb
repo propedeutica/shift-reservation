@@ -12,5 +12,4 @@ class User < ApplicationRecord
   validates :phone, format: { with: VALID_TELEPHONE_REGEX}
   # Has offspring
   has_many :offsprings, dependent: :destroy
-  has_many :assignments
 end
