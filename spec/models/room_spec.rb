@@ -40,4 +40,18 @@ RSpec.describe Room, type: :model do
       expect(room.total_occupied).to eq(10)
     end
   end
+
+  context "to csv" do
+    let(:room) { FactoryGirl.create(:room) }
+
+    it "#to_csv send all attributes as csv" do
+      attributes = "id,name,capacity,created_at,updated_at\n"
+      attributes << room.id.to_s << ","
+      attributes << room.name << ","
+      attributes << room.capacity.to_s << ","
+      attributes << room.created_at.to_s << ","
+      attributes << room.updated_at.to_s << "\n"
+      expect(room.class.to_csv).to match(attributes)
+    end
+  end
 end
