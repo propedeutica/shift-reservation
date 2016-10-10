@@ -3,6 +3,10 @@ class Admin::RoomsController < Admin::AdminIdentifiedController
     @sites_available = Shift.total_sites_available
     @rooms = Room.all
     @number_of_rooms = Room.count
+    respond_to do |format|
+      format.html
+      format.csv { send_data @rooms.to_csv, filename: "rooms.csv" }
+    end
   end
 
   def new
