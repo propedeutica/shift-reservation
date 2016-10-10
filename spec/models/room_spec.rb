@@ -51,6 +51,7 @@ RSpec.describe Room, type: :model do
       attributes << room.capacity.to_s << ","
       attributes << room.created_at.to_s << ","
       attributes << room.updated_at.to_s << "\n"
+
       expect(room.class.to_csv).to match(attributes)
     end
   end
