@@ -217,6 +217,7 @@ en:
         room_not_updated:       "Room could not be updated"
         there_are_no_rooms_yet: "There are no rooms yet defined"
         redirect_to_index:      "Go back"
+        export_csv:             "Export to CSV"
       shift:
         shift:                  "Shift"
         site:                   "Site"
@@ -267,7 +268,7 @@ en:
               invalid_format:           "should be formatted as hh:mm"
               end_time_earlier_than_start_time:             "should be later than init_time"
             day_of_week:
-              not_a_number:                                  "is not a number" 
+              not_a_number:                                  "is not a number"
               blank:                                         "can't be blank"
               greater_than_or_equal_to:                      "must be greater than or equal to %{count}"
               less_than_or_equal_to:                         "must be less than or equal to %{count}"

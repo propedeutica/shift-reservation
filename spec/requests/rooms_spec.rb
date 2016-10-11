@@ -5,6 +5,7 @@ RSpec.describe "Rooms", type: :request do
   context "when authenticated as admin" do
     let!(:room) { FactoryGirl.create(:room) }
     let(:admin) { FactoryGirl.create(:admin) }
+    let(:file) { 'rooms.csv' }
 
     after(:each) do
       Warden.test_reset!
@@ -16,6 +17,12 @@ RSpec.describe "Rooms", type: :request do
       get admin_rooms_path
       expect(response).to have_http_status(200)
       expect(response.body).to include(room.name)
+    end
+
+    it "#index should export a file in csv" do
+      login_as(admin, scope: :admin)
+      get "/admin/rooms.csv"
+      expect(response).to have_http_status(200)
     end
 
     it "can destroy all" do
@@ -153,6 +160,11 @@ RSpec.describe "Rooms", type: :request do
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 
+    it "#index not should export a file in csv" do
+      get "/admin/rooms.csv"
+      expect(response).to have_http_status(401)
+    end
+
     it "can destroy all" do
       room
       expect { get destroy_all_admin_rooms_path }.to_not change(Room, :count)
@@ -265,6 +277,11 @@ RSpec.describe "Rooms", type: :request do
       get admin_rooms_path
       expect(response).to redirect_to(new_admin_session_path)
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
+    end
+
+    it "#index not should export a file in csv" do
+      get "/admin/rooms.csv"
+      expect(response).to have_http_status(401)
     end
 
     it "can destroy all" do
