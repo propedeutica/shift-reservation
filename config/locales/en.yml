@@ -326,4 +326,12 @@ en:
               too_short:          "is too short (minimum is %{count} characters)"
               min_grade:          "must be greater than 0"
             user:
-              blank:              "can't be blank'"
+              blank:              "must exist"
+        assignment:
+          attributes:
+            user:
+              blank:                 "can't be blank"
+            offspring:
+              blank:                 "can't be blank"
+            shift:
+              blank:                 "can't be blank"
