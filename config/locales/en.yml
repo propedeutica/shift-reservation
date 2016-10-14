@@ -165,6 +165,15 @@ en:
         welcome:                "Welcome to Shift Reservation | Admin interface"
         welcome-text:           "This interface will allow only admins to sign in"
         remember_username:      "Remember admin"
+  user:
+    offsprings:
+      index:
+        offsprings:             "Offsprings"
+        no_offsprings:          "Please add your offspring here"
+      add_offspring:
+        add_offspring:          "Add offspring"
+      offspring:
+        assign:                 "Assign shift"
   users:
     registrations:
       new:
@@ -189,6 +198,11 @@ en:
         log_in:                      "Log in"
     show:
       edit_user:             "Edit user"
+  rooms:
+    index:
+      room_index:                "Room index"
+    room:
+      available:                 "available"
   application:
     name:                   "Shift Reservation"
     about:                  "About"

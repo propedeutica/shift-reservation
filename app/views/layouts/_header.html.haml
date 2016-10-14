@@ -47,10 +47,10 @@
           = link_to (t'.log_in'), new_user_session_path
       %li
         - if user_signed_in?
-          = link_to t('.offsprings'), "#"
+          = link_to t('.offsprings'), user_offsprings_path
       %li
         - if user_signed_in?
-          = link_to t('.rooms'), "#"
+          = link_to t('.rooms'), rooms_path
       %li.dropdown
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           = (t ".help")

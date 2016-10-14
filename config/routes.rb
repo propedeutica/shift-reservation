@@ -1,6 +1,35 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'offsprings/index'
+  end
+
+  namespace :user do
+    get 'offsprings/new'
+  end
+
+  namespace :user do
+    get 'offsprings/create'
+  end
+
+  namespace :user do
+    get 'offsprings/edit'
+  end
+
+  namespace :user do
+    get 'offsprings/show'
+  end
+
+  namespace :user do
+    get 'offsprings/update'
+  end
+
+  namespace :user do
+    get 'offsprings/destroy'
+  end
+
   devise_for :users
   devise_for :admins
+
   # Information for the application
   get 'info',  to: 'information#info'
   get 'help',  to: 'information#help'
@@ -13,10 +42,15 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, only: [:show]
     resources :rooms, only: [:index]
+    namespace :user do
+      resources :offsprings
+    end
   end
+
   authenticated :admin do
     root to: "admin/dashboard#index"
   end
+
   authenticate :admin do
     namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]

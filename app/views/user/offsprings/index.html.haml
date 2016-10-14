@@ -1,0 +1,20 @@
+- provide :title, (t '.offsprings').to_s
+%h1= (t '.offsprings').to_s
+
+.container-fluid
+  - if @offsprings.count.positive?
+    = render @offsprings
+  - else
+    = t ".no_offsprings"
+  = render "add_offspring"
+
+
+- content_for :javascripts do
+  :javascript
+    // Equalize column width
+    $(document).ready(function () {
+      var widest = 0;
+      $('.list-view-pf-equalized-column .list-view-pf-additional-info-item').each( function() {
+        widest = $(this).width() > widest ? $(this).width() : widest;
+      }).width(widest);
+    });

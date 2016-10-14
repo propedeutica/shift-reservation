@@ -1,0 +1,52 @@
+.cards-pf
+  .container-fluid.container-cards-pf
+    .row.row-cards-pf
+      .col-xs-6.col-sm-4.col-md-4
+        .card-pf
+          .card-pf-heading
+            = pluralize(room.shifts.count, "Shift")
+          %h2.card-pf-title
+            = room.name
+          .card-pf-body
+            .donut-chart-pf.example-donut-chart-mini{id: "donut-chart-capacity-#{room.id}"}
+              %div{style: "text-align: center; width: 220px;"}
+                = t ".available"
+    .row= render "shifts", room: room
+
+- content_for :javascripts do
+  :javascript
+    var c3ChartDefaults = $().c3ChartDefaults();
+
+    var donutData = {
+      type : 'donut',
+      colors: {
+        Available: $.pfPaletteColors.blue,
+        Occupied: $.pfPaletteColors.orange
+      },
+      columns: [
+        ['Available', #{room.total_sites_available}],
+        ['Occupied', #{room.total_occupied}],
+      ],
+      onclick: function (d, i) { console.log("onclick", d, i); },
+      onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+      onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+    };
+
+    // Small Donut Chart
+    var donutChartSmallConfig = c3ChartDefaults.getDefaultDonutConfig(#{room.total_capacity});
+    donutChartSmallConfig.bindto = '#donut-chart-capacity-#{room.id}';
+    donutChartSmallConfig.tooltip = {show: true};
+    donutChartSmallConfig.data = donutData;
+    donutChartSmallConfig.legend = {
+      show: true,
+      position: 'right'
+    };
+    donutChartSmallConfig.size = {
+      width: 250,
+      height: 115
+    };
+    donutChartSmallConfig.tooltip = {
+      contents: $().pfDonutTooltipContents
+    };
+
+    var donutChartSmall = c3.generate(donutChartSmallConfig);

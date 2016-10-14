@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.describe "Shifts", type: :request do
+RSpec.describe "AdminShifts", type: :request do
   context "when authenticated as admin" do
     let(:room) { FactoryGirl.create(:room) }
     let(:shift) { FactoryGirl.create(:shift, room: room) }
