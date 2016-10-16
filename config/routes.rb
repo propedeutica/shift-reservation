@@ -1,32 +1,4 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'offsprings/index'
-  end
-
-  namespace :user do
-    get 'offsprings/new'
-  end
-
-  namespace :user do
-    get 'offsprings/create'
-  end
-
-  namespace :user do
-    get 'offsprings/edit'
-  end
-
-  namespace :user do
-    get 'offsprings/show'
-  end
-
-  namespace :user do
-    get 'offsprings/update'
-  end
-
-  namespace :user do
-    get 'offsprings/destroy'
-  end
-
   devise_for :users
   devise_for :admins
 

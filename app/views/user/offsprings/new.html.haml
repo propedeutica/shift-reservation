@@ -1,2 +1,14 @@
-%h1 User::Offsprings#new
-%p Find me in app/views/user/offsprings/new.html.haml
+- provide :title, (t'.new_offspring')
+%h2= t '.new_offspring'
+.container
+  = form_for(@offspring, as: @offspring, url: user_offsprings_path(current_user), format: :json) do |f|
+    %form.form-horizontal
+      = render 'form_errors', object: @offspring
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+      .actions
+        = f.submit (t'.create'), class: "btn btn-primary btn-lg"

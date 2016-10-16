@@ -21,6 +21,8 @@
             = offspring.last_name
         .list-view-pf-additional-info
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
+            = offspring.grade
+          .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             - if offspring.assignment
               %strong= offspring.assignment.shift_id
             - else
