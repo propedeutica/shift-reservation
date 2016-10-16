@@ -179,10 +179,10 @@ en:
         new_offspring:          "Add offspring"
         missing_offspring_type: "Offspring type configuration not recognized"
         create:                 "Create"
-      graded_offsprings:
-        graded_offspring:
-          assign:                 "Assign shift"
-          no_assignment_yet:      "There is no assignment in the database"
+    graded_offsprings:
+      graded_offspring:
+        assign:                 "Assign shift"
+        no_assignment_yet:      "There is no assignment in the database"
   users:
     registrations:
       new:

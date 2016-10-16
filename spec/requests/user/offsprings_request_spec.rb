@@ -14,7 +14,21 @@ RSpec.describe User::OffspringsController, type: :request do
   end
 
   context "when config type is wrong" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:offspring) { FactoryGirl.create(type_symbol, user: user) }
+    let(:offspring2) { FactoryGirl.create(type_symbol, user: user) }
+    let(:new_offspring) { FactoryGirl.parameters(type_symbol, user: user) }
+
+    before(:all) do
+      @offspring_type = Rails.application.config.offspring_type
+    end
+
+    after(:all) do
+      Rails.application.config.offspring_type = @offspring_type
+    end
+
     it "returns flash message when offspring type is wrong" do
+      login_as(user, scope: :user)
       Rails.application.config.offspring_type = "CompletelyWrong"
       get new_user_offspring_path(user)
       expect(response).to redirect_to(root_path)
@@ -25,9 +39,9 @@ RSpec.describe User::OffspringsController, type: :request do
 
   context "when user authenticated" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(type_symbol, user: user)}
-    let(:offspring2) { FactoryGirl.create(type_symbol, user: user)}
-    let(:new_offspring) { FactoryGirl.parameters(type_symbol, user: user)}
+    let(:offspring) { FactoryGirl.create(type_symbol, user: user) }
+    let(:offspring2) { FactoryGirl.create(type_symbol, user: user) }
+    let(:new_offspring) { FactoryGirl.parameters(type_symbol, user: user) }
 
     before(:each) do
       login_as(user, scope: :user)
@@ -54,22 +68,14 @@ RSpec.describe User::OffspringsController, type: :request do
         get new_user_offspring_path(user)
         expect(response).to have_http_status(:success)
       end
-
-      it "returns flash message when offspring type is wrong" do
-        Rails.application.config.offspring_type = "CompletelyWrong"
-        get new_user_offspring_path(user)
-        expect(response).to redirect_to(root_path)
-        expect(I18n.t('user.offsprings.new.missing_offspring_type')).not_to include "translation missing:"
-        expect(flash[:alert]).to include I18n.t "user.offsprings.new.missing_offspring_type"
-      end
     end
 
     describe "POST #create" do
       it "creates valid offspring" do
-        expect { post user_offsprings_path, params: { type => FactoryGirl.attributes_for(type) } }
+        expect { post user_offsprings_path, params: { type_symbol => FactoryGirl.attributes_for(type_symbol) } }
           .to change(Offspring, :count).by(1)
         expect("user.offsprings.create.offspring_added").not_to include "translation missing:"
-        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", offspring: offspring.first_name)
+        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", type_symbol => offspring.first_name)
         expect(response).to redirect_to admin_room_path Room.last
       end
       it "does not create invalid offspring" do

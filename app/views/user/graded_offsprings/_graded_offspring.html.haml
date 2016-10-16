@@ -16,18 +16,18 @@
       .list-view-pf-body
         .list-view-pf-description
           .list-group-item-heading
-            = offspring.first_name
+            = graded_offspring.first_name
           .list-group-item-text
-            = offspring.last_name
+            = graded_offspring.last_name
         .list-view-pf-additional-info
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            = offspring.grade
+            = graded_offspring.grade
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
-              %strong= offspring.assignment.shift_id
+            - if graded_offspring.assignment
+              %strong= graded_offspring.assignment.shift_id
             - else
               %strong= t ".no_assignment_yet"
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
-              %strong= offspring.assignment.shift.room.name
+            - if graded_offspring.assignment
+              %strong= graded_offspring.assignment.shift.room.name
       

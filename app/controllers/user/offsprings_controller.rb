@@ -1,4 +1,6 @@
 class User::OffspringsController < ApplicationController
+  prepend_before_action :test_offspring_type
+
   def index
     @offsprings = current_user.offsprings
   end
@@ -39,11 +41,20 @@ class User::OffspringsController < ApplicationController
   private
 
   def offsprings_params(type)
-    an = type.attribute_names
-    an.delete("id")
-    an.delete("created_at")
-    an.delete("updated_at")
-    an.delete("tyoe")
-    params.require(type).permit(an)
+    an = type&.camelize.safe_constantize&.attribute_names
+    if an.nil?
+      flash[:error] = t '.param_error'
+      redirect_to root_path
+    else
+      an.delete("id")
+      an.delete("created_at")
+      an.delete("updated_at")
+      an.delete("type")
+      params.require(type.camelize(:lower)).permit(an)
+    end
+  end
+
+  def test_offspring_type
+    Rails.application.config.offspring_type.safe_constantize
   end
 end
