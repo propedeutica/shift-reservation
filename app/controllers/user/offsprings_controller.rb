@@ -55,6 +55,9 @@ class User::OffspringsController < ApplicationController
   end
 
   def test_offspring_type
-    Rails.application.config.offspring_type.safe_constantize
+    if Rails.application.config.offspring_type.safe_constantize.nil?
+      flash[:error] = t '.param_error'
+      redirect_to root_path
+    end
   end
 end
