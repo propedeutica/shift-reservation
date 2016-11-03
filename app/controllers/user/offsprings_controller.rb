@@ -6,7 +6,14 @@ class User::OffspringsController < ApplicationController
   end
 
   def new
-    unless (@offspring = Rails.application.config.offspring_type.safe_constantize&.new)
+    unless (@offspring = Offspring.new(type: Rails.application.config.offspring_type))
+      flash[:alert] = t '.missing_offspring_type'
+      redirect_to root_path
+    end
+  end
+
+  def new_graded_offspring
+    unless (@offspring = Offspring.new(type: Rails.application.config.offspring_type))
       flash[:alert] = t '.missing_offspring_type'
       redirect_to root_path
     end
@@ -56,7 +63,7 @@ class User::OffspringsController < ApplicationController
 
   def test_offspring_type
     if Rails.application.config.offspring_type.safe_constantize.nil?
-      flash[:error] = t '.param_error'
+      flash[:alert] = t '.missing_offspring_type'
       redirect_to root_path
     end
   end

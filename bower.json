@@ -16,6 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "patternfly-sass": "^3.11.0"
+    "patternfly-sass": "^3.13.0"
   }
 }

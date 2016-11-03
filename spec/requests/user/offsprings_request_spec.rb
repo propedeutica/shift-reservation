@@ -1,13 +1,9 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-
-
 RSpec.describe User::OffspringsController, type: :request do
   let(:type) { Rails.application.config.offspring_type }
   let(:type_symbol) { type&.camelize(:lower).intern }
-
-
 
   it "is properly configured" do
     expect(type.safe_constantize).not_to be_nil
@@ -65,17 +61,18 @@ RSpec.describe User::OffspringsController, type: :request do
     describe "GET #new" do
       it "returns new offspring form" do
         user
-        get new_user_offspring_path(user)
+        debugger
+        get new_polymorphic_path(offspring, user.to_sym)
         expect(response).to have_http_status(:success)
       end
     end
 
     describe "POST #create" do
       it "creates valid offspring" do
-        expect { post user_offsprings_path, params: { type_symbol => FactoryGirl.attributes_for(type_symbol) } }
+        expect { post polymorphic_path(user, @offspring), params: { type_symbol => FactoryGirl.attributes_for(type_symbol) } }
           .to change(Offspring, :count).by(1)
         expect("user.offsprings.create.offspring_added").not_to include "translation missing:"
-        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", type_symbol => offspring.first_name)
+        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", [type_symbol => offspring.first_name])
         expect(response).to redirect_to admin_room_path Room.last
       end
       it "does not create invalid offspring" do

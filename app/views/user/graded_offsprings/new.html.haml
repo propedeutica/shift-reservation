@@ -10,5 +10,8 @@
       .form-group
         = f.label :last_name
         = f.text_field :last_name, class: 'form-control'
+      .form-group
+        = f.label :grade
+        = f.integer :grade, class: 'form-control'
       .actions
         = f.submit (t'.create'), class: "btn btn-primary btn-lg"
