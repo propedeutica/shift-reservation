@@ -180,8 +180,6 @@ en:
         missing_offspring_type: "Offspring type configuration not recognized"
         create:                 "Create"
         param_error:            "There is an error in the offspring definition"
-    graded_offsprings:
-      graded_offspring:
         assign:                 "Assign shift"
         no_assignment_yet:      "There is no assignment in the database"
   users:

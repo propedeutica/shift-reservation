@@ -66,16 +66,6 @@ end
   FactoryGirl.create(:user, email: "ana@example.com")
 end
 
-if Rails.application.config.offspring_type == 'GradedOffspring'
-  100.times do
-    FactoryGirl.create(:gradedOffspring)
-  end
-elsif Rails.application.config.offspring_type == 'AgedOffspring'
-  100.times do
-    FactoryGirl.create(:agedOffspring)
-  end
-else
-  100.times do
+100.times do
     FactoryGirl.create(:offspring)
-  end
 end

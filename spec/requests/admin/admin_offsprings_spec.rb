@@ -5,7 +5,7 @@ RSpec.describe "AdminOffsprings", type: :request do
   context "when authenticated as admin" do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!
@@ -45,7 +45,7 @@ RSpec.describe "AdminOffsprings", type: :request do
   end
   context "when authenticated as user" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!
@@ -67,7 +67,7 @@ RSpec.describe "AdminOffsprings", type: :request do
 
   context "when not authenticated" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!

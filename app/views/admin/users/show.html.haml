@@ -41,10 +41,7 @@
         %th= Offspring.human_attribute_name('id')
         %th= Offspring.human_attribute_name('first_name')
         %th= Offspring.human_attribute_name('last_name')
-        - if Rails.application.config.offspring_type == 'AgedOffspring'
-          %th= Offspring.human_attribute_name('age')
-        - if Rails.application.config.offspring_type == 'GradedOffspring'
-          %th= Offspring.human_attribute_name('grade')
+        %th= Offspring.human_attribute_name('grade')
         %th= Offspring.human_attribute_name('user')
         %th= Offspring.human_attribute_name('created_at')
         %th= Offspring.human_attribute_name('updated_at')

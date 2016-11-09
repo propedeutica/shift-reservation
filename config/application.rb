@@ -19,7 +19,5 @@ module ShiftReservation
     config.week_days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
     config.include_weekends = true
     config.system_enabled = true
-    # Offspring type = 'GradedOffspring' or 'AgedOffspring'
-    config.offspring_type = 'GradedOffspring'
   end
 end
