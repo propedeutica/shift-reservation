@@ -45,6 +45,12 @@ RSpec.describe User::OffspringsController, type: :request do
       end
 
       it "does not create invalid offspring" do
+        new_offspring[:first_name] = ""
+        expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
+          .not_to change(Offspring, :count)
+        expect("user.offsprings.create.offspring_not_added").not_to include "translation missing:"
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.create.offspring_not_added")
+        expect(response).to have_http_status(:success)
       end
     end
 
@@ -52,12 +58,13 @@ RSpec.describe User::OffspringsController, type: :request do
       it "returns http success" do
         get edit_user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
+        expect(response.body).to include(offspring.first_name)
       end
     end
 
     describe "GET #show" do
       it "returns http success" do
-        get :show
+        get user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
       end
     end

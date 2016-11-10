@@ -7,7 +7,9 @@
           %span.fa.fa-ellipsis-v
         %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
           %li
-            %a{:href => "#"} Edit
+            %a{href: user_offspring_path(offspring) } Show
+          %li
+            %a{href: edit_user_offspring_path(offspring) } Edit
           %li.divider{:role => "separator"}
           %li
             %a{:href => "#"} Delete

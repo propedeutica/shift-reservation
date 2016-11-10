@@ -185,6 +185,10 @@ en:
       create:
         offspring_added:       "Offspring %{offspring} was added"
         offspring_not_added:   "We couldn't add the the offspring'"
+      show:
+        show_offspring:        "Offspring: %{offspring}"
+        edit:                  "Edit"
+        offspring_not_found:   "We couldn't find the offspring"
   users:
     registrations:
       new:

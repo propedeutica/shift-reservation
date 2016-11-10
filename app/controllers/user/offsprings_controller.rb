@@ -23,9 +23,19 @@ class User::OffspringsController < ApplicationController
   end
 
   def edit
+    @offspring = Offspring.find_by(id: params[:id], user: current_user)
+    if @offspring.nil?
+      flash[:error] = t '.offspring_not_found'
+      redirect_to user_offsprings_path
+    end
   end
 
   def show
+    @offspring = Offspring.find_by(id: params[:id], user: current_user)
+    if @offspring.nil?
+      flash[:error] = t '.offspring_not_found'
+      redirect_to user_offsprings_path
+    end
   end
 
   def update
