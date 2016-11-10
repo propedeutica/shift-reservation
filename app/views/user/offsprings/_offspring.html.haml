@@ -21,12 +21,12 @@
             = offspring.last_name
         .list-view-pf-additional-info
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            = offspring.grade
+            = I18n.t(offspring.grade, scope: 'grades')
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             - if offspring.assignment
               %strong= offspring.assignment.shift_id
             - else
-              %strong= t ".no_assignment_yet"
+              = t ".no_assignment_yet"
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             - if offspring.assignment
               %strong= offspring.assignment.shift.room.name

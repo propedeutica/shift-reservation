@@ -6,7 +6,7 @@ RSpec.describe User::OffspringsController, type: :request do
     let(:user) { FactoryGirl.create(:user) }
     let(:offspring) { FactoryGirl.create(:offspring, user: user) }
     let(:offspring2) { FactoryGirl.create(:offspring, user: user) }
-    let(:new_offspring) { FactoryGirl.parameters(:offspring, user: user) }
+    let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user) }
 
     before(:each) do
       login_as(user, scope: :user)
@@ -30,19 +30,20 @@ RSpec.describe User::OffspringsController, type: :request do
     describe "GET #new" do
       it "returns new offspring form" do
         user
-        get new_user_offspring_path()
+        get new_user_offspring_path(user)
         expect(response).to have_http_status(:success)
       end
     end
 
     describe "POST #create" do
-      it "creates valid offspring" do
-        expect { post user_offspring_path(user), params: { offspring: FactoryGirl.attributes_for(:offspring) } }
+      it "creates valid offspring when valid" do
+        expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
           .to change(Offspring, :count).by(1)
         expect("user.offsprings.create.offspring_added").not_to include "translation missing:"
-        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", [ offspring: offspring.first_name])
-        expect(response).to redirect_to admin_room_path Room.last
+        expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", offspring: new_offspring[:first_name])
+        expect(response).to redirect_to user_offsprings_path
       end
+
       it "does not create invalid offspring" do
       end
     end

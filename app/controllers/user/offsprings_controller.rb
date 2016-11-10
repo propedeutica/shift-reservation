@@ -4,23 +4,17 @@ class User::OffspringsController < ApplicationController
   end
 
   def new
-    unless @offspring = Offspring.new
-      flash[:alert] = t '.missing_offspring_type'
-      redirect_to root_path
-    end
-  end
-
-  def new_graded_offspring
-    unless @offspring = Offspring.new
+    unless (@offspring = Offspring.new)
       flash[:alert] = t '.missing_offspring_type'
       redirect_to root_path
     end
   end
 
   def create
-    @offspring = Offspring.new
+    @offspring = Offspring.new(offsprings_params)
+    @offspring.user = current_user
     if @offspring.save
-      flash[:success] = t '.offspring_added'
+      flash[:success] = t('.offspring_added', offspring: @offspring.first_name)
       redirect_to user_offsprings_path
     else
       flash[:alert] = t '.offspring_not_added'

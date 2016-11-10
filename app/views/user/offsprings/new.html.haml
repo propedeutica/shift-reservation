@@ -12,6 +12,6 @@
         = f.text_field :last_name, class: 'form-control'
       .form-group
         = f.label :grade
-        = f.number_field :grade, class: 'form-control'
+        = f.select :grade, Offspring.grades.map { |w,y| [I18n.t(w, scope: 'grades'), w] }, class: 'form-control'
       .actions
         = f.submit (t'.create'), class: "btn btn-primary btn-lg"

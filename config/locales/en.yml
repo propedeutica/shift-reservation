@@ -105,7 +105,7 @@ en:
       destroy:
         user_deleted:                 "User %{user} has been deleted"
         user_not_deleted:             "User %{user} could not be deleted"
-        user_not_found:               "We couldn't find the user'"
+        user_not_found:               "We couldn't find the user"
     offsprings:
       index:
         offsprings:               "Offsprings"
@@ -182,6 +182,9 @@ en:
         param_error:            "There is an error in the offspring definition"
         assign:                 "Assign shift"
         no_assignment_yet:      "There is no assignment in the database"
+      create:
+        offspring_added:       "Offspring %{offspring} was added"
+        offspring_not_added:   "We couldn't add the the offspring'"
   users:
     registrations:
       new:
