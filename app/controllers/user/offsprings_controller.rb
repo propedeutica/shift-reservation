@@ -39,9 +39,24 @@ class User::OffspringsController < ApplicationController
   end
 
   def update
+    @offspring = Offspring.find_by(id: params[:id])
+    if @offspring&.update_attributes(offsprings_params)
+      flash[:success] = t('.offspring_updated', offspring: @offspring.id)
+      redirect_to user_offspring_path(@offspring)
+    else
+      flash[:error] = t '.offspring_not_updated'
+      render :edit
+    end
   end
 
   def destroy
+    @offspring = Offspring.find_by(id: params["id"])
+    if @offspring&.destroy
+      flash[:success] = (t ".offspring_deleted", offspring: @offspring.first_name)
+    else
+      flash[:alert] = (t ".offspring_not_deleted")
+    end
+    redirect_to user_offsprings_path
   end
 
   private

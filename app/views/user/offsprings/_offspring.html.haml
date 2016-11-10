@@ -7,18 +7,16 @@
           %span.fa.fa-ellipsis-v
         %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
           %li
-            %a{href: user_offspring_path(offspring) } Show
+            %a{ href: user_offspring_path(offspring) } Show
+          %li.divider{role: "separator"}
           %li
-            %a{href: edit_user_offspring_path(offspring) } Edit
-          %li.divider{:role => "separator"}
-          %li
-            %a{:href => "#"} Delete
-
+            %a{ href: edit_user_offspring_path(offspring) } Edit
+          %li.divider{role: "separator"}
     .list-view-pf-main-info
       .list-view-pf-body
         .list-view-pf-description
           .list-group-item-heading
-            = offspring.first_name
+            = link_to offspring.first_name, user_offspring_path(offspring)
           .list-group-item-text
             = offspring.last_name
         .list-view-pf-additional-info

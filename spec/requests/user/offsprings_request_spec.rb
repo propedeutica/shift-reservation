@@ -59,6 +59,7 @@ RSpec.describe User::OffspringsController, type: :request do
         get edit_user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
         expect(response.body).to include(offspring.first_name)
+        expect(response.body).to include(offspring.last_name)
       end
     end
 
@@ -66,20 +67,27 @@ RSpec.describe User::OffspringsController, type: :request do
       it "returns http success" do
         get user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
+        expect(response.body).to include(offspring.first_name)
+        expect(response.body).to include(offspring.last_name)
       end
     end
 
     describe "GET #update" do
-      it "returns http success" do
-        get :update
+      it "updates the offspring" do
+        get edit_user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
+        expect(response.body).to include(offspring.first_name)
+        expect(response.body).to include(offspring.last_name)
       end
     end
 
     describe "GET #destroy" do
-      it "returns http success" do
-        get :destroy
-        expect(response).to have_http_status(:success)
+      it "deletes the offspring" do
+        offspring
+        expect { delete user_offspring_path(offspring) }.to change(Offspring, :count).by(-1)
+        expect("user.offsprings.destroy.offspring_deleted").not_to include "translation missing:"
+        expect(flash[:success]).to eq I18n.t("user.offsprings.destroy.offspring_deleted", offspring: offspring.first_name)
+        expect(response).to redirect_to user_offsprings_path
       end
     end
   end

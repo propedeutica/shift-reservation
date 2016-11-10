@@ -175,6 +175,8 @@ en:
       offspring:
         assign:                 "Assign shift"
         no_assignment_yet:      "There is no assignment in the database"
+        are_you_sure?:          "Are you sure?"
+        delete:                 "Delete"
       new:
         new_offspring:          "Add offspring"
         missing_offspring_type: "Offspring type configuration not recognized"
@@ -189,6 +191,19 @@ en:
         show_offspring:        "Offspring: %{offspring}"
         edit:                  "Edit"
         offspring_not_found:   "We couldn't find the offspring"
+        cancel:                "Cancel"
+      edit:
+        edit_offspring:        "Edit: %{offspring}"
+        update:                 "Update"
+        delete:                 "Delete"
+        are_you_sure?:          "Are you sure?"
+        cancel:                 "Cancel"
+      update:
+        offspring_updated:      "%{offspring} has been updated"
+        offspring_not_updated:  "There was an error updating the offspring"
+      destroy:
+        offspring_deleted:      "%{offspring} has been deleted"
+        offspring_not_deleted:  "There was an error deleting the offspring"
   users:
     registrations:
       new:
