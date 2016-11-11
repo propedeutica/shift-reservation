@@ -15,7 +15,7 @@ RSpec.describe "AdminRooms", type: :request do
       room
       get rooms_path
       expect(response).to have_http_status(200)
-      expect(response.body).to include(room.name)
+      expect(response.body).to include ERB::Util.html_escape room.name
     end
   end
 

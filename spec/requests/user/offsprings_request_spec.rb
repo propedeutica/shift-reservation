@@ -6,6 +6,7 @@ RSpec.describe User::OffspringsController, type: :request do
     let(:user) { FactoryGirl.create(:user) }
     let(:offspring) { FactoryGirl.create(:offspring, user: user) }
     let(:offspring2) { FactoryGirl.create(:offspring, user: user) }
+    let(:other_offspring) { FactoryGirl.create(:offspring) }
     let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user) }
 
     before(:each) do
@@ -22,8 +23,8 @@ RSpec.describe User::OffspringsController, type: :request do
         offspring
         offspring2
         get user_offsprings_path(user)
-        expect(response.body).to include(offspring.first_name)
-        expect(response.body).to include(offspring2.first_name)
+        expect(response.body).to include ERB::Util.html_escape offspring.first_name
+        expect(response.body).to include ERB::Util.html_escape offspring2.first_name
       end
     end
 
@@ -55,29 +56,70 @@ RSpec.describe User::OffspringsController, type: :request do
     end
 
     describe "GET #edit" do
-      it "returns http success" do
+      it "returns edit properly" do
         get edit_user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
-        expect(response.body).to include(offspring.first_name)
-        expect(response.body).to include(offspring.last_name)
+        expect(response.body).to include ERB::Util.html_escape offspring.first_name
+        expect(response.body).to include ERB::Util.html_escape offspring.last_name
+      end
+
+      it "does not find other user's offspring" do
+        get edit_user_offspring_path(other_offspring)
+        expect(response).to redirect_to(user_offsprings_path)
+        expect("user.offsprings.edit.offspring_not_found").not_to include "translation missing:"
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.edit.offspring_not_found")
       end
     end
 
     describe "GET #show" do
-      it "returns http success" do
+      it "returns offpspring properly" do
         get user_offspring_path(offspring)
         expect(response).to have_http_status(:success)
-        expect(response.body).to include(offspring.first_name)
-        expect(response.body).to include(offspring.last_name)
+        expect(response.body).to include ERB::Util.html_escape offspring.first_name
+        expect(response.body).to include ERB::Util.html_escape offspring.last_name
+      end
+
+      it "does not find other user's offspring" do
+        get user_offspring_path(other_offspring)
+        expect(response).to redirect_to(user_offsprings_path)
+        expect("user.offsprings.show.offspring_not_found").not_to include "translation missing:"
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.show.offspring_not_found")
       end
     end
 
     describe "GET #update" do
       it "updates the offspring" do
-        get edit_user_offspring_path(offspring)
-        expect(response).to have_http_status(:success)
-        expect(response.body).to include(offspring.first_name)
-        expect(response.body).to include(offspring.last_name)
+        offspring
+        expect do
+          patch user_offspring_path(offspring), params: { offspring: new_offspring }
+          offspring.reload
+        end.to change { offspring.first_name }.to new_offspring[:first_name]
+        expect(response).to redirect_to user_offspring_path(offspring)
+      end
+
+      it "does not update other user's offspring" do
+        offspring
+        expect do
+          patch user_offspring_path(other_offspring), params: { offspring: new_offspring }
+          other_offspring.reload
+        end.to_not change { other_offspring.first_name }
+        expect(I18n.t("user.offsprings.update.offspring_not_found")).not_to include("translation missing:")
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_found")
+        expect(response).to redirect_to user_offsprings_path
+      end
+
+      it "does not update offspring with errors" do
+        offspring
+        expect do
+          new_offspring[:first_name] = ""
+          patch user_offspring_path(offspring), params: { offspring: new_offspring }
+          offspring.reload
+        end.to_not change { offspring.first_name }
+        expect(I18n.t("user.offsprings.update.offspring_not_updated")).not_to include("translation missing:")
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_updated")
+        expect(response).to have_http_status(200)
+        expect(controller.params[:id]).to eq(offspring.to_param)
+        expect(controller.params[:action]).to eq("update")
       end
     end
 
@@ -87,6 +129,24 @@ RSpec.describe User::OffspringsController, type: :request do
         expect { delete user_offspring_path(offspring) }.to change(Offspring, :count).by(-1)
         expect("user.offsprings.destroy.offspring_deleted").not_to include "translation missing:"
         expect(flash[:success]).to eq I18n.t("user.offsprings.destroy.offspring_deleted", offspring: offspring.first_name)
+        expect(response).to redirect_to user_offsprings_path
+      end
+
+      it "does not delete other user's offspring" do
+        offspring
+        other_offspring
+        expect { delete user_offspring_path(other_offspring) }.to_not change(Offspring, :count)
+        expect(I18n.t("user.offsprings.destroy.offspring_not_found")).not_to include("translation missing:")
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.update.offspring_not_found")
+        expect(response).to redirect_to user_offsprings_path
+      end
+
+      it "shows a flash error if necessary" do
+        offspring
+        allow_any_instance_of(Offspring).to receive(:destroy).and_return(false)
+        expect { delete user_offspring_path(offspring) }.to_not change(Offspring, :count)
+        expect(I18n.t("user.offsprings.destroy.offspring_not_deleted")).not_to include("translation missing:")
+        expect(flash[:alert]).to eq I18n.t("user.offsprings.destroy.offspring_not_deleted", offspring: offspring.first_name)
         expect(response).to redirect_to user_offsprings_path
       end
     end

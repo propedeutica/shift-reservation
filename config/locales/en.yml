@@ -179,14 +179,13 @@ en:
         delete:                 "Delete"
       new:
         new_offspring:          "Add offspring"
-        missing_offspring_type: "Offspring type configuration not recognized"
         create:                 "Create"
         param_error:            "There is an error in the offspring definition"
         assign:                 "Assign shift"
         no_assignment_yet:      "There is no assignment in the database"
       create:
         offspring_added:       "Offspring %{offspring} was added"
-        offspring_not_added:   "We couldn't add the the offspring'"
+        offspring_not_added:   "There was an error adding the offspring'"
       show:
         show_offspring:        "Offspring: %{offspring}"
         edit:                  "Edit"
@@ -198,12 +197,15 @@ en:
         delete:                 "Delete"
         are_you_sure?:          "Are you sure?"
         cancel:                 "Cancel"
+        offspring_not_found:    "There was an error finding the offspring"
       update:
         offspring_updated:      "%{offspring} has been updated"
         offspring_not_updated:  "There was an error updating the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
       destroy:
         offspring_deleted:      "%{offspring} has been deleted"
         offspring_not_deleted:  "There was an error deleting the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
   users:
     registrations:
       new:

@@ -30,6 +30,7 @@ RSpec.describe "AdminShifts", type: :request do
       shift
       login_as(admin, scope: :admin)
       expect { get admin_shifts_destroy_all_path }.to_not change(Shift, :count)
+      expect(I18n.t("admin.shifts.destroy_all.shift_destroy_all_error")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t('admin.shifts.destroy_all.shift_destroy_all_error')
     end
 
@@ -43,6 +44,7 @@ RSpec.describe "AdminShifts", type: :request do
       login_as(admin, scope: :admin)
       get admin_shift_path(bad_shift)
       expect(response).to redirect_to admin_rooms_path
+      expect(I18n.t("admin.shifts.show.shift_not_found")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t('admin.shifts.show.shift_not_found')
     end
 
@@ -59,6 +61,7 @@ RSpec.describe "AdminShifts", type: :request do
       get edit_admin_shift_path(100)
       expect(response).to redirect_to admin_rooms_path
       expect(controller.params[:action]).to eq("edit")
+      expect(I18n.t("admin.shifts.edit.shift_not_found")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t('admin.shifts.edit.shift_not_found')
     end
 
@@ -68,6 +71,7 @@ RSpec.describe "AdminShifts", type: :request do
       expect(response).to redirect_to admin_shift_path(shift.to_param)
       expect(controller.params[:id]).to eq(shift.to_param)
       expect(controller.params[:action]).to eq("update")
+      expect(I18n.t('admin.shifts.update.shift_updated')).not_to include("translation missing:")
       expect(flash[:success]).to eq I18n.t('admin.shifts.update.shift_updated')
     end
 
@@ -83,6 +87,7 @@ RSpec.describe "AdminShifts", type: :request do
       login_as(admin, scope: :admin)
       expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, room: room) } }
         .to change(Shift, :count).by(1)
+      expect(I18n.t("admin.shifts.create.shift_added")).not_to include("translation missing:")
       expect(flash[:success]).to eq I18n.t("admin.shifts.create.shift_added", shift: Shift.last.id)
     end
 
@@ -90,6 +95,7 @@ RSpec.describe "AdminShifts", type: :request do
       login_as(admin, scope: :admin)
       myparams = { shift: FactoryGirl.attributes_for(:shift, room: room, day_of_week: 11) }
       expect { post admin_room_shifts_path(room), params: myparams }.to_not change(Shift, :count)
+      expect(I18n.t("admin.shifts.create.shift_not_added")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t("admin.shifts.create.shift_not_added")
     end
 
@@ -99,6 +105,7 @@ RSpec.describe "AdminShifts", type: :request do
       expect(response).to have_http_status(200)
       expect(controller.params[:id]).to eq(shift.to_param)
       expect(controller.params[:action]).to eq("update")
+      expect(I18n.t('admin.shifts.update.shift_not_updated')).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t('admin.shifts.update.shift_not_updated')
     end
 
@@ -106,6 +113,7 @@ RSpec.describe "AdminShifts", type: :request do
       login_as(admin, scope: :admin)
       shift
       expect { delete admin_shift_path(shift) }.to change(Shift, :count).by(-1)
+      expect(I18n.t("admin.shifts.destroy.shift_deleted")).not_to include("translation missing:")
       expect(flash[:success]).to eq I18n.t("admin.shifts.destroy.shift_deleted", shift: shift.id)
     end
 
@@ -114,6 +122,7 @@ RSpec.describe "AdminShifts", type: :request do
       shift
       expect { delete admin_shift_path(100_000) }.to_not change(Shift, :count)
       expect(response).to redirect_to admin_rooms_path
+      expect(I18n.t("admin.shifts.destroy.shift_not_deleted")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t("admin.shifts.destroy.shift_not_deleted")
     end
 
@@ -123,6 +132,7 @@ RSpec.describe "AdminShifts", type: :request do
       room
       expect { post admin_room_shifts_path(room), params: { shift: FactoryGirl.attributes_for(:shift, admin: true) } }
         .to_not change(Shift, :count)
+      expect(I18n.t("admin.shifts.create.shift_not_added")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t("admin.shifts.create.shift_not_added", shift: shift.id)
     end
   end
@@ -140,6 +150,7 @@ RSpec.describe "AdminShifts", type: :request do
       login_as(user, scope: :user)
       get admin_shift_path(shift)
       expect(response).to redirect_to(new_admin_session_path)
+      expect(I18n.t("devise.failure.unauthenticated")).not_to include("translation missing:")
       expect(flash[:alert]).to eq I18n.t "devise.failure.unauthenticated"
     end
 

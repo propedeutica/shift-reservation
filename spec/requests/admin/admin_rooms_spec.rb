@@ -19,7 +19,7 @@ RSpec.describe "AdminRooms", type: :request do
       room
       get admin_rooms_path
       expect(response).to have_http_status(:success)
-      expect(response.body).to include(room.name)
+      expect(response.body).to include ERB::Util.html_escape room.name
     end
 
     it "#index should export a file in csv" do
@@ -46,7 +46,7 @@ RSpec.describe "AdminRooms", type: :request do
       room
       get admin_room_path(room)
       expect(response).to have_http_status(200)
-      expect(response.body).to include(room.name)
+      expect(response.body).to include ERB::Util.html_escape room.name
     end
 
     it "can't show wrong #id" do
