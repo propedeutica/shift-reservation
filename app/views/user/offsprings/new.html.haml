@@ -15,6 +15,6 @@
       .form-group
         .control-label
           = f.label :grade
-        = f.select :grade, Offspring.grades.map { |w,y| [I18n.t(w, scope: 'grades'), w] }, class: 'form-control'
+        = f.select :grade, Offspring.grades.map { |w, _y| [I18n.t(w, scope: 'grades'), w] }, class: 'form-control'
       .actions
         = f.submit (t'.create'), class: "btn btn-primary btn-lg"

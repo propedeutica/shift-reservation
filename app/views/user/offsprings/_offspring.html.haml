@@ -3,14 +3,14 @@
     .list-view-pf-actions
       %button.btn.btn-default= link_to (t '.assign'), "#"
       .dropdown.pull-right.dropdown-kebab-pf
-        %button#dropdownKebabRight3.btn.btn-link.dropdown-toggle{"aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+        %button.btn.btn-link.dropdown-toggle#dropdownKebabRight3{"aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
           %span.fa.fa-ellipsis-v
         %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
           %li
-            %a{ href: user_offspring_path(offspring) } Show
+            %a{href: user_offspring_path(offspring)} Show
           %li.divider{role: "separator"}
           %li
-            %a{ href: edit_user_offspring_path(offspring) } Edit
+            %a{href: edit_user_offspring_path(offspring)} Edit
           %li.divider{role: "separator"}
     .list-view-pf-main-info
       .list-view-pf-body
@@ -30,5 +30,3 @@
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             - if offspring.assignment
               %strong= offspring.assignment.shift.room.name
-
-      

@@ -67,5 +67,5 @@ end
 end
 
 100.times do
-    FactoryGirl.create(:offspring)
+  FactoryGirl.create(:offspring)
 end

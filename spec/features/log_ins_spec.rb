@@ -17,7 +17,7 @@ RSpec.feature "Log ins", type: :feature do
     fill_in (User.human_attribute_name 'email'),    with: user.email
     fill_in (User.human_attribute_name 'password'), with: user.password
     expect(I18n.t('users.sessions.new.log_in')).not_to include "translation missing:"
-    click_button(I18n.t "users.sessions.new.log_in")
+    click_button I18n.t "users.sessions.new.log_in"
     expect(I18n.t('devise.sessions.signed_in')).not_to include "translation missing:"
     expect(page.body).to include I18n.t "devise.sessions.signed_in"
     expect(page.body).to have_content user.email

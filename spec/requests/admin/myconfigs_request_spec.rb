@@ -5,7 +5,7 @@ RSpec.describe "AdminMyconfigs", type: :request do
   context "when authenticated as admin" do
     let!(:admin) { FactoryGirl.create(:admin) }
 
-    before(:each) do 
+    before(:each) do
       login_as(admin, scope: :admin)
     end
 
