@@ -1,6 +1,6 @@
 class Admin::ShiftsController < Admin::AdminIdentifiedController
   def show
-    @shift = Shift.find_by_id(params[:id])
+    @shift = Shift.find_by(id: params[:id])
     if @shift.nil?
       redirect_to admin_rooms_path
       flash[:alert] = (t ".shift_not_found")
@@ -8,12 +8,12 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
   end
 
   def new
-    @room = Room.find_by_id(params[:room_id])
+    @room = Room.find_by(id: params[:room_id])
     @shift = @room.shifts.build
   end
 
   def create
-    @room = Room.find_by_id(params[:room_id])
+    @room = Room.find_by(id: params[:room_id])
     @shift = @room.shifts.new(shifts_params)
     if @shift.save
       flash[:success] = (t ".shift_added", shift: @shift.id)
@@ -25,7 +25,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
   end
 
   def edit
-    @shift = Shift.find_by_id(params[:id])
+    @shift = Shift.find_by(id: params[:id])
     if @shift.nil?
       flash[:alert] = (t ".shift_not_found")
       redirect_to admin_rooms_path
@@ -46,7 +46,7 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
   end
 
   def destroy
-    @shift = Shift.find_by_id(params["id"])
+    @shift = Shift.find_by(id: params["id"])
     if @shift&.destroy
       flash[:success] = (t ".shift_deleted", shift: @shift.id)
     else

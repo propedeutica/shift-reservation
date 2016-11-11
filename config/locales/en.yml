@@ -105,7 +105,7 @@ en:
       destroy:
         user_deleted:                 "User %{user} has been deleted"
         user_not_deleted:             "User %{user} could not be deleted"
-        user_not_found:               "We couldn't find the user'"
+        user_not_found:               "We couldn't find the user"
     offsprings:
       index:
         offsprings:               "Offsprings"
@@ -165,6 +165,47 @@ en:
         welcome:                "Welcome to Shift Reservation | Admin interface"
         welcome-text:           "This interface will allow only admins to sign in"
         remember_username:      "Remember admin"
+  user:
+    offsprings:
+      index:
+        offsprings:             "Offsprings"
+        no_offsprings:          "Please add your offspring here"
+      add_offspring:
+        add_offspring:          "Add offspring"
+      offspring:
+        assign:                 "Assign shift"
+        no_assignment_yet:      "There is no assignment in the database"
+        are_you_sure?:          "Are you sure?"
+        delete:                 "Delete"
+      new:
+        new_offspring:          "Add offspring"
+        create:                 "Create"
+        param_error:            "There is an error in the offspring definition"
+        assign:                 "Assign shift"
+        no_assignment_yet:      "There is no assignment in the database"
+      create:
+        offspring_added:       "Offspring %{offspring} was added"
+        offspring_not_added:   "There was an error adding the offspring'"
+      show:
+        show_offspring:        "Offspring: %{offspring}"
+        edit:                  "Edit"
+        offspring_not_found:   "We couldn't find the offspring"
+        cancel:                "Cancel"
+      edit:
+        edit_offspring:        "Edit: %{offspring}"
+        update:                 "Update"
+        delete:                 "Delete"
+        are_you_sure?:          "Are you sure?"
+        cancel:                 "Cancel"
+        offspring_not_found:    "There was an error finding the offspring"
+      update:
+        offspring_updated:      "%{offspring} has been updated"
+        offspring_not_updated:  "There was an error updating the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
+      destroy:
+        offspring_deleted:      "%{offspring} has been deleted"
+        offspring_not_deleted:  "There was an error deleting the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
   users:
     registrations:
       new:
@@ -189,6 +230,11 @@ en:
         log_in:                      "Log in"
     show:
       edit_user:             "Edit user"
+  rooms:
+    index:
+      room_index:                "Room index"
+    room:
+      available:                 "available"
   application:
     name:                   "Shift Reservation"
     about:                  "About"

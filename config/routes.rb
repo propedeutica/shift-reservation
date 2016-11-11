@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
+
   # Information for the application
   get 'info',  to: 'information#info'
   get 'help',  to: 'information#help'
@@ -13,10 +14,15 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :users, only: [:show]
     resources :rooms, only: [:index]
+    namespace :user do
+      resources :offsprings
+    end
   end
+
   authenticated :admin do
     root to: "admin/dashboard#index"
   end
+
   authenticate :admin do
     namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]

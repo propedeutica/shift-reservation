@@ -17,8 +17,7 @@ class Shift < ApplicationRecord
 
   validates :sites_reserved, numericality: { only_integer: true }
   validates_each :sites_reserved do |shift|
-    shift.errors.add(:shift, I18n.t("sites_reserved.sites_available_greater_than_or_equal_to_0",
-                                    scope: SCOPE)) if shift.sites_available.negative?
+    shift.errors.add(:shift, I18n.t("sites_reserved.sites_available_greater_than_or_equal_to_0", scope: SCOPE)) if shift.sites_available.negative?
   end
 
   def sites_assigned

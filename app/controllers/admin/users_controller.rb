@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::AdminIdentifiedController
   end
 
   def show
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to admin_users_path
       flash[:alert] = (t ".user_not_found")
@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::AdminIdentifiedController
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to admin_users_path
       flash[:alert] = (t ".user_not_found")
@@ -33,7 +33,7 @@ class Admin::UsersController < Admin::AdminIdentifiedController
   end
 
   def destroy
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by(id: params[:id])
     if !@user
       flash[:alert] = (t ".user_not_found")
       redirect_to admin_users_path

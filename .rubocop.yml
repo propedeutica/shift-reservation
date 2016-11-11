@@ -57,11 +57,13 @@ FormatString:
 HashSyntax:
   EnforcedStyle: ruby19
 LineLength:
-  Max: 120
+  Max: 160
   Severity: refactor
 MethodLength:
   Max: 25
   Severity: refactor
+BlockLength:
+  Enabled: false
 ParameterLists:
   Severity: refactor
 PerceivedComplexity:

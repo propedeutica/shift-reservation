@@ -1,0 +1,21 @@
+- provide :title, t('.show_offspring', offspring: (full_name @offspring))
+%h2= t('.show_offspring', offspring: @offspring.id)
+.container
+  = form_for(@offspring, as: @offspring, url: user_offsprings_path(current_user), format: :json) do |f|
+    %form.form-horizontal
+      = render 'form_errors', object: @offspring
+      .form-group
+        .control-label
+          = f.label :first_name
+        = f.text_field :first_name, class: 'form-control', disabled: :disabled
+      .form-group
+        .control-label
+          = f.label :last_name
+        = f.text_field :last_name, class: 'form-control', disabled: :disabled
+      .form-group
+        .control-label
+          = f.label :grade
+        = f.select :grade, Offspring.grades.map { |w, _y| [I18n.t(w, scope: 'grades'), w] }, { }, { class: 'form-control', disabled: true}
+      .actions
+        = link_to (t '.cancel'), user_offsprings_path(current_user), class: 'btn btn-lg btn-default'
+        = link_to (t '.edit'), edit_user_offspring_path(@offspring), class: 'btn btn-primary btn-lg'

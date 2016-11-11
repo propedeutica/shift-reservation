@@ -1,11 +1,11 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.describe "Offsprings", type: :request do
+RSpec.describe "AdminOffsprings", type: :request do
   context "when authenticated as admin" do
     let(:admin) { FactoryGirl.create(:admin) }
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!
@@ -19,14 +19,14 @@ RSpec.describe "Offsprings", type: :request do
       offspring
       get admin_offsprings_path
       expect(response).to have_http_status("200")
-      expect(response.body).to include(offspring.first_name)
+      expect(response.body).to include ERB::Util.html_escape offspring.first_name
     end
 
     it "#show" do
       offspring
       get admin_offspring_path(offspring)
       expect(response).to have_http_status(200)
-      expect(response.body).to include(offspring.first_name)
+      expect(response.body).to include ERB::Util.html_escape offspring.first_name
     end
 
     it "#show non-existent" do
@@ -45,7 +45,7 @@ RSpec.describe "Offsprings", type: :request do
   end
   context "when authenticated as user" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!
@@ -56,7 +56,7 @@ RSpec.describe "Offsprings", type: :request do
     it "#index fails" do
       offspring
       get admin_offsprings_path
-      expect(response.body).to redirect_to new_admin_session_path
+      expect(response).to redirect_to new_admin_session_path
     end
     pending "edit offspring"
     pending "shows assignment"
@@ -67,7 +67,7 @@ RSpec.describe "Offsprings", type: :request do
 
   context "when not authenticated" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:gradedOffspring, user: user) }
+    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
 
     after(:each) do
       Warden.test_reset!
@@ -76,7 +76,7 @@ RSpec.describe "Offsprings", type: :request do
     it "#index fails" do
       offspring
       get admin_offsprings_path
-      expect(response.body).to redirect_to new_admin_session_path
+      expect(response).to redirect_to new_admin_session_path
     end
   end
 end

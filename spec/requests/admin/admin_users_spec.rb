@@ -22,7 +22,7 @@ RSpec.describe "Users", type: :request do
     it "#show user" do
       get admin_user_path(user)
       expect(response).to have_http_status(200)
-      expect(response.body).to include user.first_name
+      expect(response.body).to include ERB::Util.html_escape user.first_name
     end
 
     it "#show flash when user.nil" do
