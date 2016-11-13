@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :rooms, only: [:index]
     namespace :user do
-      resources :offsprings
+      resources :offsprings, shallow: true do
+        resource :assignment
+      end
     end
   end
 
