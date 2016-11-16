@@ -211,6 +211,9 @@ en:
         offspring_not_found:   "We couldn't find the offspring"
         shift_select:           "Select a shift"
         shift_select_for:       "Select a shift for %{offspring}"
+      create:
+        assignment_added:       "A new assignment has been added"
+        assignment_not_added:   "There was an error with the assignment"
   users:
     registrations:
       new:

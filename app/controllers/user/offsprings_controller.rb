@@ -8,7 +8,6 @@ class User::OffspringsController < UserAuthenticatedController
   end
 
   def create
-    debugger
     @offspring = Offspring.new(offsprings_params)
     @offspring.user = current_user
     if @offspring.save

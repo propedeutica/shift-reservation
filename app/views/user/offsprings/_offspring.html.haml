@@ -22,11 +22,9 @@
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             = I18n.t(offspring.grade, scope: 'grades')
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
-              %strong= offspring.assignment.shift_id
-            - else
+            - if !offspring.assignment
               = t ".no_assignment_yet"
-          .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
+            - else
               %strong= offspring.assignment.shift.room.name
+              #{week_day_convert(offspring.assignment.shift.day_of_week)}
               = offspring.assignment.shift.start_time

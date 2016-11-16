@@ -10,11 +10,11 @@ class User::AssignmentsController < UserAuthenticatedController
   end
 
   def create
-    debugger
-    @assignment = Assignment.new(assignment_params)
-    @assignment.user, @assignment.offspring = current_user, params[:offspring_id]
+    @assignment = Assignment.find_by(offspring: params[:offspring_id]) || Assignment.new
+    @assignment.shift_id = assignment_shift[:shift]
+    @assignment.offspring_id = params[:offspring_id]
+    @assignment.user = current_user
     if @assignment.save
-      debugger
       flash[:success] = (t '.assignment_added', assignment: @assignment)
       redirect_to user_offsprings_path
     else
@@ -28,7 +28,7 @@ class User::AssignmentsController < UserAuthenticatedController
 
   private
 
-  def assignment_params
+  def assignment_shift
     params.require(:assignment).permit(:shift)
   end
 end
