@@ -1,2 +1,9 @@
-%h1 User::Assignments#new
-%p Find me in app/views/user/assignments/new.html.haml
+- provide(:title, (t '.shift_select').to_s)
+%h1= t('.shift_select_for', offspring: full_name(@offspring))
+
+.row
+  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms.empty?
+  = render @rooms
+= @assignment
+Offspring
+= @offspring.first_name

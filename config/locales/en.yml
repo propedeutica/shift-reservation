@@ -206,6 +206,11 @@ en:
         offspring_deleted:      "%{offspring} has been deleted"
         offspring_not_deleted:  "There was an error deleting the offspring"
         offspring_not_found:    "We couldn't find the offspring"
+    assignments:
+      new:
+        offspring_not_found:   "We couldn't find the offspring"
+        shift_select:           "Select a shift"
+        shift_select_for:       "Select a shift for %{offspring}"
   users:
     registrations:
       new:
