@@ -2,41 +2,64 @@ require 'rails_helper'
 
 RSpec.describe Assignment, type: :model do
   i18n_scope = 'activerecord.errors.models.assignment.attributes'
-  let(:assignment) { FactoryGirl.build(:assignment) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:offspring) { FactoryGirl.create(:offspring, user: user) }
+  let(:shift) { FactoryGirl.create(:shift) }
+  let(:assignment) { FactoryGirl.build(:assignment, offspring: offspring, user: user, shift: shift) }
+  let(:assignment2) { FactoryGirl.create(:assignment, offspring: offspring) }
 
   it "has a valid factory" do
     expect(assignment).to be_valid
   end
+
   it "is destroyed when the offspring is" do
-    user = FactoryGirl.create(:user)
-    offspring = FactoryGirl.create(:offspring, user: user)
-    FactoryGirl.create(:assignment, offspring: offspring, user: user)
+    user
+    offspring
+    assignment2
     offspring.destroy
     expect(offspring.assignment.destroyed?).to be_truthy
   end
+
+  it "is unique in the system for each offspring" do
+    user
+    offspring
+    assignment2
+    assignment.valid?
+    expect(assignment).not_to be_valid
+    expect(I18n.t('offspring.taken', scope: i18n_scope)).not_to include "translation missing:"
+    expect(assignment.errors[:offspring]).to include(I18n.t('offspring.taken', scope: i18n_scope))
+  end
+
   describe "#attributes" do
     it "is invalid without an offspring" do
       assignment.offspring = nil
       assignment.valid?
+      expect(I18n.t('offspring.blank', scope: i18n_scope)).not_to include "translation missing:"
       expect(assignment.errors[:offspring]).to include(I18n.t('offspring.blank', scope: i18n_scope))
     end
+
     it "is valid when user is nil" do
-      offspring = FactoryGirl.create(:offspring)
-      shift = FactoryGirl.create(:shift)
+      offspring
+      shift
       assignment.offspring = offspring
       assignment.shift = shift
       assignment.user = nil
       assignment.valid?
       expect(assignment).to be_valid
     end
+
     it "is invalid without a shift" do
       assignment.shift = nil
       assignment.valid?
+      expect(I18n.t('shift.blank', scope: i18n_scope)).not_to include "translation missing:"
       expect(assignment.errors[:shift]).to include(I18n.t('shift.blank', scope: i18n_scope))
     end
-    it "is valid with all attributes" do
+
+    it "is not valid when the shift is full" do
+      assignment.shift.update sites_reserved: assignment.shift.capacity
       assignment.valid?
-      expect(assignment).to be_valid
+      expect(I18n.t('shift.no_sites_available', scope: i18n_scope)).not_to include "translation missing:"
+      expect(assignment.errors[:shift]).to include(I18n.t('shift.no_sites_available', scope: i18n_scope))
     end
   end
 end

@@ -99,12 +99,43 @@ RSpec.describe Shift, type: :model do
     let!(:shift1) { FactoryGirl.create(:shift, room: room) }
     let!(:shift2) { FactoryGirl.create(:shift, room: room) }
     let!(:shift3) { FactoryGirl.create(:shift, room: room2, sites_reserved: 5) }
+    let(:offspring) { FactoryGirl.create(:offspring) }
+    let(:assignment) { FactoryGirl.create(:assignment, shift: shift1, offspring: offspring) }
+
     it "returns the total_capacity" do
       expect(Shift.total_capacity).to eq(60)
     end
-    it "returns the sites available" do
+
+    it "returns the sites available when there is no assignment" do
       expect(Shift.total_sites_available).to eq(55)
     end
+
+    it "returns the sites available when there are assignments" do
+      offspring
+      assignment
+      expect(Shift.total_sites_available).to eq(54)
+    end
+
+    it "returns sites_available? true when there are sites available" do
+      offspring
+      assignment
+      expect(shift1.sites_available?).to be true
+    end
+
+    it "returns seats_available? false when there are not" do
+      offspring
+      assignment
+      shift1.update(sites_reserved: shift1.sites_available)
+      expect(shift1.sites_available?).to be false
+    end
+
+    it "you can't create an assignment when there are no sites available" do
+      offspring
+      shift1.update(sites_reserved: shift1.capacity)
+      assignment.valid?
+      expect(assignment.errors[:shift]).to include "hoal"
+    end
+
     it "shifts are destroyed when parent room is" do
       expect { room.destroy }.to change(Shift, :count).by(-2)
     end

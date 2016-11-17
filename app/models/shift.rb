@@ -3,6 +3,7 @@ class Shift < ApplicationRecord
   REGEX = /\A([01]\d|2[0123]):[012345]\d\z/
   SCOPE = "activerecord.errors.models.shift.attributes"
   belongs_to :room
+  delegate :capacity, to: :room
   has_many :assignments
   validates :day_of_week, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0,
     less_than_or_equal_to: 6 }
@@ -17,19 +18,23 @@ class Shift < ApplicationRecord
 
   validates :sites_reserved, numericality: { only_integer: true }
   validates_each :sites_reserved do |shift|
-    shift.errors.add(:shift, I18n.t("sites_reserved.sites_available_greater_than_or_equal_to_0", scope: SCOPE)) if shift.sites_available.negative?
+    shift.errors.add(:shift, I18n.t("sites_reserved.sites_available_greater_than_or_equal_to_0", scope: SCOPE)) unless shift.sites_available >= 0
   end
 
   def sites_assigned
-    sites_reserved # + offsprings.count
+    sites_reserved + assignments.count
   end
 
   def sites_available
-    room.capacity - sites_assigned
+    capacity - sites_assigned
   end
 
   def sites_available?
     sites_available.positive?
+  end
+
+  def self.total_sites_reserved
+    Shift.sum(:sites_reserved)
   end
 
   def self.total_capacity
@@ -41,10 +46,10 @@ class Shift < ApplicationRecord
   end
 
   def self.total_sites_available
-    tsitesavailable = 0
+    tsavailable = 0
     Shift.all.each do |x|
-      tsitesavailable += x.sites_available
+      tsavailable += x.sites_available
     end
-    tsitesavailable
+    tsavailable
   end
 end

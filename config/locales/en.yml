@@ -387,5 +387,7 @@ en:
               blank:                 "can't be blank"
             offspring:
               blank:                 "can't be blank"
+              taken:                 "has already been assigned"
             shift:
               blank:                 "can't be blank"
+              no_sites_available:    "no sites available"
