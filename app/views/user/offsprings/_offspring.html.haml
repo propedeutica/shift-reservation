@@ -1,7 +1,7 @@
 .list-group.list-view-pf-equalized-column
   .list-group-item.list-view-pf-stacked
     .list-view-pf-actions
-      = link_to t('.assign'), new_user_offspring_assignment_path(offspring), { class: "button btn btn-default" }
+      = link_to t('.assign'), new_user_offspring_assignment_path(offspring), class: "button btn btn-default"
       .dropdown.pull-right.dropdown-kebab-pf
         %button.btn.btn-link.dropdown-toggle#dropdownKebabRight3{"aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
           %span.fa.fa-ellipsis-v
@@ -26,5 +26,5 @@
               = t ".no_assignment_yet"
             - else
               %strong= offspring.assignment.shift.room.name
-              #{week_day_convert(offspring.assignment.shift.day_of_week)}
+              = week_day_convert(offspring.assignment.shift.day_of_week).to_s
               = offspring.assignment.shift.start_time

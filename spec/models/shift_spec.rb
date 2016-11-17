@@ -2,6 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Shift, type: :model do
   let(:shift) { FactoryGirl.build_stubbed(:shift) }
+  let!(:room)  { FactoryGirl.create(:room, capacity: 20) }
+  let!(:room2) { FactoryGirl.create(:room, capacity: 20) }
+  let!(:shift1) { FactoryGirl.create(:shift, room: room) }
+  let!(:shift2) { FactoryGirl.create(:shift, room: room) }
+  let!(:shift3) { FactoryGirl.create(:shift, room: room2, sites_reserved: 5) }
+  let(:offspring) { FactoryGirl.create(:offspring) }
+  let(:assignment) { FactoryGirl.create(:assignment, shift: shift1, offspring: offspring) }
+  let(:assignment2) { FactoryGirl.build(:assignment, shift: shift1, offspring: offspring) }
   i18n_scope = 'activerecord.errors.models.shift.attributes'
 
   it "has a valid model" do
@@ -94,14 +102,6 @@ RSpec.describe Shift, type: :model do
   end
 
   context "Shift::" do
-    let!(:room)  { FactoryGirl.create(:room, capacity: 20) }
-    let!(:room2) { FactoryGirl.create(:room, capacity: 20) }
-    let!(:shift1) { FactoryGirl.create(:shift, room: room) }
-    let!(:shift2) { FactoryGirl.create(:shift, room: room) }
-    let!(:shift3) { FactoryGirl.create(:shift, room: room2, sites_reserved: 5) }
-    let(:offspring) { FactoryGirl.create(:offspring) }
-    let(:assignment) { FactoryGirl.create(:assignment, shift: shift1, offspring: offspring) }
-
     it "returns the total_capacity" do
       expect(Shift.total_capacity).to eq(60)
     end
@@ -126,20 +126,17 @@ RSpec.describe Shift, type: :model do
       offspring
       assignment
       shift1.update(sites_reserved: shift1.sites_available)
-      expect(shift1.sites_available?).to be false
-    end
-
-    it "you can't create an assignment when there are no sites available" do
-      offspring
-      shift1.update(sites_reserved: shift1.capacity)
-      assignment.valid?
-      expect(assignment.errors[:shift]).to include "hoal"
+      expect(shift1.sites_available?).to be_falsy
     end
 
     it "shifts are destroyed when parent room is" do
       expect { room.destroy }.to change(Shift, :count).by(-2)
     end
-  end
 
-  pending "relations are nullified when the shift is detroyed"
+    it "assignments are destroyed when shift is" do
+      assignment
+      expect { shift1.destroy }.to change(Shift, :count).by(-1).and change(Assignment, :count).by(-1)
+      expect(offspring.reload.assignment).to be_nil
+    end
+  end
 end

@@ -4,7 +4,7 @@ class Shift < ApplicationRecord
   SCOPE = "activerecord.errors.models.shift.attributes"
   belongs_to :room
   delegate :capacity, to: :room
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   validates :day_of_week, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0,
     less_than_or_equal_to: 6 }
   validates :start_time, presence: true
