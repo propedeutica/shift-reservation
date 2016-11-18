@@ -62,7 +62,7 @@ RSpec.describe "Assignment", type: :request do
       offspring
       shift
       assignment
-      expect { delete user_offspring_assignment_path(offspring)}
+      expect { delete user_offspring_assignment_path(offspring) }
         .to change(Assignment, :count).by(-1).and change { offspring.reload.assignment }.to nil
       expect(I18n.t("user.assignments.destroy.assignment_deleted")).not_to include "translation missing:"
       expect(flash[:success]).to eq I18n.t("user.assignments.destroy.assignment_deleted", offspring: "#{offspring.first_name} #{offspring.last_name}")
@@ -73,8 +73,8 @@ RSpec.describe "Assignment", type: :request do
       shift
       assignment
       allow_any_instance_of(Assignment).to receive(:destroy).and_return(false)
-      expect { delete user_offspring_assignment_path(offspring)}
-        .not_to change{ offspring.reload.assignment }
+      expect { delete user_offspring_assignment_path(offspring) }
+        .not_to change { offspring.reload.assignment }
       expect(I18n.t("user.assignments.destroy.assignment_not_deleted")).not_to include "translation missing:"
       expect(flash[:alert]).to eq I18n.t("user.assignments.destroy.assignment_not_deleted")
     end

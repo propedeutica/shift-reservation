@@ -4,7 +4,7 @@
 .row
   - if @rooms.nil? || @rooms&.empty?
     %h2= (t "application.models.room.there_are_no_rooms_yet")
-  -else
+  - else
     = render @rooms
 = @assignment
 Offspring
