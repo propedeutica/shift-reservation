@@ -179,7 +179,8 @@ en:
         delete:                 "Delete"
         show:                   "Show"
         edit:                   "Edit"
-        delete_assignment:       "Delete assignment"
+        delete_assignment:      "Delete assignment"
+        irreversible:           "Are you sure? This action can not be undone"  
       new:
         new_offspring:          "Add offspring"
         create:                 "Create"
