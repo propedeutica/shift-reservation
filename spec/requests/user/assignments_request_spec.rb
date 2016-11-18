@@ -28,7 +28,7 @@ RSpec.describe "Assignment", type: :request do
       expect(response).to have_http_status(:ok)
       expect(response.body).to include(ERB::Util.html_escape(offspring.first_name)).and include(ERB::Util.html_escape(offspring.last_name))
       expect(response.body).to include(ERB::Util.html_escape(room.name))
-      expect(response.body).to include(ERB::Util.html_escape(shift.start_time)).and include(ERB::Util.html_escape(shift2.end_time)) 
+      expect(response.body).to include(ERB::Util.html_escape(shift.start_time)).and include(ERB::Util.html_escape(shift2.end_time))
     end
 
     it "shows flash error when offspring does not exist" do
