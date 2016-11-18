@@ -1,4 +1,4 @@
-class User::OffspringsController < ApplicationController
+class User::OffspringsController < UserAuthenticatedController
   def index
     @offsprings = current_user.offsprings
   end

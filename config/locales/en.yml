@@ -177,6 +177,10 @@ en:
         no_assignment_yet:      "There is no assignment in the database"
         are_you_sure?:          "Are you sure?"
         delete:                 "Delete"
+        show:                   "Show"
+        edit:                   "Edit"
+        delete_assignment:      "Delete assignment"
+        irreversible:           "Are you sure? This action can not be undone"  
       new:
         new_offspring:          "Add offspring"
         create:                 "Create"
@@ -206,6 +210,17 @@ en:
         offspring_deleted:      "%{offspring} has been deleted"
         offspring_not_deleted:  "There was an error deleting the offspring"
         offspring_not_found:    "We couldn't find the offspring"
+    assignments:
+      new:
+        offspring_not_found:    "We couldn't find the offspring"
+        shift_select:           "Select a shift"
+        shift_select_for:       "Select a shift for %{offspring}"
+      create:
+        assignment_added:       "A new assignment has been added"
+        assignment_not_added:   "There was an error with the assignment"
+      destroy:
+        assignment_deleted:     "The assignment for %{offspring} was deleted"
+        assignment_not_deleted: "There was a problem deleting the assignment"
   users:
     registrations:
       new:
@@ -379,5 +394,7 @@ en:
               blank:                 "can't be blank"
             offspring:
               blank:                 "can't be blank"
+              taken:                 "has already been assigned"
             shift:
               blank:                 "can't be blank"
+              no_sites_available:    "no sites available"

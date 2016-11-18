@@ -1,7 +1,7 @@
 - provide(:title, (t '.room_index').to_s)
 %h1= (t '.room_index')
 .row
-  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms.empty?
+  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms&.empty?
   = render @rooms
 
 - content_for :javascripts do

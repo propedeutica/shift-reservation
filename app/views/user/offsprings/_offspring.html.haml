@@ -1,17 +1,21 @@
 .list-group.list-view-pf-equalized-column
   .list-group-item.list-view-pf-stacked
     .list-view-pf-actions
-      %button.btn.btn-default= link_to (t '.assign'), "#"
+      = link_to t('.assign'), new_user_offspring_assignment_path(offspring), class: "button btn btn-default"
       .dropdown.pull-right.dropdown-kebab-pf
         %button.btn.btn-link.dropdown-toggle#dropdownKebabRight3{"aria-expanded": "true", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
           %span.fa.fa-ellipsis-v
         %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
           %li
-            %a{href: user_offspring_path(offspring)} Show
+            %a{href: user_offspring_path(offspring)}= t '.show'
           %li.divider{role: "separator"}
           %li
-            %a{href: edit_user_offspring_path(offspring)} Edit
+            %a{href: edit_user_offspring_path(offspring)}= t '.edit'
           %li.divider{role: "separator"}
+          %li
+            = link_to (t '.delete'), user_offspring_path(offspring), method: :delete,
+              data: { confirm: t('.irreversible') } 
+            = link_to_if(offspring&.assignment, t('.delete_assignment'), user_offspring_assignment_path(offspring), method: :delete) {}
     .list-view-pf-main-info
       .list-view-pf-body
         .list-view-pf-description
@@ -23,10 +27,9 @@
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
             = I18n.t(offspring.grade, scope: 'grades')
           .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
-              %strong= offspring.assignment.shift_id
-            - else
+            - if !offspring.assignment
               = t ".no_assignment_yet"
-          .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            - if offspring.assignment
+            - else
               %strong= offspring.assignment.shift.room.name
+              = week_day_convert(offspring.assignment.shift.day_of_week).to_s
+              = offspring.assignment.shift.start_time
