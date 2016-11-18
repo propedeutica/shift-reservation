@@ -2,8 +2,10 @@
 %h1= t('.shift_select_for', offspring: full_name(@offspring))
 
 .row
-  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms.empty?
-  = render @rooms
+  - if @rooms.nil? || @rooms&.empty?
+    %h2= (t "application.models.room.there_are_no_rooms_yet")
+  -else
+    = render @rooms
 = @assignment
 Offspring
-= @offspring.first_name
+= full_name(@offspring)

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index]
     namespace :user do
       resources :offsprings, shallow: true do
-        resource :assignment, expect: [:show]
+        resource :assignment, expect: [:show, :update]
       end
     end
   end
