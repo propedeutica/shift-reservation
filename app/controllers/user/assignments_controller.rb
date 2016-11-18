@@ -15,8 +15,8 @@ class User::AssignmentsController < UserAuthenticatedController
     @assignment.user = current_user
     @assignment.offspring = Offspring.find_by(id: params[:offspring_id], user: current_user)
     if @assignment.offspring.nil?
-      redirect_to user_offsprings_path
       flash[:alert] = (t '.assignment_not_added')
+      redirect_to user_offsprings_path
     elsif @assignment.save
       flash[:success] = (t '.assignment_added')
       redirect_to user_offsprings_path

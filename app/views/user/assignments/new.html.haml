@@ -1,5 +1,7 @@
 - provide(:title, (t '.shift_select').to_s)
 %h1= t('.shift_select_for', offspring: full_name(@offspring))
+- unless @offspring&.assignment.nil?
+  %h3 ( #{@offspring.assignment.shift.room.name}: #{@offspring.assignment.shift.start_time} - #{@offspring.assignment.shift.end_time})
 
 .row
   - if @rooms.nil? || @rooms&.empty?
@@ -7,5 +9,3 @@
   - else
     = render @rooms
 = @assignment
-Offspring
-= full_name(@offspring)

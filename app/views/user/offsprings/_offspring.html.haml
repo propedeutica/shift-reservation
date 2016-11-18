@@ -1,4 +1,4 @@
-.list-group.list-view-pf-equalized-column
+.list-group.list-view-pf
   .list-group-item.list-view-pf-stacked
     .list-view-pf-actions
       = link_to t('.assign'), new_user_offspring_assignment_path(offspring), class: "button btn btn-default"
@@ -22,14 +22,15 @@
           .list-group-item-heading
             = link_to offspring.first_name, user_offspring_path(offspring)
           .list-group-item-text
-            = offspring.last_name
+            %strong= offspring.last_name
+          .list-group-item-text
+            ( #{I18n.t(offspring.grade, scope: 'grades')} )
         .list-view-pf-additional-info
-          .list-view-pf-additional-info-item.list-view-pf-additional-info-item
-            = I18n.t(offspring.grade, scope: 'grades')
-          .list-view-pf-additional-info-item.list-view-pf-additional-info-item
+          .list-view-pf-additional-info-item.list-view-pf-additional-info-item-stacked
             - if !offspring.assignment
-              = t ".no_assignment_yet"
-            - else
-              %strong= offspring.assignment.shift.room.name
-              = week_day_convert(offspring.assignment.shift.day_of_week).to_s
-              = offspring.assignment.shift.start_time
+              .btn.btn-warning= t ".no_assignment_yet"
+            - else            
+              %strong.bg-success= offspring.assignment.shift.room.name
+              .list-view-pf-additional-info-item.list-view-pf-additional-info-item-stacked.text-success
+                = week_day_convert(offspring.assignment.shift.day_of_week).to_s
+                #{offspring.assignment.shift.start_time} - #{offspring.assignment.shift.end_time}
