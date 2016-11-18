@@ -12,6 +12,13 @@ RSpec.describe Assignment, type: :model do
     expect(assignment).to be_valid
   end
 
+  it "relationships are nullified when the assignment is destroyed" do
+    user
+    offspring
+    assignment2
+    expect { assignment2.destroy }.to change { offspring.reload.assignment }.to nil
+  end
+
   it "is destroyed when the offspring is" do
     user
     offspring
