@@ -1,7 +1,7 @@
 class User::AssignmentsController < UserAuthenticatedController
   def new
     unless (@offspring = Offspring.find_by(id: params[:offspring_id], user: current_user))
-      flash[:error] = t ".offspring_not_found"
+      flash[:alert] = t ".offspring_not_found"
       redirect_to user_offsprings_path
     end
     @rooms = Room.all

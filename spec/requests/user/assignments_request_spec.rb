@@ -18,6 +18,30 @@ RSpec.describe "Assignment", type: :request do
       Warden.test_reset!
     end
 
+    it "shows screens for a new assignment" do
+      user
+      offspring
+      room
+      shift
+      shift2
+      get new_user_offspring_assignment_path(offspring)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include(ERB::Util.html_escape(offspring.first_name)).and include(ERB::Util.html_escape(offspring.last_name))
+      expect(response.body).to include(ERB::Util.html_escape(room.name))
+      expect(response.body).to include(ERB::Util.html_escape(shift.start_time)).and include(ERB::Util.html_escape(shift2.end_time)) 
+    end
+
+    it "shows flash error when offspring does not exist" do
+      user
+      offspring
+      room
+      shift
+      get new_user_offspring_assignment_path(2002)
+      expect(response).to redirect_to user_offsprings_path
+      expect(I18n.t("user.assignments.new.offspring_not_found")).not_to include "translation missing:"
+      expect(flash[:alert]).to eq I18n.t("user.assignments.new.offspring_not_found")
+    end
+
     it "user can create an assignment" do
       offspring
       room
