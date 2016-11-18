@@ -126,7 +126,6 @@ RSpec.describe "Assignment", type: :request do
       expect(flash[:alert]).to eq I18n.t("user.assignments.new.offspring_not_found")
     end
 
-
     it "user can't modify an assignment for other user offspring" do
       offspring
       room
