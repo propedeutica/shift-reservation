@@ -33,7 +33,7 @@ AllCops:
     - 'config/environments/**/*'
     - 'bundler_stubs/**/*'
 AbcSize:
-  Max: 20
+  Max: 30
   Severity: refactor
 AlignHash:
   EnforcedHashRocketStyle: table

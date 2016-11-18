@@ -12,9 +12,12 @@ class User::AssignmentsController < UserAuthenticatedController
   def create
     @assignment = Assignment.find_by(offspring: params[:offspring_id]) || Assignment.new
     @assignment.shift_id = assignment_shift[:shift]
-    @assignment.offspring_id = params[:offspring_id]
     @assignment.user = current_user
-    if @assignment.save
+    @assignment.offspring = Offspring.find_by(id: params[:offspring_id], user: current_user)
+    if @assignment.offspring.nil?
+      flash[:alert] = (t '.assignment_not_added')
+      redirect_to user_offsprings_path
+    elsif @assignment.save
       flash[:success] = (t '.assignment_added')
       redirect_to user_offsprings_path
     else
