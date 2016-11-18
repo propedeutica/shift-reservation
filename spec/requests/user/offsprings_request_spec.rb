@@ -40,7 +40,7 @@ RSpec.describe User::OffspringsController, type: :request do
       it "creates valid offspring when valid" do
         expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
           .to change(Offspring, :count).by(1)
-        expect("user.offsprings.create.offspring_added").not_to include "translation missing:"
+        expect(I18n.t("user.offsprings.create.offspring_added")).not_to include "translation missing:"
         expect(flash[:success]).to eq I18n.t("user.offsprings.create.offspring_added", offspring: new_offspring[:first_name])
         expect(response).to redirect_to user_offsprings_path
       end
@@ -49,7 +49,7 @@ RSpec.describe User::OffspringsController, type: :request do
         new_offspring[:first_name] = ""
         expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
           .not_to change(Offspring, :count)
-        expect("user.offsprings.create.offspring_not_added").not_to include "translation missing:"
+        expect(I18n.t("user.offsprings.create.offspring_not_added")).not_to include "translation missing:"
         expect(flash[:alert]).to eq I18n.t("user.offsprings.create.offspring_not_added")
         expect(response).to have_http_status(:success)
       end
@@ -66,7 +66,7 @@ RSpec.describe User::OffspringsController, type: :request do
       it "does not find other user's offspring" do
         get edit_user_offspring_path(other_offspring)
         expect(response).to redirect_to(user_offsprings_path)
-        expect("user.offsprings.edit.offspring_not_found").not_to include "translation missing:"
+        expect(I18n.t("user.offsprings.edit.offspring_not_found")).not_to include "translation missing:"
         expect(flash[:alert]).to eq I18n.t("user.offsprings.edit.offspring_not_found")
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe User::OffspringsController, type: :request do
       it "does not find other user's offspring" do
         get user_offspring_path(other_offspring)
         expect(response).to redirect_to(user_offsprings_path)
-        expect("user.offsprings.show.offspring_not_found").not_to include "translation missing:"
+        expect(I18n.t("user.offsprings.show.offspring_not_found")).not_to include "translation missing:"
         expect(flash[:alert]).to eq I18n.t("user.offsprings.show.offspring_not_found")
       end
     end
@@ -127,7 +127,7 @@ RSpec.describe User::OffspringsController, type: :request do
       it "deletes the offspring" do
         offspring
         expect { delete user_offspring_path(offspring) }.to change(Offspring, :count).by(-1)
-        expect("user.offsprings.destroy.offspring_deleted").not_to include "translation missing:"
+        expect(I18n.t("user.offsprings.destroy.offspring_deleted")).not_to include "translation missing:"
         expect(flash[:success]).to eq I18n.t("user.offsprings.destroy.offspring_deleted", offspring: offspring.first_name)
         expect(response).to redirect_to user_offsprings_path
       end

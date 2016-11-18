@@ -3,7 +3,7 @@
 = render "add_room"
 = render "export_csv"
 .row
-  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms.empty?
+  %h2= (t "application.models.room.there_are_no_rooms_yet") if @rooms&.empty?
   = render @rooms
 = render "add_room"
 

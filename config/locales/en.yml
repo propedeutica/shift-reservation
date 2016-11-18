@@ -177,6 +177,9 @@ en:
         no_assignment_yet:      "There is no assignment in the database"
         are_you_sure?:          "Are you sure?"
         delete:                 "Delete"
+        show:                   "Show"
+        edit:                   "Edit"
+        delete_assignment:       "Delete assignment"
       new:
         new_offspring:          "Add offspring"
         create:                 "Create"
@@ -208,12 +211,15 @@ en:
         offspring_not_found:    "We couldn't find the offspring"
     assignments:
       new:
-        offspring_not_found:   "We couldn't find the offspring"
+        offspring_not_found:    "We couldn't find the offspring"
         shift_select:           "Select a shift"
         shift_select_for:       "Select a shift for %{offspring}"
       create:
         assignment_added:       "A new assignment has been added"
         assignment_not_added:   "There was an error with the assignment"
+      destroy:
+        assignment_deleted:     "The assignment for %{offspring} was deleted"
+        assignment_not_deleted: "There was a problem deleting the assignment"
   users:
     registrations:
       new:

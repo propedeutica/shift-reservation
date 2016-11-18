@@ -7,10 +7,14 @@
           %span.fa.fa-ellipsis-v
         %ul.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownKebabRight3"}
           %li
-            %a{href: user_offspring_path(offspring)} Show
+            %a{href: user_offspring_path(offspring)}= t '.show'
           %li.divider{role: "separator"}
           %li
-            %a{href: edit_user_offspring_path(offspring)} Edit
+            %a{href: edit_user_offspring_path(offspring)}= t '.edit'
+          %li.divider{role: "separator"}
+          %li
+            = link_to(t '.delete', user_offspring_path(offspring), method: :delete)
+            = link_to_if(offspring&.assignment, t('.delete_assignment'), user_offspring_assignment_path(offspring), method: :delete) {}
     .list-view-pf-main-info
       .list-view-pf-body
         .list-view-pf-description

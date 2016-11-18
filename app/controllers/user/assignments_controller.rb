@@ -15,7 +15,7 @@ class User::AssignmentsController < UserAuthenticatedController
     @assignment.offspring_id = params[:offspring_id]
     @assignment.user = current_user
     if @assignment.save
-      flash[:success] = (t '.assignment_added', assignment: @assignment)
+      flash[:success] = (t '.assignment_added')
       redirect_to user_offsprings_path
     else
       flash[:alert] = (t '.assignment_not_added')
@@ -24,6 +24,13 @@ class User::AssignmentsController < UserAuthenticatedController
   end
 
   def destroy
+    @offspring = Offspring.find_by(id: params["offspring_id"], user: current_user)
+    if @offspring&.assignment&.destroy
+      flash[:success] = (t ".assignment_deleted", offspring: helpers.full_name(@offspring))
+    else
+      flash[:alert] = (t ".assignment_not_deleted")
+    end
+    redirect_to user_offsprings_path
   end
 
   private

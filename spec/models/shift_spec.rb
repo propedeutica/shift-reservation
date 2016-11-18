@@ -116,6 +116,12 @@ RSpec.describe Shift, type: :model do
       expect(Shift.total_sites_available).to eq(54)
     end
 
+    it "returns total_sites_reserved" do
+      expect(Shift.total_sites_reserved).to eq(5)
+    end
+  end
+
+  context "shift" do
     it "returns sites_available? true when there are sites available" do
       offspring
       assignment
