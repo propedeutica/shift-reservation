@@ -178,4 +178,48 @@ RSpec.describe "Assignment", type: :request do
       expect(response).to redirect_to new_user_session_path
     end
   end
+
+  context "when authenticated and global_lock_in is on" do
+    before(:all) do
+      Myconfig.global_lock_set_true
+    end
+
+    before(:each) do
+      login_as(user, scope: :user)
+    end
+
+    after(:each) do
+      Warden.test_reset!
+    end
+
+    after(:all) do
+      Myconfig.global_lock_set_false
+    end
+
+    it "translation can be found" do
+      expect(I18n.t("global_lock_error")).not_to include "translation missing:"
+    end
+
+    it "user can't add assignment" do
+      user
+      offspring
+      room
+      shift
+      shift2
+      get new_user_offspring_assignment_path(offspring)
+      expect(response).to redirect_to root_path
+      expect(flash[:alert]).to eq I18n.t("global_lock_error")
+    end
+
+    it "user can't modify assignment" do
+      offspring
+      room
+      shift
+      assignment
+      expect { post user_offspring_assignment_path(offspring), params: { assignment: { shift: shift2.id } } }
+        .not_to change { assignment.reload.shift_id }
+      expect(response).to redirect_to root_path
+      expect(flash[:alert]).to eq I18n.t("global_lock_error")
+    end
+  end
 end

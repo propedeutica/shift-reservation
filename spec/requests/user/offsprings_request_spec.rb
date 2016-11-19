@@ -2,13 +2,13 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 RSpec.describe User::OffspringsController, type: :request do
-  context "when user authenticated" do
-    let(:user) { FactoryGirl.create(:user) }
-    let!(:offspring) { FactoryGirl.create(:offspring, user: user) }
-    let(:offspring2) { FactoryGirl.create(:offspring, user: user, last_name: offspring.last_name) }
-    let(:other_offspring) { FactoryGirl.create(:offspring) }
-    let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user, last_name: offspring.last_name) }
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:offspring) { FactoryGirl.create(:offspring, user: user) }
+  let(:offspring2) { FactoryGirl.create(:offspring, user: user, last_name: offspring.last_name) }
+  let(:other_offspring) { FactoryGirl.create(:offspring) }
+  let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user, last_name: offspring.last_name) }
 
+  context "when user authenticated" do
     before(:each) do
       login_as(user, scope: :user)
     end
@@ -149,6 +149,45 @@ RSpec.describe User::OffspringsController, type: :request do
         expect(flash[:alert]).to eq I18n.t("user.offsprings.destroy.offspring_not_deleted", offspring: offspring.first_name)
         expect(response).to redirect_to user_offsprings_path
       end
+    end
+  end
+
+  context "when user authenticated and global locked in" do
+    before(:all) do
+      Myconfig.global_lock_set_true
+    end
+
+    before(:each) do
+      login_as(user, scope: :user)
+    end
+
+    after(:each) do
+      Warden.test_reset!
+    end
+
+    after(:all) do
+      Myconfig.global_lock_set_false
+    end
+
+    it "translation can be found" do
+      expect(I18n.t("global_lock_error")).not_to include "translation missing:"
+    end
+
+    it "can't create new offspring" do
+      expect { post user_offsprings_path(user), params: { offspring: new_offspring } }
+        .not_to change(Offspring, :count)
+      expect(response).to redirect_to root_path
+      expect(flash[:alert]).to eq I18n.t("global_lock_error")
+    end
+
+    it "can't update offspring" do
+      offspring
+      expect do
+        patch user_offspring_path(offspring), params: { offspring: new_offspring }
+        offspring.reload
+      end.not_to change { offspring.first_name }
+      expect(response).to redirect_to root_path
+      expect(flash[:alert]).to eq I18n.t("global_lock_error")
     end
   end
 end

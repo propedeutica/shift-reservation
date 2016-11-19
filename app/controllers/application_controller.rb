@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def system_locked_in?
     if Myconfig.global_lock?
-      flash[:error] = t "global_lock_error"
+      flash[:alert] = t "global_lock_error"
       redirect_to root_path
     end
   end
