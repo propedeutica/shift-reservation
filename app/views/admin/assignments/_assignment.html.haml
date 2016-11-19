@@ -1,0 +1,7 @@
+%tr
+  %td= link_to assignment.offspring.first_name, admin_offspring_path(assignment.offspring)
+  %td= link_to assignment.offspring.last_name, admin_offspring_path(assignment.offspring)
+  %td= I18n.t assignment.offspring.grade, scope: 'grades'
+  %td= link_to full_name(assignment.offspring.user), admin_user_path(assignment.offspring.user)
+  %td= l assignment.created_at
+  %td= l assignment.updated_at

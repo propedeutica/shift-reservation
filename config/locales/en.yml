@@ -107,6 +107,8 @@ en:
         user_not_deleted:             "User %{user} could not be deleted"
         user_not_found:               "We couldn't find the user"
     offsprings:
+      offspring:
+        no_assignment_yet:            "No assignment yet"
       index:
         offsprings:               "Offsprings"
       show:

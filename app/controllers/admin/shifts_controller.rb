@@ -4,6 +4,8 @@ class Admin::ShiftsController < Admin::AdminIdentifiedController
     if @shift.nil?
       redirect_to admin_rooms_path
       flash[:alert] = (t ".shift_not_found")
+    else
+      @assignments = @shift.assignments
     end
   end
 
