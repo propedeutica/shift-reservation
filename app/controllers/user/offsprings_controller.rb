@@ -1,4 +1,6 @@
 class User::OffspringsController < UserAuthenticatedController
+  before_action :system_locked_in?, except: [:show, :index, :destroy]
+
   def index
     @offsprings = current_user.offsprings
   end

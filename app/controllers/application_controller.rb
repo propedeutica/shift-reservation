@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :password])
     end
   end
+
+  def system_locked_in?
+    if Myconfig.global_lock?
+      flash[:alert] = t "global_lock_error"
+      redirect_to root_path
+    end
+  end
 end
