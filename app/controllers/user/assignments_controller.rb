@@ -1,4 +1,6 @@
 class User::AssignmentsController < UserAuthenticatedController
+  before_action :system_locked_in?, except: [:destroy]
+
   def new
     unless (@offspring = Offspring.find_by(id: params[:offspring_id], user: current_user))
       flash[:alert] = t ".offspring_not_found"

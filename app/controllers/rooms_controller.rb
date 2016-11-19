@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class RoomsController < UserAuthenticatedController
   def index
     @rooms = Room.all
   end
