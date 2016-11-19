@@ -3,6 +3,7 @@
   %td= link_to user.email, admin_user_path(user)
   %td= user.first_name
   %td= user.last_name
+  %td= user.offsprings.count
   %td= user.phone
   %td= l user.created_at
   %td= l user.updated_at
