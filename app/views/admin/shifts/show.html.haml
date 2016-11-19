@@ -40,3 +40,22 @@
 %p
   = link_to t("application.models.shift.edit_shift"), edit_admin_shift_path(@shift), class: "btn btn-primary"
   = link_to (t "application.models.shift.redirect_to_index"), admin_rooms_path, class: "btn btn-default"
+
+%table.datatable.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th= Offspring.human_attribute_name('first_name')
+      %th= Offspring.human_attribute_name('last_name')
+      %th= Offspring.human_attribute_name('grade')
+      %th= Offspring.human_attribute_name('user')
+      %th= Offspring.human_attribute_name('created_at')
+      %th= Offspring.human_attribute_name('updated_at')
+  %tbody
+    = render @assignments
+
+- content_for :javascripts do
+  :javascript
+    // Initialize Datatables
+    $(document).ready(function() {
+      $('.datatable').dataTable();
+    });

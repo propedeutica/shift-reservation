@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Offspring, type: :model do
   i18n_scope = 'activerecord.errors.models.offspring.attributes'
-  let(:offspring) { FactoryGirl.build(:offspring) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:offspring) { FactoryGirl.build(:offspring, user: user) }
+  let(:other_offspring) { FactoryGirl.build(:offspring, user: user, last_name: offspring.last_name) }
 
   it "has a valid factory" do
     expect(offspring).to be_valid
@@ -46,6 +48,13 @@ RSpec.describe Offspring, type: :model do
       offspring.valid?
       expect(offspring.errors[:last_name]).to include(I18n.t('last_name.too_long', count: 60, scope: i18n_scope))
     end
+
+    it "is invalid when is different to siblings'" do
+      offspring.save
+      other_offspring.last_name = "other surname"
+      other_offspring.valid?
+      expect(other_offspring.errors[:last_name]).to include(I18n.t('last_name.different', scope: i18n_scope))
+    end
   end
 
   describe "#grade " do
@@ -76,7 +85,7 @@ RSpec.describe Offspring, type: :model do
     end
     it "is destroyed when the user is" do
       offspring.save
-      FactoryGirl.create(:offspring, user: offspring.user)
+      other_offspring
       expect(offspring.user.offsprings).not_to be_empty
       offspring.user.destroy
       expect(offspring.user.destroyed?).to be_truthy

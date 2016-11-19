@@ -4,10 +4,10 @@ include Warden::Test::Helpers
 RSpec.describe User::OffspringsController, type: :request do
   context "when user authenticated" do
     let(:user) { FactoryGirl.create(:user) }
-    let(:offspring) { FactoryGirl.create(:offspring, user: user) }
-    let(:offspring2) { FactoryGirl.create(:offspring, user: user) }
+    let!(:offspring) { FactoryGirl.create(:offspring, user: user) }
+    let(:offspring2) { FactoryGirl.create(:offspring, user: user, last_name: offspring.last_name) }
     let(:other_offspring) { FactoryGirl.create(:offspring) }
-    let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user) }
+    let(:new_offspring) { FactoryGirl.attributes_for(:offspring, user: user, last_name: offspring.last_name) }
 
     before(:each) do
       login_as(user, scope: :user)

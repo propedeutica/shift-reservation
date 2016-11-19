@@ -107,6 +107,8 @@ en:
         user_not_deleted:             "User %{user} could not be deleted"
         user_not_found:               "We couldn't find the user"
     offsprings:
+      offspring:
+        no_assignment_yet:            "No assignment yet"
       index:
         offsprings:               "Offsprings"
       show:
@@ -378,6 +380,7 @@ en:
               blank:              "can't be blank"
               too_short:          "is too short (minimum is %{count} characters)"
               too_long:           "is too long (maximum is %{count} characters)"
+              different:          "can't be different to siblings'"
             age:
               blank:                          "can't be blank'"
               too_short_or_equal_to:          "must be greater than or equal to %{count}"

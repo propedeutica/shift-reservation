@@ -3,6 +3,13 @@
   %td= link_to offspring.first_name, admin_offspring_path(offspring)
   %td= link_to offspring.last_name, admin_offspring_path(offspring)
   %td= I18n.t offspring.grade, scope: 'grades'
+  - if offspring.assignment
+    %td
+      #{offspring.assignment.shift.room.name}:
+      = link_to "#{week_day_convert offspring.assignment.shift.day_of_week} #{offspring.assignment.shift.start_time} - #{offspring.assignment.shift.end_time}",
+        admin_shift_path(offspring.assignment.shift)
+  - else
+    %td.text-warning= t '.no_assignment_yet'
   %td= link_to full_name(offspring.user), admin_user_path(offspring.user)
   %td= l offspring.created_at
   %td= l offspring.updated_at
