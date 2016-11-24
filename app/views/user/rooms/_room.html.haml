@@ -1,13 +1,10 @@
-.cards-pf
-  .container-fluid.container-cards-pf
-    .row.row-cards-pf
-      .col-xs-6.col-sm-4.col-md-4
-        .card-pf
-          %h2.card-pf-title
-            %strong= room.name
-          .card-pf-body
-
-    .row= render "shifts", room: room
+.col-xs-12
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        %strong= room.name
+    .panel-body
+      .row= render "shifts", room: room
 
 - content_for :javascripts do
   :javascript
