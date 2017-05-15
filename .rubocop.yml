@@ -135,7 +135,7 @@ WhileUntilModifier:
   Enabled: false
 WordArray:
   AutoCorrect: false
-Layout/EmptyLineAfterMagicComment:
+Style/EmptyLineAfterMagicComment:
   Enabled: false
 Lint/AmbiguousBlockAssociation:
   Enabled: false
