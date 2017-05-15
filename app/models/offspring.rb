@@ -4,7 +4,7 @@ class Offspring < ApplicationRecord
   validates :first_name, presence: true, length: { within: 2..60 }
   validates :last_name, presence: true, length: { within: 2..60 }
   has_one :assignment, dependent: :destroy
-  enum grade: %i(primary_first primary_second primary_third others)
+  enum grade: %i[primary_first primary_second primary_third others]
   validates :grade, presence: true
   validates_each :last_name do |offspring|
     if offspring.user && offspring.user.offsprings.first

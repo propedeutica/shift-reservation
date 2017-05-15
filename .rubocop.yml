@@ -32,6 +32,7 @@ AllCops:
     - 'bin/**/*'
     - 'config/environments/**/*'
     - 'bundler_stubs/**/*'
+    - 'config/**/*'
 AbcSize:
   Max: 30
   Severity: refactor
@@ -134,5 +135,8 @@ WhileUntilModifier:
   Enabled: false
 WordArray:
   AutoCorrect: false
-
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
 

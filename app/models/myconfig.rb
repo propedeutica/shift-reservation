@@ -7,11 +7,11 @@ class Myconfig < ApplicationRecord
   end
 
   def self.global_lock_set_true
-    Myconfig.instance.update_attribute(:global_lock, true)
+    Myconfig.instance.update_attributes(global_lock: true)
   end
 
   def self.global_lock_set_false
-    Myconfig.instance.update_attribute(:global_lock, false)
+    Myconfig.instance.update_attributes(global_lock: false)
   end
 
   def self.global_lock?
@@ -20,6 +20,6 @@ class Myconfig < ApplicationRecord
 
   def self.global_lock_switch
     value = Myconfig.instance.global_lock
-    Myconfig.instance.update_attribute(:global_lock, !value)
+    Myconfig.instance.update_attributes(global_lock: !value)
   end
 end

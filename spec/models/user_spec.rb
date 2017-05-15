@@ -63,8 +63,8 @@ RSpec.describe User, type: :model do
   end
 
   it "accepts valid emails" do
-    valid_addresses = %w(user@example.com USER@foo.COM A_U-ER@foo.bar.org
-                         first.last@foo.jp alice+bob@baz.cn)
+    valid_addresses = %w[user@example.com USER@foo.COM A_U-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       user.email = valid_address
       user.valid?
@@ -73,8 +73,8 @@ RSpec.describe User, type: :model do
   end
 
   it "rejects invalid emails" do
-    invalid_addresses = %w(user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com foo@bar..com)
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+                           foo@bar_baz.com foo@bar+baz.com foo@bar..com]
     invalid_addresses.each do |invalid_address|
       user.email = invalid_address
       user.valid?
@@ -111,7 +111,7 @@ RSpec.describe User, type: :model do
 
   it "rejects invalid phone numbers" do
     invalid_telephone_numbers =
-      %w(6001 +346001 0034600 1234567890 abc 6oo123456)
+      %w[6001 +346001 0034600 1234567890 abc 6oo123456]
     invalid_telephone_numbers.each do |invalid_telephone_number|
       user.phone = invalid_telephone_number
       user.valid?
@@ -123,7 +123,7 @@ RSpec.describe User, type: :model do
 
   it "accepts valid phone numbers" do
     valid_telephone_numbers =
-      %w(600123456 +34600123456 0034600123456 914270000 0034914270123)
+      %w[600123456 +34600123456 0034600123456 914270000 0034914270123]
     valid_telephone_numbers.each do |valid_telephone_number|
       user.phone = valid_telephone_number
       user.valid?

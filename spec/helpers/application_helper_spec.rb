@@ -31,19 +31,19 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "returns info when default or primary" do
-      %w(default primary).each do |x|
+      %w[default primary].each do |x|
         expect(helper.flash_class(x)).to eq "alert alert-info"
       end
     end
 
     it "returns sucess when notice or success" do
-      %w(notice success).each do |x|
+      %w[notice success].each do |x|
         expect(helper.flash_class(x)).to eq "alert alert-success"
       end
     end
 
     it "returns warning when alert or warning" do
-      %w(alert warning).each do |x|
+      %w[alert warning].each do |x|
         expect(helper.flash_class(x)).to eq "alert alert-warning"
       end
     end
@@ -59,19 +59,19 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "returns help when default or primary" do
-      %w(default primary).each do |x|
+      %w[default primary].each do |x|
         expect(helper.flash_icon(x)).to eq "pficon pficon-help"
       end
     end
 
     it "returns info when info" do
-      %w(info).each do |x|
+      %w[info].each do |x|
         expect(helper.flash_icon(x)).to eq "pficon pficon-info"
       end
     end
 
     it "returns ok when notice or success" do
-      %w(notice success).each do |x|
+      %w[notice success].each do |x|
         expect(helper.flash_icon(x)).to eq "pficon pficon-ok"
       end
     end
@@ -81,7 +81,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "returns error when alert or danger" do
-      %w(alert danger).each do |x|
+      %w[alert danger].each do |x|
         expect(helper.flash_icon(x)).to eq "pficon pficon-error-circle-o"
       end
     end

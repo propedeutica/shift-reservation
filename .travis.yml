@@ -1,11 +1,14 @@
 language: ruby
+dist: trusty
 rvm:
-- '2.3.1'
+  - '2.3.3'
 cache: bundler
 before_install: 
-- source ${TRAVIS_BUILD_DIR}/tools/ci/before_install.sh
+  - source ${TRAVIS_BUILD_DIR}/tools/ci/before_install.sh
 before_script:
-- source ${TRAVIS_BUILD_DIR}/tools/ci/before_script.sh
+  - source ${TRAVIS_BUILD_DIR}/tools/ci/before_script.sh
+services:
+  - postgresql
 addons:
   postgresql: '9.5'
 env:

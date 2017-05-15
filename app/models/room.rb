@@ -7,7 +7,7 @@ class Room < ApplicationRecord
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   def self.to_csv
-    attributes = %w(id name capacity created_at updated_at)
+    attributes = %w[id name capacity created_at updated_at]
 
     CSV.generate do |csv|
       csv << attributes

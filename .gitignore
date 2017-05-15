@@ -21,11 +21,13 @@
 .byebug_history
 
 # Ignore bower_components (install/update with bower install/update)
-vendor/assets/bower_components/*
+vendor/assets/bower_components/
 
 
 # Ignore coverage files
 coverage/
 
 # Ignore other configuration for IDE
-.vscode/
+/.vscode/
+/.idea/
+

@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     if resource_name == :user
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :password])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name phone])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name phone password])
     end
   end
 

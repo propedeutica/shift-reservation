@@ -54,8 +54,8 @@ RSpec.describe Admin, type: :model do
   end
 
   it "rejects invalid emails" do
-    invalid_addresses = %w(user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com foo@bar..com)
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+                           foo@bar_baz.com foo@bar+baz.com foo@bar..com]
     invalid_addresses.each do |invalid_address|
       admin.email = invalid_address
       admin.valid?
@@ -65,8 +65,8 @@ RSpec.describe Admin, type: :model do
   end
 
   it "accepts valid emails" do
-    valid_addresses = %w(user@example.com USER@foo.COM A_U-ER@foo.bar.org
-                         first.last@foo.jp alice+bob@baz.cn)
+    valid_addresses = %w[user@example.com USER@foo.COM A_U-ER@foo.bar.org
+                         first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       admin.email = valid_address
       admin.valid?

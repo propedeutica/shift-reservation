@@ -62,7 +62,7 @@ RSpec.describe Shift, type: :model do
 
   context "#start_time" do
     it "is not a wrong time" do
-      %w(24:00 23:60 2230 noon monday).each do |x|
+      %w[24:00 23:60 2230 noon monday].each do |x|
         shift.start_time = x
         shift.valid?
         expect(shift.errors[:start_time]).to include(I18n.t('start_time.invalid_format', scope: i18n_scope))
@@ -72,7 +72,7 @@ RSpec.describe Shift, type: :model do
 
   context "#end_time" do
     it "is not a wrong time" do
-      %w(24:00 23:60 2230 noon monday).each do |x|
+      %w[24:00 23:60 2230 noon monday].each do |x|
         shift.end_time = x
         shift.valid?
         expect(shift.errors[:end_time]).to include(I18n.t('end_time.invalid_format', scope: i18n_scope))

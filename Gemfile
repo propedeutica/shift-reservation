@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -34,8 +35,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'minitest',  require: false
   gem 'byebug', platform: :mri
-  gem 'rspec-rails',              '~> 3.5'
-  gem 'capybara',                 "~>2.10.0"
+  gem 'rspec-rails',              '~> 3.6'
+  gem 'capybara',                 "~>2.14.0"
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'faker'
@@ -54,14 +55,10 @@ group :development do
   gem 'rubocop',                          :require => false
 end
 
-group :production, :postgresql do
-  gem 'pg'
-  # gem 'rails_12factor' # Needed for Heroku, not sure about OpenShift
-end
 
 # Use SCSS for stylesheets and patternfly
 # Install it wil bower, not as a gem, to install JS dependencies
-gem 'patternfly-sass', '~> 3.13.0'
+gem 'patternfly-sass', '~> 3.23.0'
 #
 # Devise
 #

@@ -1,5 +1,5 @@
 class User::OffspringsController < UserAuthenticatedController
-  before_action :system_locked_in?, except: [:show, :index, :destroy]
+  before_action :system_locked_in?, except: %i[show index destroy]
 
   def index
     @offsprings = current_user.offsprings
