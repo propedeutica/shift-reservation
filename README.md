@@ -23,10 +23,11 @@ There is a [**TODO**](TODO.md) file describing what is still missing
 This application has been created to be deployed in OpenShift online v 3.
 You need:
 - An OpenShift online account
-- A Rails cartridge (5.0.0.1)
-- A PostgreSQL cartridge (9.5, but anyone should work)
+- A Rails cartridge (5.1.0.)
+- A PostgreSQL cartridge (9.5, but any should work)
  I recommend to set up the application as an elastic one so the database is in a different place
-- Environment variables (rhc env set):
+- Environment variables (oc or console):
+  - SECRET_KEY_BASE
   - GMAIL_DOMAIN
   - GMAIL_PASSWORD
   - GMAIL_USERNAME
